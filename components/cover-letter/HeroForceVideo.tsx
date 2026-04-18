@@ -50,18 +50,15 @@ export function HeroForceVideo() {
             </div>
           </div>
           
-          {/* Looping HTML5 Video */}
+          {/* Looping YouTube Video */}
           <div className="relative aspect-video w-full bg-canvas">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute inset-0 h-full w-full object-cover"
-              src="/heroforce-demo.mp4"
-            >
-              Your browser does not support the video tag.
-            </video>
+            <iframe
+              className="absolute inset-0 h-full w-full"
+              src="https://www.youtube-nocookie.com/embed/Opg0W36HaKk?autoplay=1&mute=1&loop=1&playlist=Opg0W36HaKk&controls=0&disablekb=1&modestbranding=1&rel=0&playsinline=1"
+              allow="autoplay; encrypted-media"
+              allowFullScreen={false}
+              title="HeroForce demo"
+            />
           </div>
         </div>
       </div>
