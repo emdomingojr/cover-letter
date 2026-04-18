@@ -10,8 +10,11 @@ const NODES = [
   { id: "position", label: "Position Page" },
 ] as const;
 
-const NODE_W = 280;
-const NODE_H = 238;
+const IMAGE_MAP: Record<string, string> = {
+  hub: "/images/pseo-1home.webp",
+  org: "/images/pseo-3company-profile.webp",
+  position: "/images/pseo-4job-listing.webp",
+};
 
 function NodeCard({ node, onHoverStart, onHoverEnd, onClick }: { node: typeof NODES[number], onHoverStart: () => void, onHoverEnd: () => void, onClick?: () => void }) {
   const [imgError, setImgError] = useState(false);
@@ -38,7 +41,7 @@ function NodeCard({ node, onHoverStart, onHoverEnd, onClick }: { node: typeof NO
           </div>
         ) : (
           <Image
-            src={`/pseo-${node.id}-thumb.webp`}
+            src={IMAGE_MAP[node.id] || "/images/pseo-1home.webp"}
             alt={node.label}
             fill
             className="object-cover pointer-events-none"
@@ -331,7 +334,7 @@ export function PseoNodeCanvas() {
               className="relative w-full max-w-5xl mt-16 md:mt-0 bg-surface border border-border rounded-xl shadow-2xl overflow-hidden"
             >
               <Image
-                src={`/pseo-${activeNode}-full.webp`}
+                src={IMAGE_MAP[activeNode as keyof typeof IMAGE_MAP] || "/images/pseo-1home.webp"}
                 alt={`Full preview of ${activeNode} page`}
                 width={1024}
                 height={2000}

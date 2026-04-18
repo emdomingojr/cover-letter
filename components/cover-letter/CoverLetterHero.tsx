@@ -19,7 +19,7 @@ const tokens = [
   {
     id: 0,
     text:  "scale organic traffic",
-    image: "/Images/pseo-2search-results.webp",
+    image: "/images/pseo-2search-results.webp",
     label: "+96% DEMO REQUESTS",
     href:  "#pseo-flowchart",
   },
