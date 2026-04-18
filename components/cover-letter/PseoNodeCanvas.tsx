@@ -10,6 +10,9 @@ const NODES = [
   { id: "position", label: "Position Page" },
 ] as const;
 
+const NODE_W = 280;
+const NODE_H = 238;
+
 const IMAGE_MAP: Record<string, string> = {
   hub: "/images/pseo-1home.webp",
   org: "/images/pseo-3company-profile.webp",
