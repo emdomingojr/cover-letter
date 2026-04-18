@@ -74,7 +74,7 @@ export function HeroForceVideo() {
           <div className="relative aspect-video w-full bg-canvas">
             <iframe
               className="absolute inset-0 h-full w-full"
-              src="https://www.youtube-nocookie.com/embed/Opg0W36HaKk?autoplay=1&mute=1&loop=1&playlist=Opg0W36HaKk&controls=0&disablekb=1&modestbranding=1&rel=0&playsinline=1"
+              src="https://www.youtube.com/embed/Opg0W36HaKk?autoplay=1&mute=1&loop=1&playlist=Opg0W36HaKk&controls=0&disablekb=1&modestbranding=1&rel=0&playsinline=1"
               allow="autoplay; encrypted-media"
               allowFullScreen={false}
               title="HeroForce demo"
