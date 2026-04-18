@@ -26,7 +26,7 @@ const tokens = [
   {
     id: 1,
     text:  "tighten design systems",
-    image: "/2pricing-new.webp",
+    image: "https://cdn.prod.website-files.com/663992d0436f4e870a059cc3/69258161486026ce196d6839_DSystem-Guardrails.png",
     label: "3X FASTER BUILDS",
     href:  "https://www.emersonjr.com/work/eos-design-system",
   },
@@ -39,9 +39,9 @@ const tokens = [
   },
   {
     id: 3,
-    text:  "ship via AI workflows",
+    text:  "ship via designer-led code",
     image: "/heroforce-demo.mp4",
-    label: "ZERO DEV DEPENDENCY",
+    label: "SHIPPED WITHOUT HANDOFF",
     href:  "#velocity",
   },
 ] as const;
@@ -266,7 +266,7 @@ export function CoverLetterHero() {
         <img 
           src="https://lever-client-logos.s3.us-west-2.amazonaws.com/c11956a5-1cb9-45f6-b2ef-a36290dffe66-1722470303592.png" 
           alt="Envato"
-          className="h-6 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 ease-in-out" 
+          className="h-6 w-auto" 
         />
         <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
           Application / Senior Product Designer
@@ -348,10 +348,10 @@ export function CoverLetterHero() {
       {/* ── Subheading Narrative ──────────────────────────────────────────────── */}
       <div className="mt-6 flex max-w-2xl flex-col gap-1 font-sans text-lg leading-relaxed text-subtle md:mt-8 md:text-xl">
         <p>
-          Hi, I&apos;m Em. This page is my application for Senior Product Designer at Envato. Designed, coded, and shipped by me in a couple of days.
+          Hi, I&apos;m Em. This page is my application for Senior Product Designer at Envato. I designed, coded, and shipped it in a couple of days.
         </p>
         <p>
-          Keep scrolling: the work plays.
+          Scroll. The work responds.
         </p>
       </div>
 

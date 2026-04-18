@@ -41,20 +41,40 @@ export function PricingMatrixReveal() {
         <div className="grid grid-cols-1 gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
           <div className="flex flex-col gap-4 font-sans text-base leading-relaxed text-subtle">
             <p>
-              The original Employment Hero pricing matrix presented users with a flat, unstructured wall of over 100 features. This high cognitive friction severely impacted bottom-of-funnel plan selection.
+              The original Employment Hero pricing matrix presented a flat wall of 100+ features. Bottom-of-funnel plan selection suffered; visitors stalled at the comparison.
             </p>
             <p>
-              By restructuring the data into a strict 3-level taxonomy and deploying progressive disclosure via accordions, we transformed the table into a navigable decision engine. This structural clarity directly accelerated the path to purchase.
+              The insight was that visitors weren't asking "what do you cost" — they were asking "is this for me." A feature-by-feature comparison answers the first question. It doesn't help with the second. I restructured the data into a three-level taxonomy with progressive disclosure, reframing the table as a decision engine: pick your team size, see the answer, go. The structural clarity produced a 96% lift in demo requests and pushed the funnel 120% past its CVR goal.
             </p>
           </div>
           <div className="flex flex-col gap-6">
             <div>
+              <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">+96%</div>
+              <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">Lift in demo requests</div>
+            </div>
+            <div>
               <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">120%</div>
               <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">Of CVR goal achieved</div>
             </div>
-            <div>
-              <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">96%</div>
-              <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">Lift in demo requests</div>
+
+            {/* Credits Strip */}
+            <div className="mt-2 flex flex-col gap-4 border-t border-border/50 pt-6">
+              <div>
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">My Role</div>
+                <div className="font-sans text-sm text-heading">Lead product designer — research, IA, visual design, A/B test</div>
+              </div>
+              <div>
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Collaborators</div>
+                <div className="font-sans text-sm text-heading">Product manager, [TODO: confirm — growth/CRO partner?], 1 engineer</div>
+              </div>
+              <div>
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Timeline</div>
+                <div className="font-sans text-sm text-heading">[TODO: confirm — 4 weeks?]</div>
+              </div>
+              <div>
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Tools</div>
+                <div className="font-sans text-sm text-heading">Figma, [TODO: confirm experimentation tool — Optimizely? VWO?]</div>
+              </div>
             </div>
           </div>
         </div>

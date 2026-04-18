@@ -139,10 +139,10 @@ export function PseoInteractiveFlowchart() {
           {/* Narrative Column */}
           <div className="flex flex-col gap-4 font-sans text-base leading-relaxed text-subtle">
             <p>
-              Employment Hero needed to compete for job-seeker traffic monopolised by incumbents like Seek and Indeed. Out-bidding them on paid search was financially unsustainable. The strategy was to build a parallel acquisition channel. We designed a programmatic SEO system capable of generating thousands of highly targeted landing pages without manual engineering overhead.
+              Employment Hero needed to compete for job-seeker traffic monopolised by Seek and Indeed. Out-bidding them on paid search was financially unsustainable, so I worked with our PM to build a parallel acquisition channel — a programmatic SEO system that could generate thousands of highly targeted landing pages without manual engineering overhead.
             </p>
             <p>
-              The architecture filters broad search intent into specific conversion points. Category-level hub pages capture initial discovery traffic and route it toward dedicated employer brand templates. From there, users are pushed into hyper-specific position pages optimised for direct applications. This connected structure bypasses traditional search bottlenecks entirely.
+              The insight was that scale, not craft-per-page, was the competitive lever here. Incumbents own the obvious queries; the long-tail is unguarded. The architecture I designed filters broad search intent down through three template tiers: category-level hub pages capture discovery traffic, dedicated employer brand templates route users toward specific companies, and hyper-specific position pages close the loop into direct applications. One template system, thousands of pages, each one earning its rank on a query Seek and Indeed aren't optimising for.
             </p>
           </div>
 
@@ -155,6 +155,26 @@ export function PseoInteractiveFlowchart() {
             <div>
               <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">300%</div>
               <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">Lift in organic acquisition</div>
+            </div>
+
+            {/* Credits Strip */}
+            <div className="mt-2 flex flex-col gap-4 border-t border-border/50 pt-6">
+              <div>
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">My Role</div>
+                <div className="font-sans text-sm text-heading">Lead product designer — system design, templates, dev handoff</div>
+              </div>
+              <div>
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Collaborators</div>
+                <div className="font-sans text-sm text-heading">Product manager, engineering lead, [TODO: confirm — SEO specialist?]</div>
+              </div>
+              <div>
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Timeline</div>
+                <div className="font-sans text-sm text-heading">[TODO: confirm — 8 weeks?]</div>
+              </div>
+              <div>
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Tools</div>
+                <div className="font-sans text-sm text-heading">Figma, design tokens, Notion</div>
+              </div>
             </div>
           </div>
         </div>

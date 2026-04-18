@@ -1,40 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { siteConfig, navLinks } from "@/data/data";
-import { DevModeToggle } from "@/components/dev/DevModeToggle";
 
 export function NavBar() {
-  const pathname = usePathname();
-  const [theme, setTheme] = useState<"dark" | "light">("light");
-
-  useEffect(() => {
-    const current = document.documentElement.getAttribute("data-theme");
-    setTheme(current === "dark" ? "dark" : "light");
-  }, []);
-
-  function toggleTheme() {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    document.documentElement.setAttribute("data-theme", next);
-    try { localStorage.setItem("theme", next); } catch {}
-  }
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-canvas/90 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-[100] bg-canvas/90 backdrop-blur-sm">
       <nav
-        className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4"
+        className="mx-auto flex max-w-5xl items-center justify-between px-2 pt-6 pb-0 md:px-12 md:pt-8"
         aria-label="Primary navigation"
       >
-        {/* Wordmark — swaps to case study title on scroll */}
         <Link
-          href="/cover-letter/envato"
+          href="https://www.emersonjr.com"
           aria-label="Emerson Jr — Home"
-          className="relative min-w-0 flex-1 max-w-[50%] h-7 overflow-hidden text-primary transition-colors duration-150 hover:text-accent"
+          className="relative flex h-7 min-w-0 flex-1 overflow-hidden"
         >
+          {/* SVG logo */}
           <span className="absolute inset-0 flex items-center">
             <svg
               height="100%"
@@ -42,6 +23,7 @@ export function NavBar() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
+              className="text-primary hover:text-accent transition-colors duration-150"
             >
               <path d="M10.9 39.2996H0V0.599609H10.9V39.2996ZM34.4 10.2996H2.9V0.599609H34.3V10.2996H34.4ZM33.5 24.6996H2.9V14.9996H33.5V24.6996ZM34.4 39.2996H2.9V29.4996H34.3V39.2996H34.4Z" fill="currentColor"/>
               <path d="M48.2999 39.2996H37.3999V0.599609H52.0999L59.1999 16.6996L62.9999 26.6996H63.7999L67.3999 16.6996L74.1999 0.599609H88.8999V39.2996H78.0999V23.2996L78.4999 16.7996H77.6999L75.4999 23.2996L69.7999 36.9996H56.5999L50.7999 23.2996L48.5999 16.7996H47.7999L48.1999 23.2996V39.2996H48.2999Z" fill="currentColor"/>
@@ -62,80 +44,7 @@ export function NavBar() {
               <path d="M332.414 19.6035L314.914 38.3535C314.729 38.5514 314.484 38.6836 314.217 38.7302C313.95 38.7768 313.674 38.7352 313.433 38.6118C313.192 38.4883 312.997 38.2896 312.878 38.0457C312.759 37.8018 312.723 37.526 312.775 37.2598L315.066 25.8019L306.061 22.4207C305.868 22.3484 305.695 22.2292 305.559 22.074C305.423 21.9187 305.327 21.7322 305.281 21.531C305.235 21.3298 305.239 21.1202 305.293 20.921C305.347 20.7218 305.45 20.5392 305.592 20.3894L323.092 1.63944C323.278 1.44153 323.523 1.3093 323.79 1.26272C324.057 1.21613 324.332 1.25772 324.574 1.38119C324.815 1.50467 325.01 1.70334 325.128 1.94723C325.247 2.19111 325.283 2.46697 325.231 2.73319L322.935 14.2035L331.939 17.5801C332.131 17.6529 332.302 17.7719 332.437 17.9265C332.572 18.0811 332.667 18.2667 332.714 18.4667C332.76 18.6667 332.756 18.8751 332.703 19.0733C332.65 19.2716 332.548 19.4537 332.408 19.6035H332.414Z" fill="#0094FF"/>
             </svg>
           </span>
-
         </Link>
-
-        {/* Links */}
-        <ul className="flex items-center gap-1" role="list">
-          {/* Work, About */}
-          {navLinks.map(({ label, href }) => {
-            const isActive = pathname === href;
-            return (
-              <li key={label}>
-                <Link
-                  href={href}
-                  className={cn(
-                    "rounded px-3 py-1.5 font-mono text-sm transition-colors duration-150",
-                    isActive ? "text-accent" : "text-subtle hover:text-primary"
-                  )}
-                >
-                  {label}
-                </Link>
-              </li>
-            );
-          })}
-
-          {/* Theme toggle — pill switch between About and Contact */}
-          <li className="px-1">
-            <button
-              onClick={toggleTheme}
-              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-              className={cn(
-                "relative flex h-[22px] w-[42px] shrink-0 cursor-pointer items-center rounded-full transition-colors duration-200",
-                theme === "light" ? "bg-[#D1D5DB]" : "bg-[#4B5563]"
-              )}
-            >
-              {/* Sun ☀ — left side, hidden behind thumb in light mode */}
-              <span
-                className="pointer-events-none absolute inset-y-0 left-[4px] flex items-center text-[10px] leading-none select-none text-[#9CA3AF]"
-                aria-hidden
-              >
-                ☀
-              </span>
-              {/* Moon ☽ — right side, hidden behind thumb in dark mode */}
-              <span
-                className="pointer-events-none absolute inset-y-0 right-[4px] flex items-center text-[10px] leading-none select-none text-[#9CA3AF]"
-                aria-hidden
-              >
-                ☽
-              </span>
-              {/* Sliding thumb */}
-              <span
-                className={cn(
-                  "absolute top-[3px] z-10 h-[16px] w-[16px] rounded-full bg-white shadow-sm transition-transform duration-200 ease-in-out",
-                  theme === "light" ? "translate-x-[3px]" : "translate-x-[23px]"
-                )}
-              />
-            </button>
-          </li>
-
-          {/* Dev Mode toggle — hidden on mobile */}
-          <li className="hidden sm:block px-1">
-            <DevModeToggle />
-          </li>
-
-          {/* Contact pill */}
-          <li>
-            <Link
-              href={`mailto:${siteConfig.email}`}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded px-3 py-1.5 font-mono text-sm transition-colors duration-150 bg-accent/10 text-accent hover:bg-accent/20"
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
       </nav>
     </header>
   );

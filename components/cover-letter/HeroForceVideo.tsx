@@ -4,20 +4,20 @@ export function HeroForceVideo() {
       {/* ── Narrative Header ─────────────────────────────────────────────── */}
       <div className="mx-auto max-w-5xl px-6 pt-16 pb-16">
         <h2 className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">
-          Execution Velocity
+          Designer-led Delivery
         </h2>
         <h3 className="mb-8 max-w-2xl font-serif text-3xl text-heading md:text-4xl">
-          Zero developer dependency. Richer interactions.
+          Shipped without the handoff. Production code, faster.
         </h3>
         
         <div className="grid grid-cols-1 gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
           {/* Narrative Column */}
           <div className="flex flex-col gap-4 font-sans text-base leading-relaxed text-subtle">
             <p>
-              The go-to-market motion for HeroForce required a highly engaging acquisition surface, but core engineering cycles were locked. Relying on traditional development pipelines would have delayed the launch by over a month.
+              HeroForce needed a high-engagement launch page, but engineering was locked on core product cycles. A traditional design-to-dev handoff would have pushed launch by a month.
             </p>
             <p>
-              By leveraging agentic AI workflows and strict design system tokens, we bypassed the engineering bottleneck entirely. We shipped a high-fidelity, interactive product page that drives higher user engagement, moving from concept to production in a fraction of the standard time.
+              The bet was that design system tokens plus AI prototyping could close the fidelity gap between design and dev — the gap that normally makes handoff so expensive. I designed the page in Figma, prototyped in v0, polished in Cursor, and shipped the production code directly using our existing tokens. Two weeks, concept to live. The page went out with the motion, interactions, and craft the brief asked for, without borrowing an engineering sprint to get there.
             </p>
           </div>
 
@@ -25,11 +25,31 @@ export function HeroForceVideo() {
           <div className="flex flex-col gap-6">
             <div>
               <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">2 Weeks</div>
-              <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">Time to launch (vs 6 weeks standard)</div>
+              <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">Time to launch, vs 6 weeks standard</div>
             </div>
             <div>
               <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">0</div>
-              <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">Engineering dependencies</div>
+              <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">Engineering sprints borrowed</div>
+            </div>
+
+            {/* Credits Strip */}
+            <div className="mt-2 flex flex-col gap-4 border-t border-border/50 pt-6">
+              <div>
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">My Role</div>
+                <div className="font-sans text-sm text-heading">Lead designer and shipping engineer — concept to production code</div>
+              </div>
+              <div>
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Collaborators</div>
+                <div className="font-sans text-sm text-heading">Product marketing, brand designer, [TODO: confirm — engineering reviewer?]</div>
+              </div>
+              <div>
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Timeline</div>
+                <div className="font-sans text-sm text-heading">2 weeks</div>
+              </div>
+              <div>
+                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Tools</div>
+                <div className="font-sans text-sm text-heading">Figma, v0, Cursor, Claude Code</div>
+              </div>
             </div>
           </div>
         </div>
