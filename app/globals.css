@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Theme tokens ─────────────────────────────────────────────────────────── */
+/* Values are space-separated RGB channels so Tailwind opacity modifiers work.  */
+
+:root,
+[data-theme="dark"] {
+  --color-canvas:       18 16 14;
+  --color-surface:      28 25 22;
+  --color-surface-2:    35 31 27;
+  --color-border:       51 46 40;
+  --color-border-hover: 74 66 56;
+  --color-muted:        138 128 112;
+  --color-subtle:       176 165 148;
+  --color-primary:      245 239 230;
+  --color-heading:      196 216 237;
+}
+
+[data-theme="light"] {
+  --color-canvas:       255 249 238;
+  --color-surface:      236 228 215;
+  --color-surface-2:    246 239 227;
+  --color-border:       196 216 237;
+  --color-border-hover: 116 147 178;
+  --color-muted:        142 154 170;
+  --color-subtle:       109 122 136;
+  --color-primary:      0 0 0;
+  --color-heading:      0 42 85;
+}
+
+:root {
+  /* Accent — tokenised for opacity modifier support */
+  --color-accent-rgb: 0 148 255;
+}
+
+/* ─── Token class overrides ─────────────────────────────────────────────────── */
+/* Unlayered CSS has higher cascade priority than @layer utilities in modern CSS  */
+/* (CSS Cascade Level 5). This guarantees every token class reads the CSS         */
+/* variables, regardless of whether Tailwind's utilities have been recompiled.    */
+
+.text-primary               { color: rgb(var(--color-primary)); }
+.hover\:text-primary:hover  { color: rgb(var(--color-primary)); }
+.text-subtle                { color: rgb(var(--color-subtle)); }
+.text-muted                 { color: rgb(var(--color-muted)); }
+.text-muted\/60             { color: rgb(var(--color-muted) / 0.6); }
+.text-muted\/70             { color: rgb(var(--color-muted) / 0.7); }
+.text-heading               { color: rgb(var(--color-heading)); }
+
+.bg-canvas                  { background-color: rgb(var(--color-canvas)); }
+.bg-canvas\/90              { background-color: rgb(var(--color-canvas) / 0.9); }
+.bg-surface                 { background-color: rgb(var(--color-surface)); }
+.bg-surface-2               { background-color: rgb(var(--color-surface-2)); }
+
+.border-border              { border-color: rgb(var(--color-border)); }
+.hover\:border-border-hover:hover { border-color: rgb(var(--color-border-hover)); }
+
+/* ─── Heading Emphasis — Playfair Display italic bold ───────────────────────── */
+/* Always applied as a compound: italic + bold are inseparable for this role.    */
+.font-serif-display {
+  font-family: var(--font-serif-display), Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* ─── Geometry tokens — adjusted live by ThemePanel ────────────────────────── */
+/* ThemePanel writes these to document.documentElement.style (inline, highest  */
+/* specificity). Defaults here provide fallback values when DevMode is off.     */
+:root {
+  --radius-base: 8;
+  --blur-base:   4;
+}
+
+/* Override Tailwind's rounded-* classes to respect --radius-base.             */
+/* Unlayered CSS wins over @layer utilities, so these always take precedence.  */
+.rounded    { border-radius: calc(var(--radius-base) * 0.5px); }
+.rounded-md { border-radius: calc(var(--radius-base) * 0.75px); }
+.rounded-lg { border-radius: calc(var(--radius-base) * 1px); }
+.rounded-xl { border-radius: calc(var(--radius-base) * 1.5px); }
+/* rounded-full intentionally excluded — must stay circular */
+
+/* Override Tailwind's backdrop-blur-sm to respect --blur-base */
+.backdrop-blur-sm { backdrop-filter: blur(calc(var(--blur-base) * 1px)); }
+
+/* ─── X-Ray Inspector ───────────────────────────────────────────────────────── */
+/* Active when DevModeProvider sets data-dev-mode="true" on <body>.             */
+
+/* Wireframe outline on every element */
+[data-dev-mode="true"] *:not(html):not(body) {
+  outline: 1px solid rgb(var(--color-border) / 0.5) !important;
+  outline-offset: 0;
+}
+
+/* Highlight the innermost hovered element — :not(:has(*:hover)) targets it    */
+[data-dev-mode="true"] *:not(:has(*:hover)):not(html):not(body):hover {
+  outline-color: rgb(var(--color-accent-rgb) / 0.7) !important;
+}
+
+/* Node name label — uses position: fixed with --mouse-x/y updated by JS      */
+[data-dev-mode="true"] *:not(:has(*:hover)):not(html):not(body):hover::after {
+  content: attr(data-node);
+  position: fixed;
+  left: var(--mouse-x, 0px);
+  top:  var(--mouse-y, 0px);
+  transform: translate(12px, 10px);
+  z-index: 9999;
+  padding: 2px 6px;
+  background: rgb(var(--color-canvas));
+  border: 1px solid rgb(var(--color-accent-rgb) / 0.4);
+  color: rgb(var(--color-accent-rgb));
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1.4;
+  border-radius: 3px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ─── Profile avatar — photo ↔ wireframe swap driven by body[data-dev-mode] ── */
+/* Both layers are absolute inset-0. CSS (not JS) controls visibility so the   */
+/* swap is synchronous with the data attribute write — no React re-render lag.  */
+.avatar-photo {
+  opacity: 1;
+  transition: opacity 0.05s;
+}
+.avatar-dev {
+  opacity: 0;
+  transition: opacity 0.05s;
+}
+body[data-dev-mode="true"] .avatar-photo { opacity: 0; }
+body[data-dev-mode="true"] .avatar-dev   { opacity: 1; }
+
+/* Card hover image gradient — fades from surface colour to transparent */
+.from-surface {
+  --tw-gradient-from: rgb(var(--color-surface));
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(var(--color-surface) / 0);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    background-color: rgb(var(--color-canvas));
+    color: rgb(var(--color-primary));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Focus ring — accent colour, keyboard nav only */
+  :focus-visible {
+    outline: 2px solid #0094FF;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: rgb(var(--color-canvas)); }
+  ::-webkit-scrollbar-thumb { background: rgb(var(--color-border)); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--color-border-hover)); }
+
+  ::selection { background: rgb(var(--color-accent-rgb) / 0.2); }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+}

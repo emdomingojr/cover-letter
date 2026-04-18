@@ -1,0 +1,51 @@
+{
+  "roleLabel": "UI/UX Designer",
+  "tagline": "Grew demo requests by 96%. Lifted mobile completions by 466%. Exceeded conversion goals by 20%. Shipped pages 3x faster. Eliminated external agency dependency.",
+  "headlineSentences": [
+    {
+      "text": "Grew demo requests by 96%. ",
+      "highlightText": "96%",
+      "linkSlug": "pricing-comparison-matrix",
+      "previewTitle": "Reducing Decision Fatigue in Pricing",
+      "thumbnailUrl": "/images/thumbnails/pricing-comparison-matrix.webp"
+    },
+    {
+      "text": "Lifted mobile completions by 466%. ",
+      "highlightText": "466%",
+      "linkSlug": "designing-for-trust-high-conversion-forms",
+      "previewTitle": "Designing for Trust in High-Intent Forms",
+      "thumbnailUrl": "/images/thumbnails/designing-for-trust.webp"
+    },
+    {
+      "text": "Exceeded conversion goals by 20%. ",
+      "highlightText": "20%",
+      "linkSlug": "employmentos-website",
+      "previewTitle": "A Complete Website Rebuild From 0→1",
+      "thumbnailUrl": "/images/thumbnails/employmentos-website.webp"
+    },
+    {
+      "text": "Shipped pages 3x faster. ",
+      "highlightText": "3x",
+      "linkSlug": "eos-design-system",
+      "previewTitle": "From Agency Dependency to Internal Scale",
+      "thumbnailUrl": "/images/thumbnails/eos-design-system.webp"
+    },
+    {
+      "text": "Eliminated external agency dependency.",
+      "highlightText": "",
+      "linkSlug": "the-art-of-the-handoff-responsive-specification",
+      "previewTitle": "Zero-Ambiguity Handoffs",
+      "thumbnailUrl": "/images/thumbnails/handoff-specs.webp"
+    }
+  ],
+  "subtitle": "Product Designer · B2B SaaS · Design Systems, IA, and Growth",
+  "experienceQualifier": "7+ years · Brisbane, AU · Previously Employment Hero, Tanda, ADA Queensland",
+  "sectionLabel": "Selected Work",
+  "caseStudyOrder": [
+    "eos-design-system",
+    "employmentos-website",
+    "the-art-of-the-handoff-responsive-specification",
+    "pricing-comparison-matrix",
+    "designing-for-trust-high-conversion-forms"
+  ]
+}
