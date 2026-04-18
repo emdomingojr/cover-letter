@@ -19,7 +19,7 @@ const tokens = [
   {
     id: 0,
     text:  "scale organic traffic",
-    image: "/images/pseo-2search-results.webp",
+    image: "/Images/pseo-2search-results.webp",
     label: "+96% DEMO REQUESTS",
     href:  "#pseo-flowchart",
   },
@@ -40,7 +40,7 @@ const tokens = [
   {
     id: 3,
     text:  "ship via designer-led code",
-    image: "https://img.youtube.com/vi/Opg0W36HaKk/maxresdefault.jpg",
+    image: "/heroforce-demo.mp4",
     label: "SHIPPED WITHOUT HANDOFF",
     href:  "#velocity",
   },
@@ -346,7 +346,7 @@ export function CoverLetterHero() {
       </h1>
 
       {/* ── Subheading Narrative ──────────────────────────────────────────────── */}
-      <div className="mt-6 flex max-w-2xl flex-col gap-1 font-sans text-lg leading-relaxed text-subtle md:mt-8 md:text-xl">
+      <div className="mt-6 flex max-w-2xl flex-col gap-4 text-subtle">
         <p>
           Hi, I&apos;m Em. This page is my application for Senior Product Designer at Envato. I designed, coded, and shipped it in a couple of days.
         </p>

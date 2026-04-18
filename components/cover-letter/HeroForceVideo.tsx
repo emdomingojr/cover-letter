@@ -3,16 +3,16 @@ export function HeroForceVideo() {
     <section id="velocity" className="em-landing">
       {/* ── Narrative Header ─────────────────────────────────────────────── */}
       <div className="mx-auto max-w-5xl px-6 pt-16 pb-16">
-        <h2 className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">
+        <div className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">
           Designer-led Delivery
-        </h2>
-        <h3 className="mb-8 max-w-2xl font-serif text-3xl text-heading md:text-4xl">
+        </div>
+        <h2 className="mb-8 max-w-2xl text-heading">
           Shipped without the handoff. Production code, faster.
-        </h3>
+        </h2>
         
         <div className="grid grid-cols-1 gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
           {/* Narrative Column */}
-          <div className="flex flex-col gap-4 font-sans text-base leading-relaxed text-subtle">
+          <div className="flex flex-col gap-4 text-subtle">
             <p>
               HeroForce needed a high-engagement launch page, but engineering was locked on core product cycles. A traditional design-to-dev handoff would have pushed launch by a month.
             </p>

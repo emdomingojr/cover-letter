@@ -1,0 +1,226 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+
+  # ============================================
+  # CASE STUDIES
+  # ============================================
+  - name: "case-studies"
+    label: "Case Studies"
+    folder: "data/case-studies"
+    create: true
+    format: "json"
+    slug: "{{id}}"
+    identifier_field: "title"
+    fields:
+      - { name: "id", label: "Slug (URL ID)", widget: "string", hint: "URL-safe identifier, e.g. pricing-comparison-matrix. Must match the filename." }
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "client", label: "Client", widget: "string" }
+      - { name: "category", label: "Category", widget: "string", required: false, hint: "e.g. Conversion, Website, Design System. Leave blank for craft items." }
+      - { name: "oneLinePitch", label: "One-Line Pitch", widget: "text" }
+      - { name: "imageUrl", label: "Cover Image", widget: "image", required: false, hint: "Path to image, e.g. /images/case-studies/my-project.png" }
+
+      - name: "heroStats"
+        label: "Hero Stats (shown at top of case study page)"
+        widget: "list"
+        max: 2
+        required: false
+        fields:
+          - { name: "value", label: "Value (e.g. +96%)", widget: "string" }
+          - { name: "label", label: "Label (e.g. Demo requests)", widget: "string" }
+
+      - name: "impactMetrics"
+        label: "Impact Metrics (full stats block)"
+        widget: "list"
+        fields:
+          - { name: "value", label: "Value", widget: "string" }
+          - { name: "label", label: "Label", widget: "string" }
+          - { name: "attribution", label: "Attribution", widget: "string", required: false }
+
+      - name: "cardMetrics"
+        label: "Card Metrics (overrides Impact Metrics on homepage card)"
+        widget: "list"
+        required: false
+        hint: "Optional. If set, these 2 metrics appear on the homepage card instead of the first 2 impact metrics."
+        fields:
+          - { name: "value", label: "Value", widget: "string" }
+          - { name: "label", label: "Label", widget: "string" }
+          - { name: "attribution", label: "Attribution", widget: "string", required: false }
+
+      - name: "role"
+        label: "Role"
+        widget: "list"
+        hint: "e.g. Lead Designer, Information Architecture"
+
+      - { name: "timeline", label: "Timeline", widget: "string", hint: "e.g. 3 months, or — if not applicable" }
+
+      - name: "stack"
+        label: "Stack / Tools"
+        widget: "list"
+        hint: "e.g. Figma, Webflow, Auto-Layout Components"
+
+      - { name: "coreProblem", label: "The Problem", widget: "text" }
+      - { name: "solutionLogic", label: "The Thinking (fallback if no Strategic Decisions)", widget: "text" }
+      - { name: "constraints", label: "Constraints", widget: "text", required: false }
+      - { name: "strategicDecisions", label: "Strategic Decisions", widget: "text", required: false }
+      - { name: "strategicConstraint", label: "Strategic Constraint Callout", widget: "text", required: false }
+      - { name: "strategyImageLabel", label: "Strategy Image Label", widget: "string", required: false }
+      - { name: "strategyImageCaption", label: "Strategy Image Caption", widget: "string", required: false }
+      - { name: "strategyImageUrl", label: "Strategy Section Image", widget: "image", required: false }
+      - { name: "systemDesign", label: "System Design", widget: "text", required: false }
+      - { name: "systemConstraint", label: "System Constraint Callout", widget: "text", required: false }
+      - { name: "systemImageUrl", label: "System Design Image", widget: "image", required: false }
+
+      - name: "systemImageCaptions"
+        label: "System Image Captions (desktop + mobile)"
+        widget: "list"
+        max: 2
+        required: false
+        hint: "Exactly 2 captions: first for desktop image, second for mobile image."
+        field: { name: "caption", label: "Caption", widget: "string" }
+
+      - { name: "outcome", label: "The Outcome", widget: "text" }
+      - { name: "contribution", label: "My Contribution", widget: "text", required: false }
+
+      - name: "beforeAfterImages"
+        label: "Before/After Comparison"
+        widget: "object"
+        required: false
+        fields:
+          - { name: "beforeSrc", label: "Before Image", widget: "image", required: false }
+          - { name: "beforeAlt", label: "Before Alt Text", widget: "string", required: false }
+          - { name: "afterSrc", label: "After Image", widget: "image", required: false }
+          - { name: "afterAlt", label: "After Alt Text", widget: "string", required: false }
+          - { name: "caption", label: "Caption", widget: "string", required: false }
+
+      - { name: "craft", label: "Craft Item (hides from main work grid)", widget: "boolean", default: false }
+      - { name: "primaryMetric", label: "Primary Metric (sticky nav stat)", widget: "string", required: false, hint: "Short stat shown next to the title in the sticky nav, e.g. +96% demo requests" }
+      - name: "workedWith"
+        label: "Worked With (collaborators)"
+        widget: "list"
+        required: false
+        hint: "Names of collaborators shown in the Team section of the bento card."
+        field: { name: "name", label: "Name", widget: "string" }
+      - { name: "keyTakeaway", label: "Key Takeaway", widget: "text", required: false }
+      - { name: "previousSlug", label: "Previous Case Study Slug", widget: "string", required: false }
+      - { name: "nextSlug", label: "Next Case Study Slug", widget: "string", required: false }
+
+  # ============================================
+  # HOMEPAGE
+  # ============================================
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - name: "homepage"
+        label: "Homepage Content"
+        file: "data/homepage.json"
+        format: "json"
+        fields:
+          - { name: "roleLabel", label: "Role Label", widget: "string", hint: "Displayed above the H1, e.g. UI/UX Designer" }
+          - { name: "tagline", label: "Tagline (used for SEO meta description)", widget: "text" }
+          - name: "headlineSentences"
+            label: "Headline Sentences"
+            widget: "list"
+            hint: "Each sentence is a link in the animated H1. The highlighted text turns blue."
+            fields:
+              - { name: "text", label: "Full Sentence Text", widget: "string", hint: "Include trailing space if followed by another sentence, e.g. 'Grew demo requests 96%. '" }
+              - { name: "highlightText", label: "Highlighted Text (blue)", widget: "string", required: false, hint: "The number/stat to highlight in blue, e.g. 96%. Leave blank for no highlight." }
+              - { name: "linkSlug", label: "Case Study Slug", widget: "string", hint: "The slug of the case study this sentence links to." }
+              - { name: "previewTitle", label: "Preview Card Title", widget: "string" }
+              - { name: "previewImage", label: "Preview Card Image", widget: "image", required: false }
+          - { name: "subtitle", label: "Subtitle (below H1)", widget: "string" }
+          - { name: "experienceQualifier", label: "Experience Qualifier (small text below subtitle)", widget: "string" }
+          - { name: "sectionLabel", label: "Case Study Grid Section Label", widget: "string" }
+          - name: "caseStudyOrder"
+            label: "Case Study Display Order"
+            widget: "list"
+            hint: "Slugs of main case studies in the order they appear on the homepage grid."
+            field: { name: "slug", label: "Case Study Slug", widget: "string" }
+
+  # ============================================
+  # CRAFT
+  # ============================================
+  - name: "craft"
+    label: "Craft Section"
+    files:
+      - name: "craft"
+        label: "Craft Items"
+        file: "data/craft.json"
+        format: "json"
+        fields:
+          - { name: "sectionLabel", label: "Section Label", widget: "string" }
+          - name: "items"
+            label: "Projects"
+            widget: "list"
+            fields:
+              - { name: "id", label: "ID (slug)", widget: "string" }
+              - { name: "title", label: "Title", widget: "string" }
+              - { name: "category", label: "Category", widget: "string" }
+              - { name: "description", label: "Description", widget: "text" }
+              - name: "tags"
+                label: "Tags"
+                widget: "list"
+                field: { name: "tag", label: "Tag", widget: "string" }
+              - { name: "link", label: "Link (internal path or external URL)", widget: "string" }
+              - { name: "imageUrl", label: "Project Image", widget: "image", required: false }
+
+  # ============================================
+  # ABOUT
+  # ============================================
+  - name: "about"
+    label: "About Page"
+    files:
+      - name: "about"
+        label: "About Content"
+        file: "data/about.json"
+        format: "json"
+        fields:
+          - { name: "title", label: "Page Title (H1)", widget: "string", hint: "e.g. Senior Product Designer" }
+          - { name: "yearsExperience", label: "Years of Experience", widget: "string", hint: "e.g. 7+" }
+          - { name: "summary", label: "Summary / Bio", widget: "text" }
+          - name: "competencies"
+            label: "Core Competencies"
+            widget: "list"
+            field: { name: "competency", label: "Competency", widget: "string" }
+          - name: "tools"
+            label: "Tools"
+            widget: "list"
+            field: { name: "tool", label: "Tool", widget: "string" }
+          - name: "experience"
+            label: "Experience (company names)"
+            widget: "list"
+            field: { name: "company", label: "Company", widget: "string" }
+          - name: "education"
+            label: "Education"
+            widget: "list"
+            field: { name: "entry", label: "Entry", widget: "string" }
+
+  # ============================================
+  # GLOBAL SETTINGS
+  # ============================================
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "global"
+        label: "Global Settings"
+        file: "data/global.json"
+        format: "json"
+        fields:
+          - { name: "siteName", label: "Site Name", widget: "string" }
+          - name: "navLinks"
+            label: "Navigation Links"
+            widget: "list"
+            fields:
+              - { name: "label", label: "Label", widget: "string" }
+              - { name: "href", label: "URL", widget: "string" }
+          - { name: "contactEmail", label: "Contact Email", widget: "string" }
+          - name: "footer"
+            label: "Footer"
+            widget: "object"
+            fields:
+              - { name: "copyright", label: "Copyright Text", widget: "string" }

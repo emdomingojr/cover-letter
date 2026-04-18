@@ -1,0 +1,8 @@
+# Blocking all crawlers until custom domain is configured.
+# Once the custom domain is pointed to Netlify, replace this with:
+#
+# User-agent: *
+# Disallow: /admin/
+
+User-agent: *
+Disallow: /

@@ -31,15 +31,15 @@ export function PricingMatrixReveal() {
     <section id="pricing-reveal" className="em-landing">
       {/* ── Narrative Header ─────────────────────────────────────────────── */}
       <div className="mx-auto max-w-5xl px-6 pt-16 pb-16">
-        <h2 className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">
+        <div className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">
           Information Architecture
-        </h2>
-        <h3 className="mb-8 max-w-2xl font-serif text-3xl text-heading md:text-4xl">
+        </div>
+        <h2 className="mb-8 max-w-2xl text-heading">
           Solving analysis paralysis.
-        </h3>
+        </h2>
         
         <div className="grid grid-cols-1 gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
-          <div className="flex flex-col gap-4 font-sans text-base leading-relaxed text-subtle">
+          <div className="flex flex-col gap-4 text-subtle">
             <p>
               The original Employment Hero pricing matrix presented a flat wall of 100+ features. Bottom-of-funnel plan selection suffered; visitors stalled at the comparison.
             </p>

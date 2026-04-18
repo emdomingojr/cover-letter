@@ -20,9 +20,9 @@ const XMarkIcon = ({ className }: { className?: string }) => (
 type SearchState = "default" | "unselected" | "empty";
 
 const NODE2_ASSETS: Record<SearchState, string> = {
-  default: "/images/pseo-2search-results.webp",
-  unselected: "/images/pseo-2a-search-results-unselected.webp",
-  empty: "/images/pseo-2b-search-results-empty-state.webp",
+  default: "/Images/pseo-2search-results.webp",
+  unselected: "/Images/pseo-2a-search-results-unselected.webp",
+  empty: "/Images/pseo-2b-search-results-empty-state.webp",
 };
 
 interface LineCoords {
@@ -128,16 +128,16 @@ export function PseoInteractiveFlowchart() {
     <section id="pseo-flowchart" className="em-landing">
       {/* ── Narrative Header (Strict 5xl Container) ──────────────────────── */}
       <div className="mx-auto max-w-5xl px-6 pt-8 pb-16">
-        <h2 className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">
+        <div className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">
           Acquisition Architecture
-        </h2>
-        <h3 className="mb-8 max-w-2xl font-serif text-3xl text-heading md:text-4xl">
+        </div>
+        <h2 className="mb-8 max-w-2xl text-heading">
           Scaling organic traffic via a connected page system.
-        </h3>
+        </h2>
         
         <div className="grid grid-cols-1 gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
           {/* Narrative Column */}
-          <div className="flex flex-col gap-4 font-sans text-base leading-relaxed text-subtle">
+          <div className="flex flex-col gap-4 text-subtle">
             <p>
               Employment Hero needed to compete for job-seeker traffic monopolised by Seek and Indeed. Out-bidding them on paid search was financially unsustainable, so I worked with our PM to build a parallel acquisition channel — a programmatic SEO system that could generate thousands of highly targeted landing pages without manual engineering overhead.
             </p>
@@ -203,7 +203,7 @@ export function PseoInteractiveFlowchart() {
                 className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer"
                 onClick={() => setActiveLightboxNode(1)}
               >
-                <Image src="/images/pseo-1home.webp" alt="PSEO Hub Matrix" fill className="object-cover object-top" unoptimized />
+                <Image src="/Images/pseo-1home.webp" alt="PSEO Hub Matrix" fill className="object-cover object-top" unoptimized />
                 <NodeHoverAffordance />
               </button>
             </div>
@@ -218,7 +218,7 @@ export function PseoInteractiveFlowchart() {
                 onClick={() => setActiveLightboxNode(2)}
               >
                 <Image 
-                  src="/images/pseo-2search-results.webp" 
+                  src="/Images/pseo-2search-results.webp" 
                   alt="Search Engine State Payload" 
                   fill 
                   className="object-cover object-top" 
@@ -237,7 +237,7 @@ export function PseoInteractiveFlowchart() {
                 className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer"
                 onClick={() => setActiveLightboxNode(3)}
               >
-                <Image src="/images/pseo-3company-profile.webp" alt="Employer Geometry" fill className="object-cover object-top" unoptimized />
+                <Image src="/Images/pseo-3company-profile.webp" alt="Employer Geometry" fill className="object-cover object-top" unoptimized />
                 <NodeHoverAffordance />
               </button>
             </div>
@@ -248,7 +248,7 @@ export function PseoInteractiveFlowchart() {
                 className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border-l-2 border-accent w-full cursor-pointer"
                 onClick={() => setActiveLightboxNode(4)}
               >
-                <Image src="/images/pseo-4job-listing.webp" alt="Target Position Matrix" fill className="object-cover object-top" unoptimized />
+                <Image src="/Images/pseo-4job-listing.webp" alt="Target Position Matrix" fill className="object-cover object-top" unoptimized />
                 <NodeHoverAffordance />
               </button>
             </div>
@@ -285,9 +285,9 @@ export function PseoInteractiveFlowchart() {
                   <div className="w-full mx-auto relative origin-top">
                     <AnimatePresence mode="wait">
                       {/* Render standard nodes vs state-driven Node 2 */}
-                      {activeLightboxNode === 1 && <motion.div key={1} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/images/pseo-1home.webp" alt="Home Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
-                      {activeLightboxNode === 3 && <motion.div key={3} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/images/pseo-3company-profile.webp" alt="Employer Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
-                      {activeLightboxNode === 4 && <motion.div key={4} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/images/pseo-4job-listing.webp" alt="Target Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
+                      {activeLightboxNode === 1 && <motion.div key={1} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/Images/pseo-1home.webp" alt="Home Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
+                      {activeLightboxNode === 3 && <motion.div key={3} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/Images/pseo-3company-profile.webp" alt="Employer Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
+                      {activeLightboxNode === 4 && <motion.div key={4} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/Images/pseo-4job-listing.webp" alt="Target Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
                       
                       {activeLightboxNode === 2 && (
                         <motion.div
