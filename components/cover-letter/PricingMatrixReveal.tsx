@@ -110,7 +110,7 @@ export function PricingMatrixReveal() {
               <div className="absolute inset-0">
                 <motion.img 
                   style={{ y: panY }} 
-                  src="/1pricing-old.webp" 
+                  src="/cover-letter/1pricing-old.webp" 
                   alt="Old pricing matrix"
                   className="w-full h-auto absolute top-0 left-0 origin-top"
                 />
@@ -124,7 +124,7 @@ export function PricingMatrixReveal() {
                 >
                   <motion.img 
                     style={{ y: panY }} 
-                    src="/2pricing-new.webp" 
+                    src="/cover-letter/2pricing-new.webp" 
                     alt="New structured pricing matrix"
                     className="w-full h-auto absolute top-0 left-0 origin-top"
                   />

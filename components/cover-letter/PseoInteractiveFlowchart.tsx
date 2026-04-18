@@ -20,9 +20,9 @@ const XMarkIcon = ({ className }: { className?: string }) => (
 type SearchState = "default" | "unselected" | "empty";
 
 const NODE2_ASSETS: Record<SearchState, string> = {
-  default: "/images/pseo-2search-results.webp",
-  unselected: "/images/pseo-2a-search-results-unselected.webp",
-  empty: "/images/pseo-2b-search-results-empty-state.webp",
+  default: "/cover-letter/images/pseo-2search-results.webp",
+  unselected: "/cover-letter/images/pseo-2a-search-results-unselected.webp",
+  empty: "/cover-letter/images/pseo-2b-search-results-empty-state.webp",
 };
 
 interface LineCoords {
@@ -203,7 +203,7 @@ export function PseoInteractiveFlowchart() {
                 className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer"
                 onClick={() => setActiveLightboxNode(1)}
               >
-                <Image src="/images/pseo-1home.webp" alt="PSEO Hub Matrix" fill className="object-cover object-top" unoptimized />
+                <Image src="/cover-letter/images/pseo-1home.webp" alt="PSEO Hub Matrix" fill className="object-cover object-top" unoptimized />
                 <NodeHoverAffordance />
               </button>
             </div>
@@ -218,7 +218,7 @@ export function PseoInteractiveFlowchart() {
                 onClick={() => setActiveLightboxNode(2)}
               >
                 <Image 
-                  src="/images/pseo-2search-results.webp" 
+                  src="/cover-letter/images/pseo-2search-results.webp" 
                   alt="Search Engine State Payload" 
                   fill 
                   className="object-cover object-top" 
@@ -237,7 +237,7 @@ export function PseoInteractiveFlowchart() {
                 className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer"
                 onClick={() => setActiveLightboxNode(3)}
               >
-                <Image src="/images/pseo-3company-profile.webp" alt="Employer Geometry" fill className="object-cover object-top" unoptimized />
+                <Image src="/cover-letter/images/pseo-3company-profile.webp" alt="Employer Geometry" fill className="object-cover object-top" unoptimized />
                 <NodeHoverAffordance />
               </button>
             </div>
@@ -248,7 +248,7 @@ export function PseoInteractiveFlowchart() {
                 className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border-l-2 border-accent w-full cursor-pointer"
                 onClick={() => setActiveLightboxNode(4)}
               >
-                <Image src="/images/pseo-4job-listing.webp" alt="Target Position Matrix" fill className="object-cover object-top" unoptimized />
+                <Image src="/cover-letter/images/pseo-4job-listing.webp" alt="Target Position Matrix" fill className="object-cover object-top" unoptimized />
                 <NodeHoverAffordance />
               </button>
             </div>
@@ -285,9 +285,9 @@ export function PseoInteractiveFlowchart() {
                   <div className="w-full mx-auto relative origin-top">
                     <AnimatePresence mode="wait">
                       {/* Render standard nodes vs state-driven Node 2 */}
-                      {activeLightboxNode === 1 && <motion.div key={1} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/images/pseo-1home.webp" alt="Home Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
-                      {activeLightboxNode === 3 && <motion.div key={3} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/images/pseo-3company-profile.webp" alt="Employer Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
-                      {activeLightboxNode === 4 && <motion.div key={4} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/images/pseo-4job-listing.webp" alt="Target Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
+                      {activeLightboxNode === 1 && <motion.div key={1} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/cover-letter/images/pseo-1home.webp" alt="Home Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
+                      {activeLightboxNode === 3 && <motion.div key={3} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/cover-letter/images/pseo-3company-profile.webp" alt="Employer Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
+                      {activeLightboxNode === 4 && <motion.div key={4} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/cover-letter/images/pseo-4job-listing.webp" alt="Target Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
                       
                       {activeLightboxNode === 2 && (
                         <motion.div
