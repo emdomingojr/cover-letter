@@ -35,7 +35,7 @@ function NodeCard({ node, onHoverStart, onHoverEnd, onClick }: { node: typeof NO
         <p className="font-mono text-xs uppercase tracking-widest text-heading">{node.label}</p>
         <div className="w-2 h-2 rounded-full bg-heading" />
       </div>
-      
+
       {/* Image Area */}
       <div className="flex-1 w-full relative bg-surface-2 overflow-hidden">
         {imgError ? (
@@ -57,20 +57,20 @@ function NodeCard({ node, onHoverStart, onHoverEnd, onClick }: { node: typeof NO
   );
 }
 
-function DraggableDesktopNode({ 
+function DraggableDesktopNode({
   node, x, y, canvasRef, onHoverStart, onHoverEnd, onClick
-}: { 
-  node: typeof NODES[number], 
-  x: any, 
-  y: any, 
-  canvasRef: React.RefObject<HTMLDivElement | null>, 
-  onHoverStart: () => void, 
+}: {
+  node: typeof NODES[number],
+  x: any,
+  y: any,
+  canvasRef: React.RefObject<HTMLDivElement | null>,
+  onHoverStart: () => void,
   onHoverEnd: () => void,
   onClick: () => void
 }) {
   const controls = useDragControls();
   const isDragging = useRef(false);
-  
+
   return (
     <motion.div
       style={{ x, y, position: "absolute", top: 0, left: 0 }}
@@ -91,23 +91,23 @@ function DraggableDesktopNode({
         }
       }}
     >
-      <NodeCard 
-        node={node} 
-        onHoverStart={onHoverStart} 
-        onHoverEnd={onHoverEnd} 
+      <NodeCard
+        node={node}
+        onHoverStart={onHoverStart}
+        onHoverEnd={onHoverEnd}
         onClick={() => {
           if (!isDragging.current) onClick();
-        }} 
+        }}
       />
     </motion.div>
   );
 }
 
 export function PseoNodeCanvas() {
-  const [isMounted, setIsMounted]  = useState(false);
-  const [isDesktop, setIsDesktop]  = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
   const [activeNode, setActiveNode] = useState<string | null>(null);
-  
+
   // Custom Cursor state
   const [isHovering, setIsHovering] = useState(false);
   const cursorX = useMotionValue(-100);
@@ -197,14 +197,14 @@ export function PseoNodeCanvas() {
       )}
 
       {/* ── Header ───────────────────────────────────────────────────────── */}
-      <div className="mx-auto max-w-5xl px-6 pt-24 pb-12">
+      <div className="mx-auto max-w-5xl px-0 md:px-6 pt-24 pb-12">
         <h2 className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">
           Acquisition Architecture
         </h2>
         <h3 className="mb-8 max-w-2xl font-serif text-3xl text-heading md:text-4xl">
           Scaling organic traffic via a connected page system.
         </h3>
-        
+
         <div className="grid grid-cols-1 gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
           {/* Narrative Column */}
           <div className="flex flex-col gap-4 font-sans text-base leading-relaxed text-subtle">
@@ -212,7 +212,7 @@ export function PseoNodeCanvas() {
               Employment Hero needed to compete for job-seeker traffic monopolised by incumbents like Seek and Indeed. Out-bidding them on paid search was financially unsustainable. The strategy was to build a parallel acquisition channel. We designed a programmatic SEO system capable of generating thousands of highly targeted landing pages without manual engineering overhead.
             </p>
             <p>
-              The architecture filters broad search intent into specific conversion points. Category-level hub pages capture initial discovery traffic and route it toward dedicated employer brand templates. From there, users are pushed into hyper-specific position pages optimised for direct applications. This connected structure bypasses traditional search bottlenecks entirely.
+              The architecture funnels broad search intent through four tiers. Local hub pages catch the widest discovery traffic and route them down. Role-specific pages narrow the intent. Employer profiles build company trust. Position pages close the loop into an application. One template system, thousands of pages, each one ranking on as many queries.
             </p>
           </div>
 
@@ -285,8 +285,8 @@ export function PseoNodeCanvas() {
       ) : isMounted && !isDesktop ? (
         /* ── Mobile Fallback ─────────────────────────────────────────────── */
         <MotionConfig reducedMotion="user">
-          <div 
-            className="w-[100vw] h-[300px] bg-surface-2 relative flex flex-row overflow-x-auto snap-x snap-mandatory px-6 gap-4 border-y border-border items-center mt-8"
+          <div
+            className="w-[100vw] h-[300px] bg-surface-2 relative flex flex-row overflow-x-auto snap-x snap-mandatory px-0 gap-4 border-y border-border items-center mt-8"
             style={{ marginLeft: "calc(50% - 50vw)" }}
           >
             {NODES.map((node) => (
@@ -294,11 +294,11 @@ export function PseoNodeCanvas() {
                 key={node.id}
                 className="rounded-xl min-w-[280px] h-[238px] snap-center bg-surface border border-border flex flex-col overflow-hidden"
               >
-                <NodeCard 
-                  node={node} 
-                  onHoverStart={() => {}} 
-                  onHoverEnd={() => {}} 
-                  onClick={() => setActiveNode(node.id)} 
+                <NodeCard
+                  node={node}
+                  onHoverStart={() => { }}
+                  onHoverEnd={() => { }}
+                  onClick={() => setActiveNode(node.id)}
                 />
               </div>
             ))}

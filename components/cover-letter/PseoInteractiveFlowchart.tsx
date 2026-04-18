@@ -57,7 +57,7 @@ export function PseoInteractiveFlowchart() {
     const getRelativeCoords = (elRef: React.RefObject<HTMLDivElement | null>, anchor: "right" | "left") => {
       const rect = elRef.current!.getBoundingClientRect();
       const xOffset = anchor === "right" ? rect.right : rect.left;
-      
+
       return {
         x: xOffset - containerRect.left,
         y: rect.top + rect.height / 2 - containerRect.top
@@ -70,7 +70,7 @@ export function PseoInteractiveFlowchart() {
     const n3 = getRelativeCoords(node3Ref, "left");
     const n4 = getRelativeCoords(node4Ref, "left");
 
-    const buildPath = (start: {x: number, y: number}, end: {x: number, y: number}) => {
+    const buildPath = (start: { x: number, y: number }, end: { x: number, y: number }) => {
       const dx = end.x - start.x;
       const cp1x = start.x + dx * 0.5;
       const cp2x = end.x - dx * 0.5;
@@ -87,7 +87,7 @@ export function PseoInteractiveFlowchart() {
   // Structural Resize Monitor
   useEffect(() => {
     if (!isMounted || !containerRef.current) return;
-    
+
     calculateLines();
 
     const observer = new ResizeObserver(() => {
@@ -127,14 +127,14 @@ export function PseoInteractiveFlowchart() {
   return (
     <section id="pseo-flowchart" className="em-landing">
       {/* ── Narrative Header (Strict 5xl Container) ──────────────────────── */}
-      <div className="mx-auto max-w-5xl px-6 pt-8 pb-16">
+      <div className="mx-auto max-w-5xl px-0 md:px-6 pt-8 pb-16">
         <div className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">
           Acquisition Architecture
         </div>
         <h2 className="mb-8 max-w-2xl text-heading">
           Scaling organic traffic via a connected page system.
         </h2>
-        
+
         <div className="grid grid-cols-1 gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
           {/* Narrative Column */}
           <div className="flex flex-col gap-4 text-subtle">
@@ -161,19 +161,15 @@ export function PseoInteractiveFlowchart() {
             <div className="mt-2 flex flex-col gap-4 border-t border-border/50 pt-6">
               <div>
                 <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">My Role</div>
-                <div className="font-sans text-sm text-heading">Lead product designer — system design, templates, dev handoff</div>
+                <div className="font-sans text-sm text-heading">Lead product designer: system design, templates, dev handoff</div>
               </div>
               <div>
                 <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Collaborators</div>
-                <div className="font-sans text-sm text-heading">Product manager, engineering lead, [TODO: confirm — SEO specialist?]</div>
-              </div>
-              <div>
-                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Timeline</div>
-                <div className="font-sans text-sm text-heading">[TODO: confirm — 8 weeks?]</div>
+                <div className="font-sans text-sm text-heading">Global website lead, Product manager, software engineer, SEO specialist</div>
               </div>
               <div>
                 <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Tools</div>
-                <div className="font-sans text-sm text-heading">Figma, design tokens, Notion</div>
+                <div className="font-sans text-sm text-heading">Figma, Confluence</div>
               </div>
             </div>
           </div>
@@ -182,7 +178,7 @@ export function PseoInteractiveFlowchart() {
 
       {/* ── Dynamic Layout Envelope (Viewport Breakout) ──────────────────── */}
       <div ref={containerRef} className="relative w-[100vw] left-1/2 -translate-x-1/2 px-4 md:px-12 lg:px-24 pb-24">
-        
+
         {/* Dynamic SVG Connectors */}
         {isMounted && lineCoords && (
           <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden lg:block">
@@ -194,12 +190,12 @@ export function PseoInteractiveFlowchart() {
 
         {/* 3-Column Component Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 relative z-10 w-full">
-          
+
           {/* Column 1: Local Hub Node */}
           <div className="flex flex-col items-start justify-center">
             <div ref={node1Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px]">
               <div className="font-mono text-xs uppercase text-muted mb-3">Node 1: Local Hub</div>
-              <button 
+              <button
                 className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer"
                 onClick={() => setActiveLightboxNode(1)}
               >
@@ -213,15 +209,15 @@ export function PseoInteractiveFlowchart() {
           <div className="flex flex-col items-center justify-center relative z-10">
             <div ref={node2Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[320px] flex flex-col gap-4">
               <div className="font-mono text-xs uppercase text-muted">Node 2: Search Intent</div>
-              <button 
+              <button
                 className="group relative aspect-square rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer hover:shadow-lg transition-shadow"
                 onClick={() => setActiveLightboxNode(2)}
               >
-                <Image 
-                  src="/cover-letter/images/pseo-2search-results.webp" 
-                  alt="Search Engine State Payload" 
-                  fill 
-                  className="object-cover object-top" 
+                <Image
+                  src="/cover-letter/images/pseo-2search-results.webp"
+                  alt="Search Engine State Payload"
+                  fill
+                  className="object-cover object-top"
                   unoptimized
                 />
                 <NodeHoverAffordance />
@@ -233,7 +229,7 @@ export function PseoInteractiveFlowchart() {
           <div className="flex flex-col items-end justify-between gap-12 lg:gap-32 py-8">
             <div ref={node3Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px]">
               <div className="font-mono text-xs uppercase text-muted mb-3">Node 3: Employer Profile</div>
-              <button 
+              <button
                 className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer"
                 onClick={() => setActiveLightboxNode(3)}
               >
@@ -244,7 +240,7 @@ export function PseoInteractiveFlowchart() {
 
             <div ref={node4Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px]">
               <div className="font-mono text-xs uppercase text-muted mb-3">Node 4: Position App</div>
-              <button 
+              <button
                 className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border-l-2 border-accent w-full cursor-pointer"
                 onClick={() => setActiveLightboxNode(4)}
               >
@@ -269,15 +265,15 @@ export function PseoInteractiveFlowchart() {
               className="fixed inset-0 z-[9999] bg-surface-2/95 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-12"
               onClick={() => setActiveLightboxNode(null)}
             >
-              <button 
+              <button
                 onClick={() => setActiveLightboxNode(null)}
                 className="absolute top-6 right-6 w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center shadow-lg hover:bg-canvas transition-colors z-50"
                 aria-label="Close UI Modal"
               >
                 <XMarkIcon className="w-5 h-5 text-muted" />
               </button>
-              
-              <div 
+
+              <div
                 className="relative w-full max-w-5xl h-[85vh] rounded-2xl overflow-hidden border border-border shadow-2xl bg-canvas flex flex-col"
                 onClick={(e) => e.stopPropagation()}
               >
@@ -288,7 +284,7 @@ export function PseoInteractiveFlowchart() {
                       {activeLightboxNode === 1 && <motion.div key={1} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/cover-letter/images/pseo-1home.webp" alt="Home Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
                       {activeLightboxNode === 3 && <motion.div key={3} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/cover-letter/images/pseo-3company-profile.webp" alt="Employer Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
                       {activeLightboxNode === 4 && <motion.div key={4} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}><Image src="/cover-letter/images/pseo-4job-listing.webp" alt="Target Node" width={1440} height={4000} className="w-full h-auto block" unoptimized /></motion.div>}
-                      
+
                       {activeLightboxNode === 2 && (
                         <motion.div
                           key={node2State}
@@ -298,12 +294,12 @@ export function PseoInteractiveFlowchart() {
                           transition={{ duration: 0.2 }}
                           className="w-full relative"
                         >
-                          <Image 
-                            src={NODE2_ASSETS[node2State]} 
-                            alt={`Modal Vector Navigation: ${node2State}`} 
-                            width={1440} 
+                          <Image
+                            src={NODE2_ASSETS[node2State]}
+                            alt={`Modal Vector Navigation: ${node2State}`}
+                            width={1440}
                             height={4000}
-                            className="w-full h-auto block" 
+                            className="w-full h-auto block"
                             unoptimized
                           />
                         </motion.div>

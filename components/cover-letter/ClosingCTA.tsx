@@ -11,11 +11,11 @@ const iconProps = {
 
 export function ClosingCTA() {
   return (
-    <section className="mx-auto max-w-5xl px-6 py-24 md:px-12 md:py-32">
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-24">
+    <section className="mx-auto max-w-5xl px-0 py-24 md:px-12 md:py-32">
+      <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-12 lg:gap-20">
         {/* ── Left: The Pitch ────────────────────────────────── */}
         <div className="flex flex-col gap-6 md:col-span-7">
-          <h2 className="text-heading text-3xl font-medium md:text-4xl">
+          <h2 className="text-heading">
             Let&rsquo;s talk about the work.
           </h2>
           <p className="text-primary text-lg">
@@ -43,7 +43,7 @@ export function ClosingCTA() {
 
         {/* ── Right: The Contact Terminal ────────────────────── */}
         <aside className="md:col-span-5">
-          <div className="bg-surface border-border sticky top-32 flex flex-col gap-8 rounded-2xl border p-8">
+          <div className="bg-white border-border sticky top-32 flex flex-col gap-6 rounded-2xl border p-6 md:p-8">
             {/* Block 1: Profile */}
             <div>
               <div className="text-heading font-sans text-xl font-medium">
@@ -107,7 +107,7 @@ export function ClosingCTA() {
               rel="noopener noreferrer"
               className="bg-accent flex w-full items-center justify-center rounded-xl py-4 text-center font-medium text-white transition-transform duration-150 hover:scale-[1.02]"
             >
-              Schedule a technical walkthrough
+              Schedule a chat
             </a>
           </div>
         </aside>
