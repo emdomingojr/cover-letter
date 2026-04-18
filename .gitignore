@@ -1,3 +1,9 @@
 node_modules
 .next
 .DS_Store
+*.mp4
+*.mov
+public/admin
+public/images/case-studies
+Images/
+Sources/
