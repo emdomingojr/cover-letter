@@ -6,7 +6,7 @@ export default function NotFound() {
       <p className="font-mono text-xs uppercase tracking-widest text-muted">404</p>
       <h1 className="font-serif text-3xl font-semibold text-heading">Page not found.</h1>
       <Link
-        href="/cover-letter/envato"
+        href="/envato"
         className="font-mono text-sm text-muted transition-colors duration-150 hover:text-accent"
       >
         ← Back
