@@ -74,9 +74,10 @@ export function HeroForceVideo() {
           <div className="relative aspect-video w-full bg-canvas">
             <iframe
               className="absolute inset-0 h-full w-full"
-              src="https://www.youtube.com/embed/Opg0W36HaKk?autoplay=1&mute=1&loop=1&playlist=Opg0W36HaKk&controls=0&disablekb=1&modestbranding=1&rel=0&playsinline=1"
-              allow="autoplay; encrypted-media"
-              allowFullScreen={false}
+              src="https://www.youtube.com/embed/Opg0W36HaKk?autoplay=1&mute=1&loop=1&playlist=Opg0W36HaKk&rel=0&playsinline=1"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
               title="HeroForce demo"
             />
           </div>
