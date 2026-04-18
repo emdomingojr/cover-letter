@@ -40,7 +40,7 @@ const tokens = [
   {
     id: 3,
     text:  "ship via designer-led code",
-    image: "https://img.youtube.com/vi/Opg0W36HaKk/maxresdefault.jpg",
+    image: "https://player.vimeo.com/video/1184361384?autoplay=1&muted=1&loop=1&background=1",
     label: "SHIPPED WITHOUT HANDOFF",
     href:  "#velocity",
   },
@@ -386,6 +386,13 @@ export function CoverLetterHero() {
                   <div className="absolute inset-0 flex items-center justify-center border-dashed border-border px-4">
                     <span className="text-center font-mono text-xs text-muted">{previewLabel}</span>
                   </div>
+                ) : previewSrc.includes("vimeo.com") ? (
+                  <iframe
+                    src={previewSrc}
+                    className="absolute inset-0 h-full w-full pointer-events-none scale-[1.05]"
+                    allow="autoplay; fullscreen"
+                    frameBorder="0"
+                  />
                 ) : previewSrc.endsWith(".mp4") ? (
                   <video
                     src={previewSrc}
