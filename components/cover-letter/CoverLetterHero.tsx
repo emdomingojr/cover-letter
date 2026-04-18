@@ -19,7 +19,7 @@ const tokens = [
   {
     id: 0,
     text:  "scale organic traffic",
-    image: "/Images/pseo-2search-results.webp",
+    image: "/images/pseo-2search-results.webp",
     label: "+96% DEMO REQUESTS",
     href:  "#pseo-flowchart",
   },
@@ -40,7 +40,7 @@ const tokens = [
   {
     id: 3,
     text:  "ship via designer-led code",
-    image: "/heroforce-demo.mp4",
+    image: "https://img.youtube.com/vi/Opg0W36HaKk/maxresdefault.jpg",
     label: "SHIPPED WITHOUT HANDOFF",
     href:  "#velocity",
   },
