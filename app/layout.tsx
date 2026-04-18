@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.tagline,
+  robots: { index: false, follow: false },
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.tagline,

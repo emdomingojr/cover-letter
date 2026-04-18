@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `Cover Letter — ${company}`,
     description: `A tailored application from Emerson Jr for ${company}.`,
+    robots: { index: false, follow: false },
   };
 }
 
