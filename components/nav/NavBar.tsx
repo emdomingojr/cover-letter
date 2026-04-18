@@ -7,7 +7,7 @@ export function NavBar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] bg-canvas/90 backdrop-blur-sm">
       <nav
-        className="flex items-center justify-between px-2 pt-6 pb-0 md:px-12 md:pt-8"
+        className="flex items-center justify-between px-2 pt-6 pb-2 md:px-12 md:pt-8 md:pb-3"
         aria-label="Primary navigation"
       >
         <Link

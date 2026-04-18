@@ -6,11 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 // ── Constants ─────────────────────────────────────────────────────────────────
-const CARD_W  = 300;
-const CARD_H  = CARD_W * (9 / 16) + 48; // 16:9 image + label row
-const LERP    = 0.12;
-const OX      = 40;  // card x-offset from cursor
-const OY      = 40;  // card y-offset from cursor
+const CARD_W = 300;
+const CARD_H = CARD_W * (9 / 16) + 48; // 16:9 image + label row
+const LERP = 0.12;
+const OX = 40;  // card x-offset from cursor
+const OY = 40;  // card y-offset from cursor
 const SHOW_MS = 250; // delay before card appears
 const HIDE_MS = 80;  // grace period after leave
 
@@ -18,81 +18,81 @@ const HIDE_MS = 80;  // grace period after leave
 const tokens = [
   {
     id: 0,
-    text:  "scale organic traffic",
+    text: "scale organic traffic",
     image: "/cover-letter/images/pseo-2search-results.webp",
     label: "+96% DEMO REQUESTS",
-    href:  "#pseo-flowchart",
+    href: "#pseo-flowchart",
   },
   {
     id: 1,
-    text:  "tighten design systems",
+    text: "tighten design systems",
     image: "https://cdn.prod.website-files.com/663992d0436f4e870a059cc3/69258161486026ce196d6839_DSystem-Guardrails.png",
     label: "3X FASTER BUILDS",
-    href:  "https://www.emersonjr.com/work/eos-design-system",
+    href: "https://www.emersonjr.com/work/eos-design-system",
   },
   {
     id: 2,
-    text:  "reduce cognitive load",
+    text: "reduce cognitive load",
     image: "/cover-letter/2pricing-new.webp",
     label: "120% CVR ACHIEVED",
-    href:  "#pricing-reveal",
+    href: "#pricing-reveal",
   },
   {
     id: 3,
-    text:  "ship via designer-led code",
+    text: "ship via designer-led code",
     image: "https://player.vimeo.com/video/1184361384?autoplay=1&muted=1&loop=1&background=1",
     label: "SHIPPED WITHOUT HANDOFF",
-    href:  "#velocity",
+    href: "#velocity",
   },
 ] as const;
 
 // ── h1 content — flat alternation of plain text and token ids ─────────────────
 // Defined outside the component; never mutates, so no extra render cost.
 type Part =
-  | { type: "text";  content: string }
+  | { type: "text"; content: string }
   | { type: "token"; id: number };
 
 const PARTS: Part[] = [
-  { type: "text",  content: "Designing acquisition surfaces that " },
+  { type: "text", content: "Designing acquisition surfaces that " },
   { type: "token", id: 0 },
-  { type: "text",  content: ", " },
+  { type: "text", content: ", " },
   { type: "token", id: 1 },
-  { type: "text",  content: ", " },
+  { type: "text", content: ", " },
   { type: "token", id: 2 },
-  { type: "text",  content: ", and " },
+  { type: "text", content: ", and " },
   { type: "token", id: 3 },
-  { type: "text",  content: "." },
+  { type: "text", content: "." },
 ];
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export function CoverLetterHero() {
   // ── State ───────────────────────────────────────────────────────────────────
   // Single integer ID — the only thing event handlers write to.
-  const [activeId,       setActiveId]       = useState<number | null>(null);
+  const [activeId, setActiveId] = useState<number | null>(null);
   const [previewVisible, setPreviewVisible] = useState(false);
-  const [previewLabel,   setPreviewLabel]   = useState<string>(tokens[0].label);
-  const [previewSrc,     setPreviewSrc]     = useState<string>(tokens[0].image);
-  const [imgFailed,      setImgFailed]      = useState(false);
-  const [isTouch,        setIsTouch]        = useState(false);
-  const [reducedMotion,  setReducedMotion]  = useState(false);
+  const [previewLabel, setPreviewLabel] = useState<string>(tokens[0].label);
+  const [previewSrc, setPreviewSrc] = useState<string>(tokens[0].image);
+  const [imgFailed, setImgFailed] = useState(false);
+  const [isTouch, setIsTouch] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const [traceRect, setTraceRect] = useState<{
     left: number; top: number; width: number; height: number;
   } | null>(null);
 
   // ── Refs ─────────────────────────────────────────────────────────────────────
-  const h1Ref    = useRef<HTMLHeadingElement>(null);
-  const cardRef  = useRef<HTMLDivElement>(null);
+  const h1Ref = useRef<HTMLHeadingElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   // Cursor position (updated on pointermove — not state, no re-renders)
   const cursorRef = useRef({ x: 0, y: 0 });
 
   // RAF lerp
-  const rafRef    = useRef<number | null>(null);
-  const lerpPos   = useRef({ x: 0, y: 0 });
+  const rafRef = useRef<number | null>(null);
+  const lerpPos = useRef({ x: 0, y: 0 });
   const targetPos = useRef({ x: 0, y: 0 });
 
   // Ref mirrors so timer callbacks read current values without stale closures
-  const visibleRef       = useRef(false);
+  const visibleRef = useRef(false);
   const reducedMotionRef = useRef(false);
 
   // Show / hide timers
@@ -100,9 +100,9 @@ export function CoverLetterHero() {
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // One ref per token for getBoundingClientRect in trace / SVG
-  const tokenRefs  = useRef<(HTMLAnchorElement | null)[]>([]);
+  const tokenRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const activeIdRef = useRef<number | null>(null);
-  const svgPathRef  = useRef<SVGPathElement | null>(null);
+  const svgPathRef = useRef<SVGPathElement | null>(null);
 
   // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -114,7 +114,7 @@ export function CoverLetterHero() {
   function clamp(cx: number, cy: number) {
     let x = cx + OX;
     let y = cy + OY;
-    if (x + CARD_W > window.innerWidth  - 16) x = cx - CARD_W - OX;
+    if (x + CARD_W > window.innerWidth - 16) x = cx - CARD_W - OX;
     if (y + CARD_H > window.innerHeight - 16) y = cy - CARD_H - OY;
     return { x, y };
   }
@@ -134,8 +134,8 @@ export function CoverLetterHero() {
     const el = tokenRefs.current[id];
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    const cx = rect.left + rect.width  / 2;
-    const cy = rect.top  + rect.height / 2;
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
     const mx = cursorRef.current.x;
     const my = cursorRef.current.y;
     svgPathRef.current.setAttribute(
@@ -220,7 +220,7 @@ export function CoverLetterHero() {
         const pos = reducedMotionRef.current
           ? h1Below()
           : clamp(cursorRef.current.x, cursorRef.current.y);
-        lerpPos.current  = pos;
+        lerpPos.current = pos;
         targetPos.current = pos;
         applyTransform(pos.x, pos.y);
         visibleRef.current = true;
@@ -239,17 +239,17 @@ export function CoverLetterHero() {
         stopRaf();
       }, HIDE_MS);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeId]);
 
   // ── One-time mount effect ────────────────────────────────────────────────────
   useEffect(() => {
-    const touch  = window.matchMedia("(hover: none)").matches;
+    const touch = window.matchMedia("(hover: none)").matches;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setIsTouch(touch);
     setReducedMotion(motion);
     reducedMotionRef.current = motion;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Cleanup on unmount
@@ -259,14 +259,14 @@ export function CoverLetterHero() {
   // ── Render ───────────────────────────────────────────────────────────────────
   return (
     <section className="mx-auto max-w-5xl px-0 md:px-8 pb-8 pt-4 md:pt-8">
-      
+
       {/* ── Envato Context Badge ─────────────────────────────────────────────────── */}
       <div className="flex flex-col items-start sm:flex-row sm:items-center gap-3 mb-8 md:mb-10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img 
-          src="https://lever-client-logos.s3.us-west-2.amazonaws.com/c11956a5-1cb9-45f6-b2ef-a36290dffe66-1722470303592.png" 
+        <img
+          src="https://lever-client-logos.s3.us-west-2.amazonaws.com/c11956a5-1cb9-45f6-b2ef-a36290dffe66-1722470303592.png"
           alt="Envato"
-          className="h-6 w-auto" 
+          className="h-6 w-auto"
         />
         <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
           Application / Senior Product Designer
@@ -330,9 +330,9 @@ export function CoverLetterHero() {
               }}
               ref={(el) => { tokenRefs.current[part.id] = el; }}
               onPointerEnter={!isTouch ? () => setActiveId(token.id) : undefined}
-              onPointerLeave={!isTouch ? () => setActiveId(null)     : undefined}
+              onPointerLeave={!isTouch ? () => setActiveId(null) : undefined}
               onFocus={!isTouch ? () => setActiveId(token.id) : undefined}
-              onBlur={!isTouch  ? () => setActiveId(null)     : undefined}
+              onBlur={!isTouch ? () => setActiveId(null) : undefined}
               className={cn(
                 "text-heading underline underline-offset-5 decoration-2 decoration-accent/50 hover:text-accent",
                 "transition-[color,opacity] duration-200",
@@ -351,7 +351,7 @@ export function CoverLetterHero() {
           Hi, I&apos;m Em. This page is my application for Senior Product Designer at Envato. I designed, coded, and shipped it in a couple of days.
         </p>
         <p>
-          Scroll. The work responds.
+          Keep scrolling. The work responds.
         </p>
       </div>
 
