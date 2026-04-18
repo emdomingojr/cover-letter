@@ -4,6 +4,7 @@ import { PseoInteractiveFlowchart } from "@/components/cover-letter/PseoInteract
 import { HeroForceVideo } from "@/components/cover-letter/HeroForceVideo";
 import { PricingMatrixReveal } from "@/components/cover-letter/PricingMatrixReveal";
 import { NarrativeTimeline } from "@/components/cover-letter/NarrativeTimeline";
+import { ClosingCTA } from "@/components/cover-letter/ClosingCTA";
 
 interface PageProps {
   params: Promise<{ "company-slug": string }>;
@@ -33,6 +34,7 @@ export default async function CoverLetterPage({ params }: PageProps) {
       <PseoInteractiveFlowchart />
       <HeroForceVideo />
       <PricingMatrixReveal />
+      <ClosingCTA />
     </article>
   );
 }
