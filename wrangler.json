@@ -1,4 +1,7 @@
 {
+  "name": "cover-letter",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2024-09-23",
   "r2_buckets": [
     {
       "binding": "WEBFLOW_CLOUD_MEDIA",
