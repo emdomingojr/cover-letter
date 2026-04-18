@@ -70,15 +70,15 @@ export function HeroForceVideo() {
             </div>
           </div>
           
-          {/* Looping YouTube Video */}
+          {/* Looping Demo Video */}
           <div className="relative aspect-video w-full bg-canvas">
-            <iframe
-              className="absolute inset-0 h-full w-full"
-              src="https://www.youtube.com/embed/Opg0W36HaKk?autoplay=1&mute=1&loop=1&playlist=Opg0W36HaKk&rel=0&playsinline=1"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-              title="HeroForce demo"
+            <video
+              className="absolute inset-0 h-full w-full object-cover"
+              src="/cover-letter/api/media/heroforce-demo.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
             />
           </div>
         </div>

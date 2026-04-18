@@ -1,0 +1,8 @@
+{
+  "r2_buckets": [
+    {
+      "binding": "WEBFLOW_CLOUD_MEDIA",
+      "bucket_name": "cover-letter-media"
+    }
+  ]
+}
