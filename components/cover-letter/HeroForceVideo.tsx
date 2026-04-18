@@ -72,13 +72,12 @@ export function HeroForceVideo() {
           
           {/* Looping Demo Video */}
           <div className="relative aspect-video w-full bg-canvas">
-            <video
-              className="absolute inset-0 h-full w-full object-cover"
-              src="/cover-letter/api/media/heroforce-demo.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
+            <iframe
+              className="absolute inset-0 h-full w-full"
+              src="https://player.vimeo.com/video/1184361384?autoplay=1&muted=1&loop=1&background=1"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              title="HeroForce demo"
             />
           </div>
         </div>
