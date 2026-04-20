@@ -368,50 +368,61 @@ export function CoverLetterHero() {
         )}
         aria-hidden
       >
-        <AnimatePresence>
-          {previewVisible && (
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className={cn(
+        <motion.div
+          initial={false}
+          animate={{ scale: previewVisible ? 1 : 0.8, opacity: previewVisible ? 1 : 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          className={cn(
                 "w-[300px] overflow-hidden rounded-lg",
                 "border border-border bg-surface shadow-[0_4px_20px_rgba(0,0,0,0.12)] origin-top-left"
               )}
             >
-              {/* 16:9 media area */}
+              {/* 16:9 media area (Preloaded) */}
               <div className="relative aspect-video w-full overflow-hidden border-b border-border bg-surface-2">
-                {imgFailed ? (
-                  <div className="absolute inset-0 flex items-center justify-center border-dashed border-border px-4">
+                {imgFailed && (
+                  <div className="absolute inset-0 flex items-center justify-center border-dashed border-border px-4 z-20">
                     <span className="text-center font-mono text-xs text-muted">{previewLabel}</span>
                   </div>
-                ) : previewSrc.includes("vimeo.com") ? (
-                  <iframe
-                    src={previewSrc}
-                    className="absolute inset-0 h-full w-full pointer-events-none scale-[1.05]"
-                    allow="autoplay; fullscreen"
-                    frameBorder="0"
-                  />
-                ) : previewSrc.endsWith(".mp4") ? (
-                  <video
-                    src={previewSrc}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="absolute inset-0 h-full w-full object-cover object-top"
-                    onError={() => setImgFailed(true)}
-                  />
-                ) : (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={previewSrc}
-                    alt={previewLabel}
-                    className="absolute inset-0 h-full w-full object-cover object-top"
-                    onError={() => setImgFailed(true)}
-                  />
                 )}
+                {tokens.map((token) => {
+                  const isMatch = previewSrc === token.image;
+                  return (
+                    <div
+                      key={token.id}
+                      className={cn(
+                        "absolute inset-0 transition-opacity duration-200",
+                        isMatch ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                      )}
+                    >
+                      {token.image.includes("vimeo.com") ? (
+                        <iframe
+                          src={token.image}
+                          className="absolute inset-0 h-full w-full pointer-events-none scale-[1.05]"
+                          allow="autoplay; fullscreen"
+                          frameBorder="0"
+                        />
+                      ) : token.image.endsWith(".mp4") ? (
+                        <video
+                          src={token.image}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          className="absolute inset-0 h-full w-full object-cover object-top"
+                          onError={() => setImgFailed(true)}
+                        />
+                      ) : (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={token.image}
+                          alt={token.label}
+                          className="absolute inset-0 h-full w-full object-cover object-top"
+                          onError={() => setImgFailed(true)}
+                        />
+                      )}
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Label */}
@@ -419,8 +430,6 @@ export function CoverLetterHero() {
                 <p className="font-mono text-xs uppercase leading-snug text-muted">{previewLabel}</p>
               </div>
             </motion.div>
-          )}
-        </AnimatePresence>
       </div>
 
       {/* Token trace — bounding box around the active token */}
