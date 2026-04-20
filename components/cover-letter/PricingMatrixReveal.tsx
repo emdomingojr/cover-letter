@@ -5,10 +5,15 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 export function PricingMatrixReveal() {
   const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsMounted(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -30,15 +35,15 @@ export function PricingMatrixReveal() {
   return (
     <section id="pricing-reveal" className="em-landing">
       {/* ── Narrative Header ─────────────────────────────────────────────── */}
-      <div className="mx-auto max-w-5xl px-0 md:px-6 pt-16 pb-16">
-        <div className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">
+      <div className="mx-auto max-w-5xl px-0 md:px-6 pt-0 pb-5 md:pb-12">
+        <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">
           Information Architecture
         </div>
-        <h2 className="mb-8 max-w-2xl text-heading">
+        <h2 className="mb-6 max-w-2xl text-heading">
           Solving analysis paralysis.
         </h2>
 
-        <div className="grid grid-cols-1 gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
+        <div className="grid grid-cols-1 gap-10 md:gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
           <div className="flex flex-col gap-4 text-subtle">
             <p>
               The original Employment Hero pricing matrix presented a flat wall of 100+ features. Bottom-of-funnel plan selection suffered; visitors stalled at the comparison.
@@ -47,7 +52,8 @@ export function PricingMatrixReveal() {
               The insight was that visitors weren't asking "what do you cost", they were asking "is this for me." A feature-by-feature comparison answers the first question. It doesn't help with the second. I restructured the data into a strict taxonomy grouped by product pillars. By using progressive disclosure, I reframed the table as a decision engine: locate the specific feature category, compare the tiers, and act. The structural clarity produced a 96% lift in demo requests and pushed the funnel 120% past its CVR goal.
             </p>
           </div>
-          <div className="flex flex-col gap-6">
+          {/* Metrics Column */}
+          <div className="flex flex-col gap-8">
             <div>
               <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">+96%</div>
               <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">Lift in demo requests</div>
@@ -58,7 +64,7 @@ export function PricingMatrixReveal() {
             </div>
 
             {/* Credits Strip */}
-            <div className="mt-2 flex flex-col gap-4 border-t border-border/50 pt-6">
+            <div className="mt-12 flex flex-col gap-6 border-t border-border/50 pt-6">
               <div>
                 <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">My Role</div>
                 <div className="font-sans text-sm text-heading">Lead product designer: research, IA, visual design</div>
@@ -79,16 +85,16 @@ export function PricingMatrixReveal() {
       {/* ── Cinematic Sandbox (Full Viewport Takeover) ─────────────────── */}
       <div
         ref={containerRef}
-        className="h-[250vh] w-[100vw] relative"
+        className="h-[250vh] w-[100vw] relative mt-16"
         style={{ marginLeft: "calc(50% - 50vw)" }}
       >
-        <div className="sticky top-0 h-screen w-full bg-canvas flex items-center justify-center px-4 md:px-0">
+        <div className="sticky top-0 h-screen w-full bg-canvas flex items-center justify-center px-2 md:px-0">
 
           {/* ── Massive macOS Window ─────────────────────────────────────── */}
-          <div className="w-full md:w-[92vw] max-w-7xl h-[85vh] md:h-[90vh] min-h-[500px] rounded-2xl border border-border shadow-[0_30px_100px_-20px_rgba(0,0,0,0.3)] bg-canvas flex flex-col relative overflow-hidden">
+          <div className="w-full md:w-[92vw] max-w-7xl h-auto md:h-[90vh] rounded-2xl border border-border shadow-[0_30px_100px_-20px_rgba(0,0,0,0.3)] bg-canvas flex flex-col relative overflow-hidden">
 
             {/* The Chrome Bar */}
-            <div className="h-12 border-b border-border bg-surface flex items-center px-4 shrink-0 relative">
+            <div className="h-8 md:h-12 border-b border-border bg-surface flex items-center px-4 shrink-0 relative">
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]" />
                 <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]" />
@@ -101,11 +107,20 @@ export function PricingMatrixReveal() {
             </div>
 
             {/* The Visual Assets & Wipe Mechanic */}
-            <div className="flex-1 relative bg-canvas overflow-hidden">
+            <div className="flex-1 relative bg-canvas overflow-hidden flex flex-col">
+              
+              {/* Invisible layout placeholder to force native image height on mobile */}
+              <img 
+                src="/cover-letter/1pricing-old.webp" 
+                className="w-full h-auto opacity-0 pointer-events-none block md:hidden" 
+                alt="" 
+                aria-hidden="true" 
+              />
+
               {/* Base Layer (Old Pricing) */}
               <div className="absolute inset-0">
                 <motion.img
-                  style={{ y: panY }}
+                  style={{ y: isMobile ? "0%" : panY }}
                   src="/cover-letter/1pricing-old.webp"
                   alt="Old pricing matrix"
                   className="w-full h-auto absolute top-0 left-0 origin-top"
@@ -119,7 +134,7 @@ export function PricingMatrixReveal() {
                   className="absolute inset-0 z-10"
                 >
                   <motion.img
-                    style={{ y: panY }}
+                    style={{ y: isMobile ? "0%" : panY }}
                     src="/cover-letter/2pricing-new.webp"
                     alt="New structured pricing matrix"
                     className="w-full h-auto absolute top-0 left-0 origin-top"
@@ -130,7 +145,7 @@ export function PricingMatrixReveal() {
 
             {/* The Floating Status Pill (Preventing Layout Shift) */}
             {isMounted && (
-              <div className="absolute top-16 md:top-20 left-1/2 -translate-x-1/2 bg-surface/90 backdrop-blur-md border border-border shadow-xl rounded-full h-10 w-[240px] flex items-center justify-center z-50">
+              <div className="absolute top-12 md:top-20 left-1/2 -translate-x-1/2 bg-surface/90 backdrop-blur-md border border-border shadow-xl rounded-full h-10 w-[240px] flex items-center justify-center z-50">
 
                 {/* Before Text */}
                 <motion.div style={{ opacity: beforeOpacity }} className="absolute flex items-center gap-2">

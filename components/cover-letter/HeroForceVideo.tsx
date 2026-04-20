@@ -2,15 +2,15 @@ export function HeroForceVideo() {
   return (
     <section id="velocity" className="em-landing">
       {/* ── Narrative Header ─────────────────────────────────────────────── */}
-      <div className="mx-auto max-w-5xl px-0 md:px-6 pt-16 pb-16">
-        <div className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">
+      <div className="mx-auto max-w-5xl px-0 md:px-6 pt-0 pb-5 md:pb-12">
+        <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">
           Designer-led Delivery
         </div>
-        <h2 className="mb-8 max-w-2xl text-heading">
+        <h2 className="mb-6 max-w-2xl text-heading">
           Shipped without the handoff. Production code, faster.
         </h2>
 
-        <div className="grid grid-cols-1 gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
+        <div className="grid grid-cols-1 gap-10 md:gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
           {/* Narrative Column */}
           <div className="flex flex-col gap-4 text-subtle">
             <p>
@@ -22,7 +22,7 @@ export function HeroForceVideo() {
           </div>
 
           {/* Metrics Column */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-8">
             <div>
               <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">2 Weeks</div>
               <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">Time to launch, vs 6 weeks standard</div>
@@ -33,7 +33,7 @@ export function HeroForceVideo() {
             </div>
 
             {/* Credits Strip */}
-            <div className="mt-2 flex flex-col gap-4 border-t border-border/50 pt-6">
+            <div className="mt-12 flex flex-col gap-6 border-t border-border/50 pt-6">
               <div>
                 <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">My Role</div>
                 <div className="font-sans text-sm text-heading">Lead designer and shipping engineer: concept to production code</div>
@@ -57,16 +57,19 @@ export function HeroForceVideo() {
 
       {/* ── macOS Browser Breakout ───────────────────────────────────────── */}
       <div
-        className="w-[100vw] pt-0 pb-24 px-0 md:px-12 flex justify-center"
+        className="w-[100vw] pt-0 pb-32 px-2 md:px-12 flex justify-center mt-16"
         style={{ marginLeft: "calc(50% - 50vw)" }}
       >
         <div className="w-full max-w-7xl overflow-hidden rounded-xl border border-border bg-surface shadow-2xl">
           {/* macOS Title Bar */}
-          <div className="flex h-12 items-center gap-2 border-b border-border bg-canvas px-4">
+          <div className="h-8 md:h-12 border-b border-border bg-canvas flex items-center px-4 shrink-0 relative">
             <div className="flex gap-2">
-              <div className="h-3 w-3 rounded-full bg-[#FF5F56] border border-[#E0443E]" />
-              <div className="h-3 w-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]" />
-              <div className="h-3 w-3 rounded-full bg-[#27C93F] border border-[#1AAB29]" />
+              <div className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]" />
+              <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]" />
+              <div className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]" />
+            </div>
+            <div className="absolute left-1/2 -translate-x-1/2 w-full max-w-[200px] md:max-w-sm h-5 md:h-7 bg-surface-2 rounded-md flex items-center justify-center border border-border">
+              <span className="font-mono text-[9px] md:text-[10px] text-muted">emersonjr.com/heroforce-demo</span>
             </div>
           </div>
 

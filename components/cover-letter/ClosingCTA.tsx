@@ -11,7 +11,7 @@ const iconProps = {
 
 export function ClosingCTA() {
   return (
-    <section className="mx-auto max-w-5xl px-0 py-24 md:px-12 md:py-32">
+    <section className="mx-auto max-w-5xl px-0 pt-32 pb-24 md:px-12 md:pt-32 md:pb-32">
       <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-12 lg:gap-20">
         {/* ── Left: The Pitch ────────────────────────────────── */}
         <div className="flex flex-col gap-6 md:col-span-7">
@@ -23,20 +23,19 @@ export function ClosingCTA() {
             trust.
           </p>
           <p className="text-subtle">
-            You have seen the output. I own the product lifecycle
-            end-to-end&mdash;from navigating ambiguous briefs to shipping
-            production code and analysing the resulting data.
+            I own the product lifecycle
+            end-to-end. I am used to navigating ambiguous briefs, shipping
+            production code, and analysing the resulting data.
           </p>
           <p className="text-subtle">
-            But design is inherently a team sport. I thrive on direct feedback,
+            I also know design is a team sport. I thrive on direct feedback,
             radical candour, and investing time to mentor junior and mid-level
             designers. Lifting the baseline quality of the entire team is just
             as important as shipping the next feature.
           </p>
           <p className="text-subtle">
-            I built this environment because I want to help shape the design
-            culture at Envato, not just send you a static PDF. I&rsquo;d be
-            thrilled to open my Figma files, walk you through the architecture,
+            I built this page because I want to show you what I can do, not just send you a static PDF. I&rsquo;d be
+            happy to open my Figma files and Claude Code builds, walk you through them,
             and show you exactly how I think.
           </p>
         </div>
@@ -46,9 +45,9 @@ export function ClosingCTA() {
           <div className="bg-white border-border sticky top-32 flex flex-col gap-6 rounded-2xl border p-6 md:p-8">
             {/* Block 1: Profile */}
             <div>
-              <div className="text-heading font-sans text-xl font-medium">
+              <h2 className="text-heading">
                 Emerson Domingo Jr.
-              </div>
+              </h2>
               <div className="text-muted mt-1 font-mono text-sm uppercase tracking-wider">
                 Product Designer
               </div>
@@ -105,7 +104,7 @@ export function ClosingCTA() {
               href="https://calendar.app.google/6L9Y8a9pbqWAwrrg6"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-accent flex w-full items-center justify-center rounded-xl py-4 text-center font-medium text-white transition-transform duration-150 hover:scale-[1.02]"
+              className="bg-accent flex w-full items-center justify-center rounded-full py-4 text-center font-medium text-white transition-transform duration-150 hover:scale-[1.02]"
             >
               Schedule a chat
             </a>

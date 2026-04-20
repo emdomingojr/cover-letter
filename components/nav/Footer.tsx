@@ -3,7 +3,7 @@ import Link from "next/link";
 export function Footer() {
   return (
     <footer className="w-full bg-transparent py-12 md:py-24">
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 md:flex-row">
+      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-2 md:px-6 md:flex-row">
         <span className="font-sans text-sm text-subtle tracking-wide">
           &copy; 2026 Emerson Domingo Jr
         </span>

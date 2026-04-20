@@ -289,7 +289,7 @@ export function CoverLetterHero() {
           }
         } : undefined}
         onPointerLeave={!isTouch ? () => hideNow() : undefined}
-        className="text-balance font-serif text-[clamp(1.75rem,5vw,3.75rem)] font-semibold leading-[1.1] tracking-tight text-heading"
+        className="text-balance font-sans font-normal text-left tracking-[-0.1rem] text-[2.5rem] leading-[2.4rem] md:text-[3.1rem] md:leading-[3.2rem] text-heading"
       >
         {PARTS.map((part, i) => {
           if (part.type === "text") {

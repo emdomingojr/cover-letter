@@ -127,15 +127,15 @@ export function PseoInteractiveFlowchart() {
   return (
     <section id="pseo-flowchart" className="em-landing">
       {/* ── Narrative Header (Strict 5xl Container) ──────────────────────── */}
-      <div className="mx-auto max-w-5xl px-0 md:px-6 pt-8 pb-16">
-        <div className="mb-4 font-mono text-xs uppercase tracking-widest text-muted">
+      <div className="mx-auto max-w-5xl px-0 md:px-6 pt-10 pb-5 md:pb-12">
+        <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">
           Acquisition Architecture
         </div>
-        <h2 className="mb-8 max-w-2xl text-heading">
+        <h2 className="mb-6 max-w-2xl text-heading">
           Scaling organic traffic via a connected page system.
         </h2>
 
-        <div className="grid grid-cols-1 gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
+        <div className="grid grid-cols-1 gap-10 md:gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
           {/* Narrative Column */}
           <div className="flex flex-col gap-4 text-subtle">
             <p>
@@ -147,7 +147,7 @@ export function PseoInteractiveFlowchart() {
           </div>
 
           {/* Metrics Column */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-8">
             <div>
               <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">12,000+</div>
               <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">Indexed pages</div>
@@ -158,7 +158,7 @@ export function PseoInteractiveFlowchart() {
             </div>
 
             {/* Credits Strip */}
-            <div className="mt-2 flex flex-col gap-4 border-t border-border/50 pt-6">
+            <div className="mt-12 flex flex-col gap-6 border-t border-border/50 pt-6">
               <div>
                 <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">My Role</div>
                 <div className="font-sans text-sm text-heading">Lead product designer: system design, templates, dev handoff</div>
@@ -177,7 +177,7 @@ export function PseoInteractiveFlowchart() {
       </div>
 
       {/* ── Dynamic Layout Envelope (Viewport Breakout) ──────────────────── */}
-      <div ref={containerRef} className="relative w-[100vw] left-1/2 -translate-x-1/2 px-4 md:px-12 lg:px-24 pb-24">
+      <div ref={containerRef} className="relative w-[100vw] left-1/2 -translate-x-1/2 px-4 md:px-12 lg:px-24 pb-32 mt-16">
 
         {/* Dynamic SVG Connectors */}
         {isMounted && lineCoords && (
@@ -189,7 +189,7 @@ export function PseoInteractiveFlowchart() {
         )}
 
         {/* 3-Column Component Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-16 relative z-10 w-full">
 
           {/* Column 1: Local Hub Node */}
           <div className="flex flex-col items-start justify-center">
@@ -226,7 +226,7 @@ export function PseoInteractiveFlowchart() {
           </div>
 
           {/* Column 3: Splitter Track (Profile & Target) */}
-          <div className="flex flex-col items-end justify-between gap-12 lg:gap-32 py-8">
+          <div className="flex flex-col items-end justify-between gap-6 lg:gap-32 py-8">
             <div ref={node3Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px]">
               <div className="font-mono text-xs uppercase text-muted mb-3">Node 3: Employer Profile</div>
               <button

@@ -70,7 +70,7 @@ export default function RootLayout({
       <body className="font-sans">
         <DevModeProvider>
           <NavBar />
-          <main className="mx-auto max-w-5xl px-6 pt-24">
+          <main className="mx-auto max-w-5xl px-2 md:px-6 pt-24">
             {children}
           </main>
         </DevModeProvider>
