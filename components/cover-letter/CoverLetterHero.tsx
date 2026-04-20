@@ -53,7 +53,7 @@ type Part =
   | { type: "token"; id: number };
 
 const PARTS: Part[] = [
-  { type: "text", content: "Designing acquisition surfaces that " },
+  { type: "text", content: "I design acquisition surfaces that " },
   { type: "token", id: 0 },
   { type: "text", content: ", " },
   { type: "token", id: 1 },
