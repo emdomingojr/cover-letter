@@ -258,7 +258,7 @@ export function CoverLetterHero() {
 
   // ── Render ───────────────────────────────────────────────────────────────────
   return (
-    <section className="mx-auto max-w-5xl px-0 md:px-8 pb-8 pt-4 md:pt-8">
+    <section className="mx-auto max-w-5xl px-0 pb-8 pt-4 md:pt-8">
 
       {/* ── Envato Context Badge ─────────────────────────────────────────────────── */}
       <div className="flex flex-col items-start sm:flex-row sm:items-center gap-3 mb-8 md:mb-10">

@@ -11,7 +11,7 @@ const iconProps = {
 
 export function ClosingCTA() {
   return (
-    <section className="mx-auto max-w-5xl px-0 pt-32 pb-24 md:px-12 md:pt-32 md:pb-32">
+    <section className="mx-auto max-w-5xl px-0 pt-32 pb-24 md:pt-32 md:pb-32">
       <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-12 lg:gap-20">
         {/* ── Left: The Pitch ────────────────────────────────── */}
         <div className="flex flex-col gap-6 md:col-span-7">

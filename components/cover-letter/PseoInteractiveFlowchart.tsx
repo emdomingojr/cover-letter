@@ -127,7 +127,7 @@ export function PseoInteractiveFlowchart() {
   return (
     <section id="pseo-flowchart" className="em-landing">
       {/* ── Narrative Header (Strict 5xl Container) ──────────────────────── */}
-      <div className="mx-auto max-w-5xl px-0 md:px-6 pt-10 pb-5 md:pb-12">
+      <div className="mx-auto max-w-5xl px-0 pt-10 pb-5 md:pb-12">
         <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">
           Acquisition Architecture
         </div>

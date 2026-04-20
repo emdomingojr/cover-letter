@@ -2,7 +2,7 @@ export function HeroForceVideo() {
   return (
     <section id="velocity" className="em-landing">
       {/* ── Narrative Header ─────────────────────────────────────────────── */}
-      <div className="mx-auto max-w-5xl px-0 md:px-6 pt-0 pb-5 md:pb-12">
+      <div className="mx-auto max-w-5xl px-0 pt-0 pb-5 md:pb-12">
         <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">
           Designer-led Delivery
         </div>
