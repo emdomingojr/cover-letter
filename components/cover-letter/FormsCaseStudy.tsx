@@ -25,6 +25,7 @@ export function FormsCaseStudy({ data }: { data: CaseStudyData }) {
           ))}
         </div>
       </div>
+    </div>
 
       {/* ── Tier 2: Breakout Interactivity ───────────────────── */}
       <div className="mx-auto max-w-5xl px-0 mt-16 mb-16">

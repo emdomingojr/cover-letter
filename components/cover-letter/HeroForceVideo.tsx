@@ -29,6 +29,7 @@ export function HeroForceVideo({ data }: { data: CaseStudyData }) {
           ))}
         </div>
       </div>
+    </div>
 
       {/* ── Tier 2: Visual Asset (Full Viewport Breakout) ────── */}
       <div

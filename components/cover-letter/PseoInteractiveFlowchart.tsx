@@ -148,6 +148,7 @@ export function PseoInteractiveFlowchart({ data }: { data: CaseStudyData }) {
           ))}
         </div>
       </div>
+    </div>
 
       {/* ── Tier 2: Dynamic Layout Envelope (Viewport Breakout) ─ */}
       <div ref={containerRef} className="relative w-[100vw] left-1/2 -translate-x-1/2 px-4 md:px-12 lg:px-24 mt-16 mb-16">

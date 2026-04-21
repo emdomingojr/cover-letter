@@ -56,6 +56,7 @@ export function PricingMatrixReveal({ data }: { data: CaseStudyData }) {
           ))}
         </div>
       </div>
+    </div>
 
       {/* ── Tier 2: Cinematic Sandbox (Full Viewport Takeover) ── */}
       <div
