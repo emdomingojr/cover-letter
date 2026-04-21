@@ -79,6 +79,18 @@ export default function RootLayout({
             })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`,
           }}
         />
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1237YQY52R" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-1237YQY52R');
+            `,
+          }}
+        />
       </head>
       <body className="font-sans">
         <DevModeProvider>
