@@ -24,6 +24,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `Cover Letter — ${appData.companyName}`,
     description: `A tailored application from Emerson Jr for ${appData.companyName}.`,
     robots: { index: false, follow: false },
+    openGraph: {
+      title: `Cover Letter — ${appData.companyName} | Emerson Domingo Jr`,
+      description: `Senior UX/UI Designer (Growth) in B2B SaaS with 7+ years of experience designing high-performing interfaces that drive measurable business growth.`,
+      type: "website",
+      images: [
+        {
+          url: "https://cdn.prod.website-files.com/663992d0436f4e870a059cc3/66664b2f5d100f1ebe909004_Preview%20Image%20-%20emersonjr2%20(1).jpg",
+          width: 1200,
+          height: 630,
+          alt: "Emerson Domingo Jr | UI/UX Designer",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Cover Letter — ${appData.companyName} | Emerson Domingo Jr`,
+      description: `Senior UX/UI Designer (Growth) in B2B SaaS with 7+ years of experience designing high-performing interfaces that drive measurable business growth.`,
+      images: ["https://cdn.prod.website-files.com/663992d0436f4e870a059cc3/66664b2f5d100f1ebe909004_Preview%20Image%20-%20emersonjr2%20(1).jpg"],
+    },
   };
 }
 
