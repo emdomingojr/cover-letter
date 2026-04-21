@@ -28,6 +28,19 @@ The page must feel like a native extension of the existing portfolio site. To ac
 
 ---
 
+## Internal Agent Loop
+
+When executing complex component builds or refactors, I will sequence the work through four autonomous subagent roles located in `./claude-gemini/`:
+
+1.  **Systems Architect (`architect.md`)**: Ingests requirements and outputs a rigid, deterministic build specification (states, physics, edge cases). Does not write production code.
+2.  **Execution Engineer (`engineer.md`)**: Ingests the Architect's spec and writes production-ready `.tsx`. Autonomously runs linting and type-checks (`npm run lint`, `npx tsc`). self-fixes until clean.
+3.  **QA Browser (`qa-browser.md`)**: Triggers the browser subagent to interact with the localhost render. Monitors hydration warnings and captures a visual artifact for the Design Director.
+4.  **Design Director (`design-director.md`)**: Compares the rendered artifact against the system tokens and Architect's intent. Issues a final `PASS` or `REJECT` command.
+
+I will not present a solution to the user until it has successfully cleared this entire internal quality pipeline.
+
+---
+
 ## Sections to Plan (Suggested Order)
 
 Current sections based on our interactions
