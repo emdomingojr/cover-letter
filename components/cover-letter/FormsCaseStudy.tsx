@@ -1,4 +1,5 @@
 import { CaseStudyData } from "@/data/applications";
+import { FormsStateExplorer } from "./FormsStateExplorer";
 
 export function FormsCaseStudy({ data }: { data: CaseStudyData }) {
   if (!data) return null;
@@ -44,17 +45,9 @@ export function FormsCaseStudy({ data }: { data: CaseStudyData }) {
         </div>
       </div>
 
-      {/* ── Placeholder Breakout ───────────────────────────────────────── */}
-      <div
-        className="w-[100vw] pt-0 pb-32 px-2 md:px-12 flex justify-center mt-16"
-        style={{ marginLeft: "calc(50% - 50vw)" }}
-      >
-        <div className="w-full max-w-7xl overflow-hidden rounded-xl border border-dashed border-border bg-surface-2 shadow-sm flex items-center justify-center p-32">
-          <div className="text-center font-mono text-sm text-muted">
-            <span className="block mb-2">Placeholder: Forms Case Study Visual</span>
-            <span className="text-[10px] uppercase tracking-wider">Asset pending generation</span>
-          </div>
-        </div>
+      {/* ── Breakout Interactivity ──────────────────────────────────────── */}
+      <div className="mx-auto max-w-5xl px-0">
+        <FormsStateExplorer />
       </div>
     </section>
   );

@@ -168,7 +168,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
     companyName: "Karbon",
     sequence: ["heroforce", "pricing", "forms", "pseo"],
     hero: {
-      companyLogo: "https://logo.clearbit.com/karbonhq.com",
+      companyLogo: "https://logo.clearbit.com/karbon.ai",
       badgeLabel: "Application / Product Designer",
       headingParts: [
         { type: "text", content: "I design end-to-end product experiences, " },
