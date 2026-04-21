@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { CaseStudyData } from "@/data/applications";
 import Image from "next/image";
 
 // Resolving missing heroicons gracefully by declaring immutable inline SVGs
@@ -31,7 +32,9 @@ interface LineCoords {
   node2ToNode4: string;
 }
 
-export function PseoInteractiveFlowchart() {
+export function PseoInteractiveFlowchart({ data }: { data: CaseStudyData }) {
+  if (!data) return null;
+
   const [isMounted, setIsMounted] = useState(false);
   const [activeLightboxNode, setActiveLightboxNode] = useState<number | null>(null);
   const [node2State, setNode2State] = useState<SearchState>("default");
@@ -129,48 +132,37 @@ export function PseoInteractiveFlowchart() {
       {/* ── Narrative Header (Strict 5xl Container) ──────────────────────── */}
       <div className="mx-auto max-w-5xl px-0 pt-10 pb-5 md:pb-12">
         <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">
-          Acquisition Architecture
+          {data.eyebrow}
         </div>
         <h2 className="mb-6 max-w-2xl text-heading">
-          Scaling organic traffic via a connected page system.
+          {data.heading}
         </h2>
 
         <div className="grid grid-cols-1 gap-10 md:gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
           {/* Narrative Column */}
           <div className="flex flex-col gap-4 text-subtle">
-            <p>
-              Employment Hero needed to compete for job-seeker traffic monopolised by Seek and Indeed. Out-bidding them on paid search was financially unsustainable, so I worked with our global website lead to build a parallel acquisition channel — a programmatic SEO system that could generate thousands of highly targeted landing pages without manual engineering overhead.
-            </p>
-            <p>
-              The insight was that scale, not craft-per-page, was the competitive lever here. Incumbents own the obvious queries, and the long-tail is unguarded. The architecture I designed filters broad search intent down through three template tiers: category-level hub pages capture discovery traffic, dedicated employer brand templates route users toward specific companies, and hyper-specific position pages close the loop into direct applications. One template system, thousands of pages, each one earning its rank on a query Seek and Indeed aren't optimising for.
-            </p>
+            {data.body.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
           </div>
 
           {/* Metrics Column */}
           <div className="flex flex-col gap-8">
-            <div>
-              <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">12,000+</div>
-              <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">Indexed pages</div>
-            </div>
-            <div>
-              <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">300%</div>
-              <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">Lift in organic acquisition</div>
-            </div>
+            {data.stats.map((stat, i) => (
+              <div key={i}>
+                <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">{stat.value}</div>
+                <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">{stat.label}</div>
+              </div>
+            ))}
 
             {/* Credits Strip */}
             <div className="mt-12 flex flex-col gap-6 border-t border-border/50 pt-6">
-              <div>
-                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">My Role</div>
-                <div className="font-sans text-sm text-heading">Lead product designer: system design, templates, dev handoff</div>
-              </div>
-              <div>
-                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Collaborators</div>
-                <div className="font-sans text-sm text-heading">Global website lead, Product manager, software engineer, SEO specialist</div>
-              </div>
-              <div>
-                <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">Tools</div>
-                <div className="font-sans text-sm text-heading">Figma, Confluence</div>
-              </div>
+              {data.meta.map((m, i) => (
+                <div key={i}>
+                  <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">{m.label}</div>
+                  <div className="font-sans text-sm text-heading">{m.value}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

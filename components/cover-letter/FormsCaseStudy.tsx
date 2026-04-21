@@ -1,10 +1,10 @@
 import { CaseStudyData } from "@/data/applications";
 
-export function HeroForceVideo({ data }: { data: CaseStudyData }) {
+export function FormsCaseStudy({ data }: { data: CaseStudyData }) {
   if (!data) return null;
 
   return (
-    <section id="velocity" className="em-landing">
+    <section id="forms" className="em-landing">
       {/* ── Narrative Header ─────────────────────────────────────────────── */}
       <div className="mx-auto max-w-5xl px-0 pt-0 pb-5 md:pb-12">
         <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">
@@ -44,33 +44,15 @@ export function HeroForceVideo({ data }: { data: CaseStudyData }) {
         </div>
       </div>
 
-      {/* ── macOS Browser Breakout ───────────────────────────────────────── */}
+      {/* ── Placeholder Breakout ───────────────────────────────────────── */}
       <div
         className="w-[100vw] pt-0 pb-32 px-2 md:px-12 flex justify-center mt-16"
         style={{ marginLeft: "calc(50% - 50vw)" }}
       >
-        <div className="w-full max-w-7xl overflow-hidden rounded-xl border border-border bg-surface shadow-2xl">
-          {/* macOS Title Bar */}
-          <div className="h-8 md:h-12 border-b border-border bg-canvas flex items-center px-4 shrink-0 relative">
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]" />
-              <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]" />
-              <div className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]" />
-            </div>
-            <div className="absolute left-1/2 -translate-x-1/2 w-full max-w-[200px] md:max-w-sm h-5 md:h-7 bg-surface-2 rounded-md flex items-center justify-center border border-border">
-              <span className="font-mono text-[9px] md:text-[10px] text-muted">emersonjr.com/heroforce-demo</span>
-            </div>
-          </div>
-
-          {/* Looping Demo Video */}
-          <div className="relative aspect-video w-full bg-canvas">
-            <iframe
-              className="absolute inset-0 h-full w-full"
-              src="https://player.vimeo.com/video/1184361384?autoplay=1&muted=1&loop=1&background=1"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              title="HeroForce demo"
-            />
+        <div className="w-full max-w-7xl overflow-hidden rounded-xl border border-dashed border-border bg-surface-2 shadow-sm flex items-center justify-center p-32">
+          <div className="text-center font-mono text-sm text-muted">
+            <span className="block mb-2">Placeholder: Forms Case Study Visual</span>
+            <span className="text-[10px] uppercase tracking-wider">Asset pending generation</span>
           </div>
         </div>
       </div>

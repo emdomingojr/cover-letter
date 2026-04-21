@@ -1,3 +1,5 @@
+import { ClosingData } from "@/data/applications";
+
 const iconProps = {
   width: 16,
   height: 16,
@@ -9,35 +11,25 @@ const iconProps = {
   "aria-hidden": true,
 };
 
-export function ClosingCTA() {
+export function ClosingCTA({ data }: { data: ClosingData }) {
+  if (!data) return null;
+
   return (
     <section className="mx-auto max-w-5xl px-0 pt-32 pb-24 md:pt-32 md:pb-32">
       <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-12 lg:gap-20">
         {/* ── Left: The Pitch ────────────────────────────────── */}
         <div className="flex flex-col gap-6 md:col-span-7">
+          <div className="mb-[-1rem] font-mono text-xs uppercase tracking-widest text-muted">
+            {data.eyebrow}
+          </div>
           <h2 className="text-heading">
-            Let&rsquo;s talk about the work.
+            {data.heading}
           </h2>
-          <p className="text-primary text-lg">
-            I design for operational efficiency, absolute clarity, and user
-            trust.
-          </p>
-          <p className="text-subtle">
-            I own the product lifecycle
-            end-to-end. I am used to navigating ambiguous briefs, shipping
-            production code, and analysing the resulting data.
-          </p>
-          <p className="text-subtle">
-            I also know design is a team sport. I thrive on direct feedback,
-            radical candour, and investing time to mentor junior and mid-level
-            designers. Lifting the baseline quality of the entire team is just
-            as important as shipping the next feature.
-          </p>
-          <p className="text-subtle">
-            I built this page because I want to show you what I can do, not just send you a static PDF. I&rsquo;d be
-            happy to open my Figma files and Claude Code builds, walk you through them,
-            and show you exactly how I think.
-          </p>
+          {data.body.map((p, i) => (
+            <p key={i} className={i === 0 ? "text-primary text-lg" : "text-subtle"}>
+              {p}
+            </p>
+          ))}
         </div>
 
         {/* ── Right: The Contact Terminal ────────────────────── */}
