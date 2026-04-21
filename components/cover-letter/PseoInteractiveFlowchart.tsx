@@ -128,121 +128,109 @@ export function PseoInteractiveFlowchart({ data }: { data: CaseStudyData }) {
   );
 
   return (
-    <section id="pseo-flowchart" className="em-landing">
-      {/* ── Narrative Header (Strict 5xl Container) ──────────────────────── */}
-      <div className="mx-auto max-w-5xl px-0 pt-10 pb-5 md:pb-12">
-        <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">
-          {data.eyebrow}
-        </div>
-        <h2 className="mb-6 max-w-2xl text-heading">
-          {data.heading}
-        </h2>
-
-        <div className="grid grid-cols-1 gap-10 md:gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
-          {/* Narrative Column */}
-          <div className="flex flex-col gap-4 text-subtle">
+    <section id="pseo-flowchart" className="py-16 md:py-32">
+      {/* ── Tier 1: Narrative & Impact ───────────────────────── */}
+      <div className="mx-auto max-w-5xl px-6 md:px-0">
+        <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">{data.eyebrow}</div>
+        <h2 className="mb-6 max-w-2xl text-heading text-3xl font-semibold leading-tight">{data.heading}</h2>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-t border-border pt-8">
+          <div className="md:col-span-7 flex flex-col gap-4 text-subtle">
             {data.body.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </div>
-
-          {/* Metrics Column */}
-          <div className="flex flex-col gap-8">
-            {data.stats.map((stat, i) => (
-              <div key={i}>
-                <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">{stat.value}</div>
-                <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">{stat.label}</div>
-              </div>
-            ))}
-
-            {/* Credits Strip */}
-            <div className="mt-12 flex flex-col gap-6 border-t border-border/50 pt-6">
-              {data.meta.map((m, i) => (
-                <div key={i}>
-                  <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">{m.label}</div>
-                  <div className="font-sans text-sm text-heading">{m.value}</div>
-                </div>
-              ))}
+          <div className="md:col-span-5 flex flex-col space-y-8">
+          {data.stats.map((stat, i) => (
+            <div key={i}>
+              <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">{stat.value}</div>
+              <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">{stat.label}</div>
             </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Tier 2: Dynamic Layout Envelope (Viewport Breakout) ─ */}
+      <div ref={containerRef} className="relative w-[100vw] left-1/2 -translate-x-1/2 px-4 md:px-12 lg:px-24 mt-16 mb-16">
+          {/* Dynamic SVG Connectors */}
+          {isMounted && lineCoords && (
+            <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden lg:block">
+              <path d={lineCoords.node1ToNode2} fill="none" stroke="#CBD5E1" strokeWidth="2" />
+              <path d={lineCoords.node2ToNode3} fill="none" stroke="#CBD5E1" strokeWidth="2" />
+              <path d={lineCoords.node2ToNode4} fill="none" stroke="#CBD5E1" strokeWidth="2" />
+            </svg>
+          )}
+
+          {/* 3-Column Component Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-16 relative z-10 w-full">
+            {/* Column 1: Local Hub Node */}
+            <div className="flex flex-col items-start justify-center">
+              <div ref={node1Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px]">
+                <div className="font-mono text-xs uppercase text-muted mb-3">Node 1: Local Hub</div>
+                <button
+                  className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer"
+                  onClick={() => setActiveLightboxNode(1)}
+                >
+                  <Image src="/cover-letter/images/pseo-1home.webp" alt="PSEO Hub Matrix" fill className="object-cover object-top" unoptimized />
+                  <NodeHoverAffordance />
+                </button>
+              </div>
+            </div>
+
+            {/* Column 2: Search Intent Engine (Static Base Canvas) */}
+            <div className="flex flex-col items-center justify-center relative z-10">
+              <div ref={node2Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[320px] flex flex-col gap-4">
+                <div className="font-mono text-xs uppercase text-muted">Node 2: Search Intent</div>
+                <button
+                  className="group relative aspect-square rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer hover:shadow-lg transition-shadow"
+                  onClick={() => setActiveLightboxNode(2)}
+                >
+                  <Image
+                    src="/cover-letter/images/pseo-2search-results.webp"
+                    alt="Search Engine State Payload"
+                    fill
+                    className="object-cover object-top"
+                    unoptimized
+                  />
+                  <NodeHoverAffordance />
+                </button>
+              </div>
+            </div>
+
+            {/* Column 3: Splitter Track (Profile & Target) */}
+            <div className="flex flex-col items-end justify-between gap-6 lg:gap-32 py-8">
+              <div ref={node3Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px]">
+                <div className="font-mono text-xs uppercase text-muted mb-3">Node 3: Employer Profile</div>
+                <button
+                  className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer"
+                  onClick={() => setActiveLightboxNode(3)}
+                >
+                  <Image src="/cover-letter/images/pseo-3company-profile.webp" alt="Employer Geometry" fill className="object-cover object-top" unoptimized />
+                  <NodeHoverAffordance />
+                </button>
+              </div>
+
+              <div ref={node4Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px]">
+                <div className="font-mono text-xs uppercase text-muted mb-3">Node 4: Position App</div>
+                <button
+                  className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border-l-2 border-accent w-full cursor-pointer"
+                  onClick={() => setActiveLightboxNode(4)}
+                >
+                  <Image src="/cover-letter/images/pseo-4job-listing.webp" alt="Target Position Matrix" fill className="object-cover object-top" unoptimized />
+                  <NodeHoverAffordance />
+                </button>
+              </div>
           </div>
         </div>
       </div>
 
-      {/* ── Dynamic Layout Envelope (Viewport Breakout) ──────────────────── */}
-      <div ref={containerRef} className="relative w-[100vw] left-1/2 -translate-x-1/2 px-4 md:px-12 lg:px-24 pb-32 mt-16">
-
-        {/* Dynamic SVG Connectors */}
-        {isMounted && lineCoords && (
-          <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden lg:block">
-            <path d={lineCoords.node1ToNode2} fill="none" stroke="#CBD5E1" strokeWidth="2" />
-            <path d={lineCoords.node2ToNode3} fill="none" stroke="#CBD5E1" strokeWidth="2" />
-            <path d={lineCoords.node2ToNode4} fill="none" stroke="#CBD5E1" strokeWidth="2" />
-          </svg>
-        )}
-
-        {/* 3-Column Component Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-16 relative z-10 w-full">
-
-          {/* Column 1: Local Hub Node */}
-          <div className="flex flex-col items-start justify-center">
-            <div ref={node1Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px]">
-              <div className="font-mono text-xs uppercase text-muted mb-3">Node 1: Local Hub</div>
-              <button
-                className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer"
-                onClick={() => setActiveLightboxNode(1)}
-              >
-                <Image src="/cover-letter/images/pseo-1home.webp" alt="PSEO Hub Matrix" fill className="object-cover object-top" unoptimized />
-                <NodeHoverAffordance />
-              </button>
-            </div>
+      {/* ── Tier 3: The Meta Footer ──────────────────────────── */}
+      <div className="max-w-5xl mx-auto mt-8 flex flex-col md:flex-row flex-wrap gap-6 md:gap-16 px-6 md:px-0">
+        {data.meta.map((m, i) => (
+          <div key={i}>
+            <div className="text-xs text-muted uppercase tracking-wider mb-1 font-mono">{m.label}</div>
+            <div className="font-sans text-sm text-heading">{m.value}</div>
           </div>
-
-          {/* Column 2: Search Intent Engine (Static Base Canvas) */}
-          <div className="flex flex-col items-center justify-center relative z-10">
-            <div ref={node2Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[320px] flex flex-col gap-4">
-              <div className="font-mono text-xs uppercase text-muted">Node 2: Search Intent</div>
-              <button
-                className="group relative aspect-square rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer hover:shadow-lg transition-shadow"
-                onClick={() => setActiveLightboxNode(2)}
-              >
-                <Image
-                  src="/cover-letter/images/pseo-2search-results.webp"
-                  alt="Search Engine State Payload"
-                  fill
-                  className="object-cover object-top"
-                  unoptimized
-                />
-                <NodeHoverAffordance />
-              </button>
-            </div>
-          </div>
-
-          {/* Column 3: Splitter Track (Profile & Target) */}
-          <div className="flex flex-col items-end justify-between gap-6 lg:gap-32 py-8">
-            <div ref={node3Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px]">
-              <div className="font-mono text-xs uppercase text-muted mb-3">Node 3: Employer Profile</div>
-              <button
-                className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer"
-                onClick={() => setActiveLightboxNode(3)}
-              >
-                <Image src="/cover-letter/images/pseo-3company-profile.webp" alt="Employer Geometry" fill className="object-cover object-top" unoptimized />
-                <NodeHoverAffordance />
-              </button>
-            </div>
-
-            <div ref={node4Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px]">
-              <div className="font-mono text-xs uppercase text-muted mb-3">Node 4: Position App</div>
-              <button
-                className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border-l-2 border-accent w-full cursor-pointer"
-                onClick={() => setActiveLightboxNode(4)}
-              >
-                <Image src="/cover-letter/images/pseo-4job-listing.webp" alt="Target Position Matrix" fill className="object-cover object-top" unoptimized />
-                <NodeHoverAffordance />
-              </button>
-            </div>
-          </div>
-
-        </div>
+        ))}
       </div>
 
       {/* ── High-Fidelity Lightbox Overlay (Internal State Mapping) ──────── */}

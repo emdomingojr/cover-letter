@@ -4,49 +4,35 @@ export function HeroForceVideo({ data }: { data: CaseStudyData }) {
   if (!data) return null;
 
   return (
-    <section id="velocity" className="em-landing">
-      {/* ── Narrative Header ─────────────────────────────────────────────── */}
-      <div className="mx-auto max-w-5xl px-0 pt-0 pb-5 md:pb-12">
+    <section id="velocity" className="py-16 md:py-32">
+      {/* ── Tier 1: Narrative & Impact ───────────────────────── */}
+      <div className="mx-auto max-w-5xl px-6 md:px-0">
         <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">
           {data.eyebrow}
         </div>
-        <h2 className="mb-6 max-w-2xl text-heading">
+        <h2 className="mb-6 max-w-2xl text-heading text-3xl font-semibold leading-tight">
           {data.heading}
         </h2>
-
-        <div className="grid grid-cols-1 gap-10 md:gap-12 border-t border-border pt-8 md:grid-cols-[1fr_300px]">
-          {/* Narrative Column */}
-          <div className="flex flex-col gap-4 text-subtle">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-t border-border pt-8">
+          <div className="md:col-span-7 flex flex-col gap-4 text-subtle">
             {data.body.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </div>
 
-          {/* Metrics Column */}
-          <div className="flex flex-col gap-8">
-            {data.stats.map((stat, i) => (
-              <div key={i}>
-                <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">{stat.value}</div>
-                <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">{stat.label}</div>
-              </div>
-            ))}
-
-            {/* Credits Strip */}
-            <div className="mt-12 flex flex-col gap-6 border-t border-border/50 pt-6">
-              {data.meta.map((m, i) => (
-                <div key={i}>
-                  <div className="mb-1 font-mono text-[10px] uppercase tracking-widest text-muted">{m.label}</div>
-                  <div className="font-sans text-sm text-heading">{m.value}</div>
-                </div>
-              ))}
+          <div className="md:col-span-5 flex flex-col space-y-8">
+          {data.stats.map((stat, i) => (
+            <div key={i}>
+              <div className="font-display-mono text-3xl font-semibold tabular-nums text-heading">{stat.value}</div>
+              <div className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted">{stat.label}</div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* ── macOS Browser Breakout ───────────────────────────────────────── */}
+      {/* ── Tier 2: Visual Asset (Full Viewport Breakout) ────── */}
       <div
-        className="w-[100vw] pt-0 pb-32 px-2 md:px-12 flex justify-center mt-16"
+        className="w-[100vw] px-2 md:px-12 flex justify-center mt-12 mb-12"
         style={{ marginLeft: "calc(50% - 50vw)" }}
       >
         <div className="w-full max-w-7xl overflow-hidden rounded-xl border border-border bg-surface shadow-2xl">
@@ -73,6 +59,16 @@ export function HeroForceVideo({ data }: { data: CaseStudyData }) {
             />
           </div>
         </div>
+      </div>
+
+      {/* ── Tier 3: The Meta Footer ──────────────────────────── */}
+      <div className="max-w-5xl mx-auto mt-8 flex flex-col md:flex-row flex-wrap gap-6 md:gap-16 px-6 md:px-0">
+        {data.meta.map((m, i) => (
+          <div key={i}>
+            <div className="text-xs text-muted uppercase tracking-wider mb-1 font-mono">{m.label}</div>
+            <div className="font-sans text-sm text-heading">{m.value}</div>
+          </div>
+        ))}
       </div>
     </section>
   );
