@@ -13,8 +13,14 @@ const MagnifyingGlassIcon = ({ className }: { className?: string }) => (
 );
 
 const XMarkIcon = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+  </svg>
+);
+
+const PlusIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className={className}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
   </svg>
 );
 
@@ -119,12 +125,19 @@ export function PseoInteractiveFlowchart({ data }: { data: CaseStudyData }) {
   }, [activeLightboxNode]);
 
   const NodeHoverAffordance = () => (
-    <div className="absolute inset-0 bg-surface-2/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 z-20">
-      <div className="w-12 h-12 rounded-full bg-accent/10 border border-accent flex items-center justify-center">
-        <MagnifyingGlassIcon className="w-5 h-5 text-accent" />
+    <>
+      {/* Central Label Overlay */}
+      <div className="absolute inset-0 bg-surface-2/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center z-20">
+        <span className="font-mono text-[10px] uppercase font-bold tracking-[0.2em] text-accent translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+          Expand Node
+        </span>
       </div>
-      <span className="font-mono text-xs font-medium tracking-wide text-heading">Click to expand</span>
-    </div>
+      
+      {/* Persistent Plus Button Affordance */}
+      <div className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-border shadow-[0_2px_10px_rgba(0,0,0,0.05)] flex items-center justify-center z-30 group-hover:scale-110 group-hover:bg-accent group-hover:border-accent transition-all duration-300">
+        <PlusIcon className="w-4 h-4 text-muted group-hover:text-white transition-colors" />
+      </div>
+    </>
   );
 
   return (
