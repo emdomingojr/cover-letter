@@ -261,8 +261,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         ],
         stats: [
           { value: "+466%", label: "Mobile form completion" },
-          { value: "+30%", label: "Demo requests" },
-          { value: "+18%", label: "Free trial sign-ups" }
+          { value: "+30%", label: "Demo requests" }
         ],
         meta: [
           { label: "My Role", value: "Interaction designer, component logic, state coverage, design system contribution" },
