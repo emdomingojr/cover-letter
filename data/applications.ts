@@ -295,9 +295,9 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
       body: [
         "I'd be keen to walk you through my files, including the messy middle.",
         "I'm comfortable with ambiguous briefs, I'll ship production code when it's faster than a handoff, and I'll go back and read the data a week later to see what worked.",
-        "LLMs are part of how I work. I use them to frame problems before I open Figma or Claude Code, to stress-test my own thinking, to make sense of research, and to go from idea to working prototype in hours instead of days. That workflow would show up on day one.",
-        "Design is a team sport. I like direct feedback, I lift the standard of whoever I'm working with, and I coach juniors to do the same.",
-        "I built this page because showing you how I think felt more honest than describing it. Happy to walk you through the Figma files and the Claude Code build whenever suits.",
+        "But I know design is a team sport. I like direct feedback, I lift the standard of whoever I'm working with, and I coach juniors to do the same.",
+        "LLMs are part of how I work, which is why I built this page instead of sending a pdf. I use them to frame problems before I open Figma or Claude Code, to stress-test my own thinking, to make sense of research, and to go from idea to working prototype in less than half the time with non-LLM workflows.",
+        "If any of these land, let's chat.",
       ],
     },
   }
