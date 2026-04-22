@@ -98,10 +98,10 @@ export function FormsStateExplorer() {
 
   return (
     <div className="w-full border border-border rounded-2xl overflow-hidden bg-surface shadow-sm">
-      <div className="grid grid-cols-1 lg:grid-cols-12">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px]">
         
         {/* ── 1. The Canvas (Left/Top) ─────────────────────────────────── */}
-        <div className="lg:col-span-8 bg-canvas min-h-[400px] flex items-center justify-center p-8 md:p-12">
+        <div className="lg:border-r border-border bg-canvas min-h-[400px] flex items-center justify-center p-8 md:p-12">
           <div className={cn(
             "w-full max-w-sm transition-opacity duration-300",
             isDisabled ? "opacity-50 pointer-events-none" : "opacity-100"
@@ -213,7 +213,7 @@ export function FormsStateExplorer() {
         </div>
 
         {/* ── 2. The Inspector Panel (Right/Bottom) ────────────────────── */}
-        <div className="lg:col-span-4 flex flex-col justify-between bg-surface-2/50 backdrop-blur-sm p-6 md:p-8 border-t lg:border-t-0 lg:border-l border-border min-h-[400px]">
+        <div className="flex flex-col justify-between bg-surface-2/50 backdrop-blur-sm p-6 md:p-8 border-t lg:border-t-0 lg:border-l border-border min-h-[400px]">
           
           {/* Controls Area */}
           <div className="flex flex-col gap-8">
@@ -222,7 +222,7 @@ export function FormsStateExplorer() {
                 <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground/60 font-semibold">
                   {cat}
                 </span>
-                <div className="flex flex-wrap gap-1.5 bg-surface/40 p-1 rounded-xl border border-border">
+                <div className="flex flex-nowrap overflow-x-auto pb-1 lg:pb-0 scrollbar-hide gap-1.5 bg-surface/40 p-1 rounded-xl border border-border">
                   {Object.entries(STATES_META)
                     .filter(([_, meta]) => meta.category === cat)
                     .map(([id, meta]) => (
@@ -230,7 +230,7 @@ export function FormsStateExplorer() {
                         key={id}
                         onClick={() => setActiveState(id as FormState)}
                         className={cn(
-                          "px-3 py-1.5 rounded-lg font-mono text-[11px] transition-all duration-150 flex-1 min-w-[80px]",
+                          "px-3 py-1.5 rounded-lg font-mono text-[11px] transition-all duration-150 flex-1 whitespace-nowrap",
                           activeState === id
                             ? "bg-accent text-white shadow-sm font-bold"
                             : "text-subtle hover:bg-surface/80 hover:text-heading"

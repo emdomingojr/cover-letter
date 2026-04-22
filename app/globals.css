@@ -206,4 +206,6 @@ body[data-dev-mode="true"] .avatar-dev   { opacity: 1; }
 
 @layer utilities {
   .text-balance { text-wrap: balance; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 }
