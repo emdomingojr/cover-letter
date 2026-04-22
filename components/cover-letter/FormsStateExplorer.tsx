@@ -18,6 +18,12 @@ const ExclamationCircleIcon = () => (
   </svg>
 );
 
+const InfoIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-muted shrink-0">
+    <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836c-.149.598.013 1.222.423 1.633.477.477 1.154.63 1.711.457.19-.059.305-.262.247-.452-.058-.19-.26-.305-.451-.247-.2.063-.518.003-.701-.18a.33.33 0 01-.11-.233l.708-2.834c.311-1.243-.98-2.279-2.125-1.706-.51.255-1.077.29-1.53.072-.486-.233-.803-.708-.803-1.218 0-.199.162-.36.361-.36.198 0 .36.161.361.36 0 .093.07.214.283.316.2.096.48.093.829-.081zM12 7.5a.875.875 0 100 1.75.875.875 0 000-1.75z" clipRule="evenodd" />
+  </svg>
+);
+
 // ── Types ────────────────────────────────────────────────────────────────────
 
 type FormState = "default" | "focused" | "filled" | "valid" | "invalid" | "errored" | "disabled";
@@ -52,7 +58,7 @@ const STATES_META: Record<FormState, StateMetadata> = {
   invalid: {
     label: "Invalid",
     category: "Validation",
-    annotation: "Errors expand the container downward rather than overlaying, preserving the visibility of adjacent UI.",
+    annotation: "Errors expand the container downward rather than overlaying, preserving UI visibility.",
   },
   errored: {
     label: "Errored",
@@ -62,7 +68,7 @@ const STATES_META: Record<FormState, StateMetadata> = {
   disabled: {
     label: "Disabled",
     category: "System",
-    annotation: "Visual and functional locking prevents accidental submissions during heavy processing.",
+    annotation: "Visual and functional locking prevents accidental submissions.",
   },
 };
 
@@ -70,6 +76,11 @@ const STATES_META: Record<FormState, StateMetadata> = {
 
 export function FormsStateExplorer() {
   const [activeState, setActiveState] = useState<FormState>("default");
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Determine input values based on state
   const getInputValue = () => {
@@ -86,56 +97,13 @@ export function FormsStateExplorer() {
   const isSystemError = activeState === "errored";
 
   return (
-    <div className="w-full flex flex-col gap-12 mt-16">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-12 items-start">
+    <div className="w-full border border-border rounded-2xl overflow-hidden bg-surface shadow-sm">
+      <div className="grid grid-cols-1 lg:grid-cols-12">
         
-        {/* ── Control Board (Left/Top) ────────────────────────────────────── */}
-        <div className="flex flex-col gap-8 order-2 lg:order-1">
-          <div className="flex flex-wrap gap-x-12 gap-y-8">
-            {(["Interaction", "Validation", "System"] as const).map((cat) => (
-              <div key={cat} className="flex flex-col gap-3">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
-                  {cat}
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {Object.entries(STATES_META)
-                    .filter(([_, meta]) => meta.category === cat)
-                    .map(([id, meta]) => (
-                      <button
-                        key={id}
-                        onClick={() => setActiveState(id as FormState)}
-                        className={cn(
-                          "px-4 py-2 rounded-full border font-mono text-xs transition-all duration-200",
-                          activeState === id
-                            ? "bg-accent border-accent text-white shadow-md shadow-accent/20"
-                            : "bg-surface border-border text-subtle hover:border-accent/40"
-                        )}
-                      >
-                        {meta.label}
-                      </button>
-                    ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Dynamic Annotation */}
-          <motion.div
-            key={activeState}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="p-5 rounded-xl bg-surface-2 border border-dashed border-border max-w-md"
-          >
-            <p className="font-sans text-sm leading-relaxed text-subtle italic">
-              &ldquo;{STATES_META[activeState].annotation}&rdquo;
-            </p>
-          </motion.div>
-        </div>
-
-        {/* ── Interactive Input (Right/Center) ────────────────────────────── */}
-        <div className="flex flex-col order-1 lg:order-2">
+        {/* ── 1. The Canvas (Left/Top) ─────────────────────────────────── */}
+        <div className="lg:col-span-8 bg-canvas min-h-[400px] flex items-center justify-center p-8 md:p-12">
           <div className={cn(
-            "transition-opacity duration-300",
+            "w-full max-w-sm transition-opacity duration-300",
             isDisabled ? "opacity-50 pointer-events-none" : "opacity-100"
           )}>
             <div className="relative flex flex-col">
@@ -144,15 +112,15 @@ export function FormsStateExplorer() {
                 className={cn(
                   "relative h-[64px] rounded-xl border transition-all duration-300 bg-surface flex items-center px-4",
                   activeState === "focused" ? "border-accent ring-4 ring-accent/10" : "border-border",
-                  isInvalid ? "border-red-500 bg-red-50/30" : "",
-                  isValid ? "border-green-500 bg-green-50/30" : "",
+                  isInvalid ? "border-red-500 bg-red-500/5 shadow-[0_0_0_1px_rgba(239,68,68,0.1)]" : "",
+                  isValid ? "border-green-500 bg-green-500/5 shadow-[0_0_0_1px_rgba(34,197,94,0.1)]" : "",
                   isSystemError ? "border-red-500" : ""
                 )}
               >
                 {/* Floating Label / Placeholder */}
                 <span
                   className={cn(
-                    "absolute left-4 transition-all duration-200 pointer-events-none origin-left",
+                    "absolute left-4 transition-all duration-200 pointer-events-none origin-left font-sans",
                     isFloating 
                       ? "top-2 text-[10px] text-muted translate-y-0" 
                       : "top-1/2 -translate-y-1/2 text-sm text-subtle"
@@ -163,13 +131,13 @@ export function FormsStateExplorer() {
 
                 {/* Actual Input Value (Simulated) */}
                 <div className={cn(
-                  "pt-4 text-sm font-medium text-heading transition-opacity duration-200",
+                  "pt-4 text-sm font-medium text-heading transition-opacity duration-200 font-sans",
                   isFloating ? "opacity-100" : "opacity-0"
                 )}>
                   {getInputValue()}
                 </div>
 
-                {/* Caret (Blinking if focused but empty, or just visible) */}
+                {/* Caret (Blinking if focused but empty) */}
                 {activeState === "focused" && !getInputValue() && (
                   <motion.div
                     animate={{ opacity: [0, 1, 0] }}
@@ -186,15 +154,17 @@ export function FormsStateExplorer() {
                         initial={{ scale: 0.5, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.5, opacity: 0 }}
+                        key="check"
                       >
                         <CheckCircleIcon />
                       </motion.div>
                     )}
-                    {isInvalid && (
+                    {(isInvalid || isSystemError) && (
                       <motion.div
                         initial={{ scale: 0.5, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.5, opacity: 0 }}
+                        key="err"
                       >
                         <ExclamationCircleIcon />
                       </motion.div>
@@ -211,7 +181,7 @@ export function FormsStateExplorer() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="mt-2 text-[11px] text-muted leading-relaxed"
+                      className="mt-2 text-[11px] text-muted leading-relaxed font-sans"
                     >
                       We ask for this because it lets us send important updates related to your enquiry.
                     </motion.p>
@@ -221,7 +191,7 @@ export function FormsStateExplorer() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="mt-2 text-[11px] text-red-500 font-medium"
+                      className="mt-2 text-[11px] text-red-500 font-semibold font-sans"
                     >
                       Must be valid email format e.g. email@sample.com
                     </motion.p>
@@ -231,9 +201,8 @@ export function FormsStateExplorer() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="mt-2 text-[11px] text-red-500 font-medium bg-red-50 border border-red-100 rounded-lg p-2 flex items-center gap-2"
+                      className="mt-2 text-[11px] text-red-600 font-semibold bg-red-500/10 border border-red-500/20 rounded-lg p-2.5 flex items-center gap-2 font-sans"
                     >
-                      <ExclamationCircleIcon />
                       Connection timeout. Please try submitting again.
                     </motion.p>
                   )}
@@ -241,6 +210,55 @@ export function FormsStateExplorer() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* ── 2. The Inspector Panel (Right/Bottom) ────────────────────── */}
+        <div className="lg:col-span-4 flex flex-col justify-between bg-surface-2/50 backdrop-blur-sm p-6 md:p-8 border-t lg:border-t-0 lg:border-l border-border min-h-[400px]">
+          
+          {/* Controls Area */}
+          <div className="flex flex-col gap-8">
+            {(["Interaction", "Validation", "System"] as const).map((cat) => (
+              <div key={cat} className="flex flex-col gap-3">
+                <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground/60 font-semibold">
+                  {cat}
+                </span>
+                <div className="flex flex-wrap gap-1.5 bg-surface/40 p-1 rounded-xl border border-border">
+                  {Object.entries(STATES_META)
+                    .filter(([_, meta]) => meta.category === cat)
+                    .map(([id, meta]) => (
+                      <button
+                        key={id}
+                        onClick={() => setActiveState(id as FormState)}
+                        className={cn(
+                          "px-3 py-1.5 rounded-lg font-mono text-[11px] transition-all duration-150 flex-1 min-w-[80px]",
+                          activeState === id
+                            ? "bg-accent text-white shadow-sm font-bold"
+                            : "text-subtle hover:bg-surface/80 hover:text-heading"
+                        )}
+                      >
+                        {meta.label}
+                      </button>
+                    ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Annotation Area */}
+          <div className="mt-12 border-t border-border pt-4">
+            <motion.div
+              key={activeState}
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex gap-3"
+            >
+              <InfoIcon />
+              <p className="text-xs text-subtle font-medium leading-relaxed font-sans italic">
+                {STATES_META[activeState].annotation}
+              </p>
+            </motion.div>
+          </div>
+          
         </div>
 
       </div>
