@@ -76,7 +76,7 @@ export function PricingMatrixReveal({ data }: { data: CaseStudyData }) {
           className="absolute inset-x-0 h-full w-[100vw]"
           style={{ left: "calc(50% - 50vw)" }}
         >
-          <div className="sticky top-0 h-screen w-full bg-canvas flex items-center justify-center px-2 md:px-0">
+          <div className="sticky top-0 h-screen w-full bg-canvas flex items-center justify-center px-2 md:px-12">
 
             {/* ── Massive macOS Window ─────────────────────────────────────── */}
             <div className="w-full max-w-7xl h-auto md:h-[80vh] rounded-2xl border border-border bg-canvas flex flex-col relative overflow-hidden shadow-[0_30px_100px_-20px_rgba(0,0,0,0.3)]">
