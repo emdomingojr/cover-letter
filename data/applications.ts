@@ -9,7 +9,6 @@ export interface HoverToken {
 }
 
 export interface HeroData {
-  companyName: string;
   companyLogo: string;
   badgeLabel: string;
   headingParts: Part[];
@@ -51,7 +50,6 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
     companyName: "Envato",
     sequence: ["pseo", "heroforce", "pricing"],
     hero: {
-      companyName: "Envato",
       companyLogo: "https://lever-client-logos.s3.us-west-2.amazonaws.com/c11956a5-1cb9-45f6-b2ef-a36290dffe66-1722470303592.png",
       badgeLabel: "Application / Senior Product Designer",
       headingParts: [
@@ -170,7 +168,6 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
     companyName: "Karbon",
     sequence: ["heroforce", "pricing", "forms", "pseo"],
     hero: {
-      companyName: "Karbon",
       companyLogo: "https://cdn.prod.website-files.com/663992d0436f4e870a059cc3/69e855e9cd54b7ea107469d1_karbon_logo.png",
       badgeLabel: "Application / Product Designer",
       headingParts: [
@@ -201,7 +198,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         },
         {
           id: 2,
-          text: "push craft and attention to logic",
+          text: "push craft and attention to logic detail",
           image: "https://cdn.prod.website-files.com/663992d0436f4e870a059cc3/69258a6e0adf6285263f3335_Forms-Hero.png",
           label: "FORM OPTIMISATION",
           href: "#forms",
@@ -215,8 +212,8 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         },
       ],
       subheading: [
-        "Hi, I'm Em. This page is my application for Product Designer at Karbon. I designed, coded, and shipped it in a couple of days, the same way I'd approach a product brief. LLMs to frame the problem and pressure-test assumptions. v0 and Claude Code to prototype. Figma to refine what AI still can't judge.",
-        "Keep scrolling. The case studies respond to the role.",
+        "Hi, I'm Emerson. This page is my application for Product Designer at Karbon, and I built it the way I'd approach any real brief. I used LLMs to frame the problem and stress-test my thinking, v0 and Claude Code to prototype, and Figma for the details that still need a human eye.",
+        "Keep scrolling. Each case study maps to something the role asks for.",
       ],
     },
     cases: {
@@ -224,9 +221,9 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         eyebrow: "AI-Assisted Product Workflow",
         heading: "From brief to production, with LLMs in the loop.",
         body: [
-          "HeroForce needed a high-engagement launch page on a compressed timeline. The more interesting constraint wasn't speed. It was whether LLM-assisted tooling could hold its own against a traditional design-to-dev pipeline on a piece of work that had to feel crafted, not generated.",
-          "I used Claude to pressure-test the brief before touching Figma. Who is this page actually for. What's the one thing it has to do. What edge cases are we pretending don't exist. That framing work saved a week of directional churn and surfaced two assumptions the team hadn't committed to in writing. From there, v0 generated fast structural options I could react to, Claude Code handled iteration once I locked direction, and Figma was where I refined the details that AI tools still can't judge: rhythm, hierarchy, motion timing. Production code shipped directly, aligned to the existing design system.",
-          "Two weeks, concept to live. LLMs accelerated the generation. I guided the structure, behaviour, and craft."
+          "HeroForce needed a launch page fast. I used it to test whether LLM tooling could hold up against a normal design-to-dev pipeline, on a piece of work that couldn't look AI-generated.",
+          "I pressure-tested the brief with Claude and Gemini first. That alone saved a week and caught two assumptions the team hadn't written down. v0 generated, Claude Code iterated, Figma refined what AI still can't judge. Shipped to production on the existing design system.",
+          "Two weeks, concept to live."
         ],
         stats: [
           { value: "2 Weeks", label: "Concept to production" },
@@ -242,9 +239,8 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         eyebrow: "Customer-Validated Design",
         heading: "Reducing complexity by listening first.",
         body: [
-          "The existing pricing matrix presented 100+ features in a flat comparison table. Bottom-of-funnel conversion was suffering, and the instinct across the team was to redesign the table.",
-          "I pushed back and ran a week of validation first. Hotjar session replays to see where visitors actually looked. A Maze card sort to test whether our feature groupings matched how buyers mentally organised them. Three interviews with mid-market prospects. The signal was consistent across all three: visitors weren't asking \"what does this cost\", they were asking \"is this for me\". A flat comparison answers the first question. It does nothing for the second.",
-          "I redesigned around that reframe. Features grouped into a strict taxonomy around product pillars, not feature categories. Progressive disclosure so detail only surfaces once the visitor has committed to a tier. The comparison table became a decision engine instead of a spec sheet. I treated research as a velocity tool rather than a gate, which is the only reason this shipped in the window it did."
+          "The existing pricing matrix presented 100+ features in a flat comparison table. Bottom-of-funnel conversion was suffering.",
+          "I redesigned around this reframe: visitors weren't asking 'what does this cost', they were asking 'is this for me'. Features grouped into a strict taxonomy around product pillars, not feature categories. Progressive disclosure so detail only surfaces once the visitor has committed to a tier. The comparison table became a decision engine instead of a spec sheet. I treated research as a velocity tool rather than a gate, which is the only reason this shipped in the window it did."
         ],
         stats: [
           { value: "+96%", label: "Demo request lift" },
@@ -261,9 +257,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         eyebrow: "Interaction Craft & State Coverage",
         heading: "Designing the full logic, not just the happy path.",
         body: [
-          "A form looks simple until you map every state it can be in. Default, focused, filled, validating, valid, invalid, submitting, submitted, errored, disabled. On mobile, multiply that by keyboard context. The existing lead capture forms treated the happy path as the whole design and let engineers improvise the rest. Mobile completion was losing us real pipeline.",
-          "I redesigned the input component from the state map outward. Floating labels to collapse visual redundancy. Positive validation with a green check the moment a field reads as valid, so users get reassurance on the way in rather than only hearing about it when something's wrong. Touch targets at 48px minimum. Native keyboard context for each input type. Errors pushing content down rather than overlaying it.",
-          "I validated the new pattern through an A/B test and watched Hotjar replays of the losing variant to understand where users still stalled. Then I codified every state into the design system, so the logic now ships by default on every future form, not just the ones a designer touches."
+          "The old forms designed for the happy path and left engineers to fill in the gaps. I rebuilt the input component around every state a form can actually be in, from focused to errored to validating to submitted, plus mobile keyboard context. A/B tested the new pattern, watched Hotjar replays of the losing variant, and codified every state into the design system so the logic ships by default on every future form."
         ],
         stats: [
           { value: "+466%", label: "Mobile form completion" },
@@ -271,7 +265,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
           { value: "+18%", label: "Free trial sign-ups" }
         ],
         meta: [
-          { label: "My Role", value: "Interaction designer. Component logic, state coverage, design system contribution." },
+          { label: "My Role", value: "Interaction designer, component logic, state coverage, design system contribution" },
           { label: "Collaborators", value: "PM, front-end engineers, conversion manager (CRO)" },
           { label: "Tools", value: "Figma, Hotjar" },
         ],
@@ -281,8 +275,9 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         heading: "Encoding design judgement into a scaling system.",
         body: [
           "Employment Hero needed to compete for job-seeker traffic monopolised by Seek and Indeed. Paid search wasn't sustainable at scale, so I designed a programmatic system that generates thousands of targeted pages from a single template architecture.",
-          "Three template tiers, each built for a different job-to-be-done. Category pages for discovery intent. Employer pages for brand-led intent. Position pages for decision intent. The design work wasn't the individual page, it was the inheritance rules, the content slot logic, and the decision tree that routes a user to the right tier based on how they searched.",
-          "I encoded the design judgement once, so engineers and content teams could scale the system to 12,000 pages without another designer touching it. Moving complexity under the hood, so the right page renders for the right intent without anyone thinking about it."
+          "Three template tiers, each built for a different job-to-be-done.",
+          "Different searchers want different things. Someone browsing needs a category page. Someone checking out a specific employer needs their profile. Someone ready to apply needs the exact role. My job was designing the system that decides which page each person sees, and making sure every page pulls the right content for the right moment.",
+          "I made the design decisions once, then baked them into the system so engineers and content teams could keep building without another designer in the loop. The system scaled to 12,000+ pages without me lifting a finger. All the complicated stuff stays under the hood. The visitor just gets the right page for what they were looking for."
         ],
         stats: [
           { value: "12,000+", label: "Indexed pages" },
@@ -299,10 +294,10 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
       eyebrow: "About working together",
       heading: "How I'd show up at Karbon.",
       body: [
-        "I design for clarity, customer trust, and operational efficiency. I work autonomously on ambiguous problems, I ship production code when it's the right call, and I read the data that comes back the next week.",
-        "I use LLMs every day, not as a novelty but as genuine leverage. Framing problems before I design. Pressure-testing my own assumptions. Synthesising research. Moving from idea to interactive prototype in hours rather than days. I'd bring that workflow to Karbon on day one and I'd expect it to compound across the team over time.",
-        "Design is also a team sport. I thrive on direct feedback, I lift the baseline quality of whoever I'm working with, and I mentor juniors into the same habits. On the bonus criteria: I haven't designed for accounting software specifically, but I've spent years on professional B2B SaaS where the user's job involves complex workflows they need to trust completely. The domain logic changes. The design judgement transfers.",
-        "I built this page because I'd rather show you how I think than describe it. Happy to walk you through the Figma files and the Claude Code build whenever suits.",
+        "I design for clarity, customer trust, and efficiency. I'm comfortable with messy briefs, I'll ship production code when it's faster than a handoff, and I'll go back and read the data a week later to see what worked.",
+        "LLMs are part of how I work. I use them to frame problems before I open Figma or Claude Code, to stress-test my own thinking, to make sense of research, and to go from idea to working prototype in hours instead of days. That workflow would show up on day one.",
+        "Design is a team sport. I like direct feedback, I lift the standard of whoever I'm working with, and I coach juniors to do the same. ",
+        "I built this page because showing you how I think felt more honest than describing it. Happy to walk you through the Figma files and the Claude Code build whenever suits.",
       ],
     },
   }

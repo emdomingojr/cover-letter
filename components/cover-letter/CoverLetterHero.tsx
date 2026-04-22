@@ -214,7 +214,7 @@ export function CoverLetterHero({ data }: { data: HeroData }) {
     <section className="mx-auto max-w-5xl px-0 pb-8 pt-4 md:pt-8">
 
       {/* ── Context Badge ─────────────────────────────────────────────────── */}
-      <div className="flex flex-col items-start gap-4 mb-8 md:mb-12">
+      <div className="flex flex-row items-center gap-6 mb-8 md:mb-12">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         {data.companyLogo && !logoFailed ? (
           <img
@@ -230,12 +230,9 @@ export function CoverLetterHero({ data }: { data: HeroData }) {
             </span>
           </div>
         )}
-        <div className="flex items-center gap-3">
-          <div className="h-px w-8 bg-border md:w-12" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-            {data.badgeLabel}
-          </span>
-        </div>
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted whitespace-nowrap">
+          {data.badgeLabel}
+        </span>
       </div>
 
       {/*
