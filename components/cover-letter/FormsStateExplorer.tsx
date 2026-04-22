@@ -98,23 +98,23 @@ export function FormsStateExplorer() {
 
   return (
     <div className="w-full border border-border rounded-2xl overflow-hidden bg-surface shadow-sm">
-      <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr]">
+      <div className="grid grid-cols-1 lg:grid-cols-12">
         
-        {/* ── 1. The Canvas (Visual Form - Right on Desktop, First on Mobile) ── */}
-        <div className="order-1 lg:order-2 bg-white min-h-[400px] flex items-center justify-center p-8 md:p-12">
+        {/* ── 1. The Canvas (Left/Top) ─────────────────────────────────── */}
+        <div className="lg:col-span-8 flex items-center justify-center p-8 md:p-12 min-h-[400px]">
           <div className={cn(
             "w-full max-w-sm transition-opacity duration-300",
-            isDisabled ? "opacity-50 pointer-events-none" : "opacity-100"
+            isDisabled ? "opacity-30 pointer-events-none" : "opacity-100"
           )}>
             <div className="relative flex flex-col">
-              {/* Input Wrapper */}
+              {/* Input Wrapper - Elevated White */}
               <div
                 className={cn(
-                  "relative h-[64px] rounded-xl border transition-all duration-300 bg-surface flex items-center px-4",
+                  "relative h-[64px] rounded-xl border transition-all duration-300 bg-white flex items-center px-4 shadow-sm",
                   activeState === "focused" ? "border-accent ring-4 ring-accent/10" : "border-border",
-                  isInvalid ? "border-red-500 bg-red-500/5 shadow-[0_0_0_1px_rgba(239,68,68,0.1)]" : "",
-                  isValid ? "border-green-500 bg-green-500/5 shadow-[0_0_0_1px_rgba(34,197,94,0.1)]" : "",
-                  isSystemError ? "border-red-500" : ""
+                  isInvalid ? "border-red-600 ring-4 ring-red-500/10 shadow-[0_0_0_1px_rgba(220,38,38,0.2)]" : "",
+                  isValid ? "border-green-600 ring-4 ring-green-500/10 shadow-[0_0_0_1px_rgba(22,163,74,0.2)]" : "",
+                  isSystemError ? "border-red-600 shadow-[0_0_0_1px_rgba(220,38,38,0.2)]" : ""
                 )}
               >
                 {/* Floating Label / Placeholder */}
@@ -212,8 +212,8 @@ export function FormsStateExplorer() {
           </div>
         </div>
 
-        {/* ── 2. The Inspector Panel (Toggles - Left on Desktop, Second on Mobile) ── */}
-        <div className="order-2 lg:order-1 flex flex-col justify-between bg-surface-2/50 backdrop-blur-sm p-6 md:p-8 border-t lg:border-t-0 lg:border-r border-border min-h-[400px]">
+        {/* ── 2. The Inspector Panel (Right/Bottom) ────────────────────── */}
+        <div className="lg:col-span-4 flex flex-col justify-between p-6 md:p-8 border-t lg:border-t-0 lg:border-l border-border min-h-[400px]">
           
           {/* Controls Area */}
           <div className="flex flex-col gap-8">
