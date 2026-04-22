@@ -212,7 +212,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         },
       ],
       subheading: [
-        "Hi, I'm Emerson. This page is my application for Product Designer at Karbon, and I built it the way I'd approach any real brief. I used LLMs to frame the problem and stress-test my thinking, v0 and Claude Code to prototype, and Figma for the details that still need a human eye.",
+        "Hi, I'm Emerson. This page is my application for Product Designer at Karbon, and I built it the way I'd approach any real brief. I used LLMs to frame the problem and stress-test my thinking, v0 and Claude Code to prototype and ship, and Figma for the details that still need a human eye.",
         "Keep scrolling. Each case study maps to something the role asks for.",
       ],
     },
@@ -291,11 +291,12 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
     },
     closing: {
       eyebrow: "About working together",
-      heading: "How I'd show up at Karbon.",
+      heading: "These are, of course, pretty high level overviews of my work.",
       body: [
-        "I design for clarity, customer trust, and efficiency. I'm comfortable with messy briefs, I'll ship production code when it's faster than a handoff, and I'll go back and read the data a week later to see what worked.",
+        "I'd be keen to walk you through my files, including the messy middle.",
+        "I'm comfortable with messy briefs, I'll ship production code when it's faster than a handoff, and I'll go back and read the data a week later to see what worked.",
         "LLMs are part of how I work. I use them to frame problems before I open Figma or Claude Code, to stress-test my own thinking, to make sense of research, and to go from idea to working prototype in hours instead of days. That workflow would show up on day one.",
-        "Design is a team sport. I like direct feedback, I lift the standard of whoever I'm working with, and I coach juniors to do the same. ",
+        "Design is a team sport. I like direct feedback, I lift the standard of whoever I'm working with, and I coach juniors to do the same.",
         "I built this page because showing you how I think felt more honest than describing it. Happy to walk you through the Figma files and the Claude Code build whenever suits.",
       ],
     },
