@@ -214,25 +214,28 @@ export function CoverLetterHero({ data }: { data: HeroData }) {
     <section className="mx-auto max-w-5xl px-0 pb-8 pt-4 md:pt-8">
 
       {/* ── Context Badge ─────────────────────────────────────────────────── */}
-      <div className="flex flex-col items-start sm:flex-row sm:items-center gap-3 mb-8 md:mb-10">
+      <div className="flex flex-col items-start gap-4 mb-8 md:mb-12">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         {data.companyLogo && !logoFailed ? (
           <img
             src={data.companyLogo}
             alt="Company Logo"
-            className="h-6 w-auto"
+            className="h-7 w-auto transition-all duration-300"
             onError={() => setLogoFailed(true)}
           />
         ) : (
-          <div className="h-6 flex items-center">
-            <span className="font-sans font-bold text-lg tracking-tighter text-heading">
-              {data.tokens[0].href.includes("karbon") || data.companyLogo.includes("karbon") ? "Karbon" : "Envato"}
+          <div className="h-7 flex items-center">
+            <span className="font-serif-display text-2xl text-heading">
+              {data.companyName}
             </span>
           </div>
         )}
-        <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
-          {data.badgeLabel}
-        </span>
+        <div className="flex items-center gap-3">
+          <div className="h-px w-8 bg-border md:w-12" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+            {data.badgeLabel}
+          </span>
+        </div>
       </div>
 
       {/*

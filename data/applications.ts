@@ -9,6 +9,7 @@ export interface HoverToken {
 }
 
 export interface HeroData {
+  companyName: string;
   companyLogo: string;
   badgeLabel: string;
   headingParts: Part[];
@@ -50,6 +51,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
     companyName: "Envato",
     sequence: ["pseo", "heroforce", "pricing"],
     hero: {
+      companyName: "Envato",
       companyLogo: "https://lever-client-logos.s3.us-west-2.amazonaws.com/c11956a5-1cb9-45f6-b2ef-a36290dffe66-1722470303592.png",
       badgeLabel: "Application / Senior Product Designer",
       headingParts: [
@@ -168,7 +170,8 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
     companyName: "Karbon",
     sequence: ["heroforce", "pricing", "forms", "pseo"],
     hero: {
-      companyLogo: "https://logo.clearbit.com/karbon.ai",
+      companyName: "Karbon",
+      companyLogo: "https://cdn.prod.website-files.com/663992d0436f4e870a059cc3/69e855e9cd54b7ea107469d1_karbon_logo.png",
       badgeLabel: "Application / Product Designer",
       headingParts: [
         { type: "text", content: "I design end-to-end product experiences, " },
@@ -184,21 +187,21 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
       tokens: [
         {
           id: 0,
-          text: "ship via LLM-assisted prototyping",
+          text: "ship via LLM-assisted design and code",
           image: "https://player.vimeo.com/video/1184361384?autoplay=1&muted=1&loop=1&background=1",
           label: "WORKING PROTOTYPE",
           href: "#velocity", // Same anchor as HeroForce
         },
         {
           id: 1,
-          text: "validate with customers early",
+          text: "validate early",
           image: "https://cdn.prod.website-files.com/663992d0436f4e870a059cc3/692581ec05b87f568e8f7604_Pricing-Hero.png",
           label: "PRICING MATRIX IA",
           href: "#pricing-reveal",
         },
         {
           id: 2,
-          text: "push craft through state-level detail",
+          text: "push craft and attention to logic",
           image: "https://cdn.prod.website-files.com/663992d0436f4e870a059cc3/69258a6e0adf6285263f3335_Forms-Hero.png",
           label: "FORM OPTIMISATION",
           href: "#forms",
