@@ -110,7 +110,7 @@ export function FormsStateExplorer() {
               {/* Input Wrapper - Elevated White */}
               <div
                 className={cn(
-                  "relative h-[64px] rounded-xl border transition-all duration-300 bg-white flex items-center px-4 shadow-sm",
+                  "relative h-[64px] rounded-xl border transition-all duration-300 bg-white flex items-center px-4 shadow-[0_2px_8px_rgba(0,0,0,0.05)]",
                   activeState === "focused" ? "border-accent ring-4 ring-accent/10" : "border-border",
                   isInvalid ? "border-red-600 ring-4 ring-red-500/10 shadow-[0_0_0_1px_rgba(220,38,38,0.2)]" : "",
                   isValid ? "border-green-600 ring-4 ring-green-500/10 shadow-[0_0_0_1px_rgba(22,163,74,0.2)]" : "",
@@ -222,7 +222,7 @@ export function FormsStateExplorer() {
                 <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground/60 font-semibold">
                   {cat}
                 </span>
-                <div className="flex flex-nowrap overflow-x-auto pb-1 lg:pb-0 scrollbar-hide gap-1.5 bg-surface/40 p-1 rounded-xl border border-border">
+                <div className="flex flex-nowrap overflow-x-auto pb-1 lg:pb-0 scrollbar-hide gap-1 bg-white/60 p-1 rounded-xl border border-border/50">
                   {Object.entries(STATES_META)
                     .filter(([_, meta]) => meta.category === cat)
                     .map(([id, meta]) => (
