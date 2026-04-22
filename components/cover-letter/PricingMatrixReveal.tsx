@@ -36,7 +36,7 @@ export function PricingMatrixReveal({ data }: { data: CaseStudyData }) {
   const afterOpacity = useTransform(smoothProgress, [0.5, 0.6], [0, 1]);
 
   return (
-    <section id="pricing-reveal" className="py-16 md:py-32">
+    <section id="pricing-reveal" className="py-8">
       {/* ── Tier 1: Narrative & Impact ───────────────────────── */}
       <div className="mx-auto max-w-5xl px-6 md:px-0">
         <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">{data.eyebrow}</div>

@@ -128,7 +128,7 @@ export function PseoInteractiveFlowchart({ data }: { data: CaseStudyData }) {
   );
 
   return (
-    <section id="pseo-flowchart" className="py-16 md:py-32">
+    <section id="pseo-flowchart" className="py-8">
       {/* ── Tier 1: Narrative & Impact ───────────────────────── */}
       <div className="mx-auto max-w-5xl px-6 md:px-0">
         <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">{data.eyebrow}</div>
