@@ -71,12 +71,12 @@ export function PricingMatrixReveal({ data }: { data: CaseStudyData }) {
       </div>
 
       {/* ── Tier 2: Cinematic Sandbox (Full Viewport Takeover) ── */}
-      <div
-        ref={containerRef}
-        className="h-[250vh] w-[100vw] relative mt-16 mb-16"
-        style={{ marginLeft: "calc(50% - 50vw)" }}
-      >
-        <div className="sticky top-0 h-screen w-full bg-canvas flex items-center justify-center px-2 md:px-0">
+      <div ref={containerRef} className="relative h-[250vh] w-full mt-16 mb-16">
+        <div
+          className="absolute inset-x-0 h-full w-[100vw]"
+          style={{ left: "calc(50% - 50vw)" }}
+        >
+          <div className="sticky top-0 h-screen w-full bg-canvas flex items-center justify-center px-2 md:px-0">
 
             {/* ── Massive macOS Window ─────────────────────────────────────── */}
             <div className="w-full max-w-7xl h-auto md:h-[80vh] rounded-2xl border border-border bg-canvas flex flex-col relative overflow-hidden shadow-[0_30px_100px_-20px_rgba(0,0,0,0.3)]">
@@ -118,7 +118,7 @@ export function PricingMatrixReveal({ data }: { data: CaseStudyData }) {
                 {/* Reveal Layer (New Pricing with Wipe) */}
                 {isMounted && (
                   <motion.div
-                    style={{ clipPath }}
+                    style={{ clipPath, WebkitClipPath: clipPath }}
                     className="absolute inset-0 z-10"
                   >
                     <motion.img
@@ -150,6 +150,7 @@ export function PricingMatrixReveal({ data }: { data: CaseStudyData }) {
                 </div>
               )}
 
+            </div>
           </div>
         </div>
       </div>
