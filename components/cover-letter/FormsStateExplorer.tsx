@@ -142,7 +142,7 @@ export function FormsStateExplorer() {
                   <motion.div
                     animate={{ opacity: [0, 1, 0] }}
                     transition={{ repeat: Infinity, duration: 1 }}
-                    className="absolute left-[105px] top-[34px] w-[2px] h-[18px] bg-accent"
+                    className="absolute left-4 top-[34px] w-[2px] h-[18px] bg-accent"
                   />
                 )}
 
