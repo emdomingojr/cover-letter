@@ -17,7 +17,7 @@ const SHOW_MS = 250; // delay before card appears
 const HIDE_MS = 80;  // grace period after leave
 
 // ── Component ─────────────────────────────────────────────────────────────────
-export function CoverLetterHero({ data }: { data: HeroData }) {
+export function CoverLetterHero({ data, companyName }: { data: HeroData; companyName: string }) {
   // ── State ───────────────────────────────────────────────────────────────────
   // Single integer ID — the only thing event handlers write to.
   const [activeId, setActiveId] = useState<number | null>(null);
@@ -226,7 +226,7 @@ export function CoverLetterHero({ data }: { data: HeroData }) {
         ) : (
           <div className="h-7 flex items-center">
             <span className="font-serif-display text-2xl text-heading">
-              {data.companyName}
+              {companyName}
             </span>
           </div>
         )}

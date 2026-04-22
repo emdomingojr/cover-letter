@@ -57,7 +57,7 @@ export default async function CoverLetterPage({ params }: PageProps) {
   return (
     <article className="flex flex-col pb-32">
       <NarrativeTimeline />
-      <CoverLetterHero data={appData.hero} />
+      <CoverLetterHero data={appData.hero} companyName={appData.companyName} />
       
       {appData.sequence.map((caseId) => {
         if (caseId === "pseo" && appData.cases.pseo) {
