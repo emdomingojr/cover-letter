@@ -17,6 +17,7 @@ export interface HeroData {
 }
 
 export interface CaseStudyData {
+  navLabel: string;
   eyebrow: string;
   heading: string;
   body: string[];
@@ -25,6 +26,7 @@ export interface CaseStudyData {
 }
 
 export interface ClosingData {
+  navLabel: string;
   eyebrow: string;
   heading: string;
   body: string[];
@@ -100,6 +102,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
     },
     cases: {
       pseo: {
+        navLabel: "Systems-Level Thinking",
         eyebrow: "Acquisition Architecture",
         heading: "Scaling organic traffic via a connected page system.",
         body: [
@@ -117,6 +120,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         ],
       },
       heroforce: {
+        navLabel: "Shipping to Production",
         eyebrow: "Designer-led Delivery",
         heading: "Shipped without the handoff. Production code, faster.",
         body: [
@@ -135,6 +139,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         ],
       },
       pricing: {
+        navLabel: "Reduce Decision Fatigue",
         eyebrow: "Information Architecture",
         heading: "Solving analysis paralysis.",
         body: [
@@ -153,6 +158,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
       },
     },
     closing: {
+      navLabel: "Next Steps",
       eyebrow: "About working together",
       heading: "How I'd show up at Envato.",
       body: [
@@ -175,7 +181,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         { type: "token", id: 0 },
         { type: "text", content: ", " },
         { type: "token", id: 1 },
-        { type: "text", content: ", and " },
+        { type: "text", content: ", " },
         { type: "token", id: 2 },
         { type: "text", content: " and " },
         { type: "token", id: 3 },
@@ -184,28 +190,28 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
       tokens: [
         {
           id: 0,
-          text: "ship via LLM-assisted design and code",
+          text: "ship with LLM-assisted design and code",
           image: "https://player.vimeo.com/video/1184361384?autoplay=1&muted=1&loop=1&background=1",
           label: "WORKING PROTOTYPE",
           href: "#velocity", // Same anchor as HeroForce
         },
         {
           id: 1,
-          text: "validate early",
+          text: "reduce decision fatigue",
           image: "https://cdn.prod.website-files.com/663992d0436f4e870a059cc3/692581ec05b87f568e8f7604_Pricing-Hero.png",
           label: "PRICING MATRIX IA",
           href: "#pricing-reveal",
         },
         {
           id: 2,
-          text: "push craft and attention to logic detail",
+          text: "think through the edges",
           image: "https://cdn.prod.website-files.com/663992d0436f4e870a059cc3/69258a6e0adf6285263f3335_Forms-Hero.png",
           label: "FORM OPTIMISATION",
           href: "#forms",
         },
         {
           id: 3,
-          text: "system-level decisions",
+          text: "the system underneath",
           image: "/cover-letter/images/pseo-2search-results.webp",
           label: "SYSTEMS ARCHITECTURE",
           href: "#pseo-flowchart",
@@ -218,6 +224,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
     },
     cases: {
       heroforce: {
+        navLabel: "Shipping to Production",
         eyebrow: "AI-Assisted Product Workflow",
         heading: "From brief to production, with LLMs in the loop.",
         body: [
@@ -236,8 +243,9 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         ],
       },
       pricing: {
+        navLabel: "Reduce Decision Fatigue",
         eyebrow: "Customer-Validated Design",
-        heading: "Reducing complexity by listening first.",
+        heading: "Reducing Decision Fatigue in Complex SaaS Pricing",
         body: [
           "The existing pricing matrix presented 100+ features in a flat comparison table. Bottom-of-funnel conversion was suffering.",
           "I redesigned around this reframe: visitors weren't asking 'what does this cost', they were asking 'is this for me'. Features grouped into a strict taxonomy around product pillars, not feature categories. Progressive disclosure so detail only surfaces once the visitor has committed to a tier. The comparison table became a decision engine instead of a spec sheet. I treated research as a velocity tool rather than a gate, which is the only reason this shipped in the window it did."
@@ -254,6 +262,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         ],
       },
       forms: {
+        navLabel: "Edge Cases",
         eyebrow: "Interaction Craft & State Coverage",
         heading: "Designing the full logic, not just the happy path.",
         body: [
@@ -270,6 +279,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
         ],
       },
       pseo: {
+        navLabel: "Systems-Level Thinking",
         eyebrow: "Systems Design",
         heading: "Encoding design judgement into a scaling system.",
         body: [
@@ -290,6 +300,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
       },
     },
     closing: {
+      navLabel: "Next Steps",
       eyebrow: "About working together",
       heading: "These are, of course, pretty high level overviews of my work.",
       body: [

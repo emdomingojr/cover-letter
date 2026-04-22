@@ -8,6 +8,7 @@ import { HeroForceVideo } from "@/components/cover-letter/HeroForceVideo";
 import { PricingMatrixReveal } from "@/components/cover-letter/PricingMatrixReveal";
 import { NarrativeTimeline } from "@/components/cover-letter/NarrativeTimeline";
 import { ClosingCTA } from "@/components/cover-letter/ClosingCTA";
+import { StickyNav } from "@/components/cover-letter/StickyNav";
 import { FormsCaseStudy } from "@/components/cover-letter/FormsCaseStudy";
 
 interface PageProps {
@@ -54,28 +55,68 @@ export default async function CoverLetterPage({ params }: PageProps) {
     notFound();
   }
 
+  // Generate navigation items based on sequence
+  const navSections = appData.sequence.map((caseId) => {
+    const caseData = appData.cases[caseId as keyof typeof appData.cases];
+    const anchors: Record<string, string> = {
+      pseo: "pseo-flowchart",
+      heroforce: "velocity",
+      pricing: "pricing-reveal",
+      forms: "forms",
+    };
+    return {
+      id: anchors[caseId] || caseId,
+      label: caseData?.navLabel || caseId,
+    };
+  });
+
+  // Add closing section to nav
+  navSections.push({
+    id: "closing",
+    label: appData.closing.navLabel,
+  });
+
   return (
     <article className="flex flex-col pb-32">
+      <StickyNav sections={navSections} />
       <NarrativeTimeline />
       <CoverLetterHero data={appData.hero} companyName={appData.companyName} />
       
       {appData.sequence.map((caseId) => {
         if (caseId === "pseo" && appData.cases.pseo) {
-          return <PseoInteractiveFlowchart key={caseId} data={appData.cases.pseo} />;
+          return (
+            <div key={caseId} id="pseo-flowchart" className="scroll-mt-32">
+              <PseoInteractiveFlowchart data={appData.cases.pseo} />
+            </div>
+          );
         }
         if (caseId === "heroforce" && appData.cases.heroforce) {
-          return <HeroForceVideo key={caseId} data={appData.cases.heroforce} />;
+          return (
+            <div key={caseId} id="velocity" className="scroll-mt-32">
+              <HeroForceVideo data={appData.cases.heroforce} />
+            </div>
+          );
         }
         if (caseId === "pricing" && appData.cases.pricing) {
-          return <PricingMatrixReveal key={caseId} data={appData.cases.pricing} />;
+          return (
+            <div key={caseId} id="pricing-reveal" className="scroll-mt-32">
+              <PricingMatrixReveal data={appData.cases.pricing} />
+            </div>
+          );
         }
         if (caseId === "forms" && appData.cases.forms) {
-          return <FormsCaseStudy key={caseId} data={appData.cases.forms} />;
+          return (
+            <div key={caseId} id="forms" className="scroll-mt-32">
+              <FormsCaseStudy data={appData.cases.forms} />
+            </div>
+          );
         }
         return null;
       })}
 
-      <ClosingCTA data={appData.closing} />
+      <div id="closing" className="scroll-mt-32">
+        <ClosingCTA data={appData.closing} />
+      </div>
     </article>
   );
 }

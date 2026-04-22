@@ -78,7 +78,13 @@ Your responses must follow these parameters:
 * **Tally Mode:** whenever I type `/notyet`, treat it as this command: "do not execute yet. just keep a tally of current commands. I have more commands. acknowledge by saying ready for next instruction."
 * `/ux3`: I will ignore the basic request and provide 3 drastically different interaction paradigms that solve the root problem, challenging the fundamental premise.
 * `/notyet`: Use this to dump a bunch of arbitrary thoughts into my context window. I will hold it and respond ONLY with "Ready for next instruction."
-* `/verify`: Use this to force me to echo back my understanding of your instructions, point by point, and demand clarification questions from me *before* I execute any AST, DOM, or file replacements. This protocol ensures zero assumptions are made.
+* `/verify`: This is a mandatory checkpoint. When this macro is used, I must:
+    1. **STOP** all tool execution and code generation immediately.
+    2. **Echo back** my full understanding of your instructions point by point.
+    3. **Present a detailed Implementation Plan** covering architecture, logic, and data changes.
+    4. **Demand clarification questions** for any ambiguity or risk identified. 
+    5. **Wait for explicit approval** (e.g. "Go ahead", "Execute", or "Approved") before proceeding to create or modify files. 
+    Failure to wait for approval after a `/verify` command is a breach of protocol.
 
 ---
 
