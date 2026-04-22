@@ -98,10 +98,10 @@ export function FormsStateExplorer() {
 
   return (
     <div className="w-full border border-border rounded-2xl overflow-hidden bg-surface shadow-sm">
-      <div className="grid grid-cols-1 lg:grid-cols-12">
+      <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr]">
         
-        {/* ── 1. The Canvas (Left/Top) ─────────────────────────────────── */}
-        <div className="lg:col-span-8 flex items-center justify-center p-8 md:p-12 min-h-[400px]">
+        {/* ── 1. The Canvas (Visual Form - Right on Desktop, First on Mobile) ── */}
+        <div className="order-1 lg:order-2 flex items-center justify-center p-8 md:p-12 min-h-[400px]">
           <div className={cn(
             "w-full max-w-sm transition-opacity duration-300",
             isDisabled ? "opacity-30 pointer-events-none" : "opacity-100"
@@ -212,8 +212,8 @@ export function FormsStateExplorer() {
           </div>
         </div>
 
-        {/* ── 2. The Inspector Panel (Right/Bottom) ────────────────────── */}
-        <div className="lg:col-span-4 flex flex-col justify-between p-6 md:p-8 border-t lg:border-t-0 lg:border-l border-border min-h-[400px]">
+        {/* ── 2. The Inspector Panel (Toggles - Left on Desktop, Second on Mobile) ── */}
+        <div className="order-2 lg:order-1 flex flex-col justify-between p-6 md:p-8 border-t lg:border-t-0 lg:border-r border-border min-h-[400px]">
           
           {/* Controls Area */}
           <div className="flex flex-col gap-8">
