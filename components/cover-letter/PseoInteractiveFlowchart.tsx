@@ -150,6 +150,18 @@ export function PseoInteractiveFlowchart({ data }: { data: CaseStudyData }) {
       </div>
     </div>
 
+      {/* ── Tier 1.5: Context Bridge ─────────────────────────── */}
+      <div className="max-w-5xl mx-auto mt-8 mb-8 border-t border-border pt-8 px-6 md:px-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 items-start">
+          {data.meta.map((m, i) => (
+            <div key={i}>
+              <div className="text-xs text-muted uppercase tracking-wider mb-2 font-mono">{m.label}</div>
+              <div className="font-sans text-sm text-heading">{m.value}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* ── Tier 2: Dynamic Layout Envelope (Viewport Breakout) ─ */}
       <div ref={containerRef} className="relative w-[100vw] left-1/2 -translate-x-1/2 px-4 md:px-12 lg:px-24 mt-16 mb-16">
           {/* Dynamic SVG Connectors */}
@@ -224,15 +236,7 @@ export function PseoInteractiveFlowchart({ data }: { data: CaseStudyData }) {
         </div>
       </div>
 
-      {/* ── Tier 3: The Meta Footer ──────────────────────────── */}
-      <div className="max-w-5xl mx-auto mt-8 flex flex-col md:flex-row flex-wrap gap-6 md:gap-16 px-6 md:px-0">
-        {data.meta.map((m, i) => (
-          <div key={i}>
-            <div className="text-xs text-muted uppercase tracking-wider mb-1 font-mono">{m.label}</div>
-            <div className="font-sans text-sm text-heading">{m.value}</div>
-          </div>
-        ))}
-      </div>
+
 
       {/* ── High-Fidelity Lightbox Overlay (Internal State Mapping) ──────── */}
       {isMounted && (
