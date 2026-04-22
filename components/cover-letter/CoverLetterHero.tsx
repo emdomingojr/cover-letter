@@ -220,17 +220,17 @@ export function CoverLetterHero({ data, companyName }: { data: HeroData; company
           <img
             src={data.companyLogo}
             alt="Company Logo"
-            className="h-7 w-auto transition-all duration-300"
+            className="h-[3.75rem] w-auto transition-all duration-300"
             onError={() => setLogoFailed(true)}
           />
         ) : (
-          <div className="h-7 flex items-center">
-            <span className="font-serif-display text-2xl text-heading">
+          <div className="h-[3.75rem] flex items-center">
+            <span className="font-serif-display text-4xl text-heading">
               {companyName}
             </span>
           </div>
         )}
-        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted whitespace-nowrap">
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted whitespace-nowrap mt-1">
           {data.badgeLabel}
         </span>
       </div>
