@@ -7,7 +7,7 @@ export function FormsCaseStudy({ data }: { data: CaseStudyData }) {
   return (
     <section id="forms" className="py-8">
       {/* ── Tier 1: Narrative & Impact ───────────────────────── */}
-      <div className="mx-auto max-w-5xl px-6 md:px-0">
+      <div className="mx-auto max-w-7xl px-2 md:px-12">
         <div className="mb-3 font-mono text-xs uppercase tracking-widest text-muted">{data.eyebrow}</div>
         <h2 className="mb-6 max-w-2xl text-heading text-3xl font-semibold leading-tight">{data.heading}</h2>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-t border-border pt-8">
@@ -28,7 +28,7 @@ export function FormsCaseStudy({ data }: { data: CaseStudyData }) {
     </div>
 
       {/* ── Tier 1.5: Context Bridge ─────────────────────────── */}
-      <div className="max-w-5xl mx-auto mt-8 mb-8 border-t border-border pt-8 px-6 md:px-0">
+      <div className="max-w-7xl mx-auto mt-8 mb-8 border-t border-border pt-8 px-2 md:px-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 items-start">
           {data.meta.map((m, i) => (
             <div key={i}>
@@ -40,7 +40,7 @@ export function FormsCaseStudy({ data }: { data: CaseStudyData }) {
       </div>
 
       {/* ── Tier 2: Breakout Interactivity ───────────────────── */}
-      <div className="mx-auto max-w-5xl px-0 mt-16 mb-16">
+      <div className="mx-auto max-w-7xl px-2 md:px-12 mt-16 mb-16">
         <FormsStateExplorer />
       </div>
 

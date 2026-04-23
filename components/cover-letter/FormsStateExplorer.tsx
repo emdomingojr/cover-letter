@@ -222,7 +222,7 @@ export function FormsStateExplorer() {
                 <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground/60 font-semibold">
                   {cat}
                 </span>
-                <div className="flex flex-nowrap overflow-x-auto pb-1 lg:pb-0 scrollbar-hide gap-1 bg-white/60 p-1 rounded-xl border border-border/50">
+                <div className="flex flex-nowrap overflow-x-auto scrollbar-hide gap-1 bg-white/60 p-1 rounded-xl border border-border/50">
                   {Object.entries(STATES_META)
                     .filter(([_, meta]) => meta.category === cat)
                     .map(([id, meta]) => (

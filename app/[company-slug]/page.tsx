@@ -6,9 +6,8 @@ import { CoverLetterHero } from "@/components/cover-letter/CoverLetterHero";
 import { PseoInteractiveFlowchart } from "@/components/cover-letter/PseoInteractiveFlowchart";
 import { HeroForceVideo } from "@/components/cover-letter/HeroForceVideo";
 import { PricingMatrixReveal } from "@/components/cover-letter/PricingMatrixReveal";
-import { NarrativeTimeline } from "@/components/cover-letter/NarrativeTimeline";
 import { ClosingCTA } from "@/components/cover-letter/ClosingCTA";
-import { StickyNav } from "@/components/cover-letter/StickyNav";
+import { NavSectionRegistrar } from "@/components/nav/NavSectionRegistrar";
 import { FormsCaseStudy } from "@/components/cover-letter/FormsCaseStudy";
 
 interface PageProps {
@@ -78,8 +77,7 @@ export default async function CoverLetterPage({ params }: PageProps) {
 
   return (
     <article className="flex flex-col pb-32">
-      <StickyNav sections={navSections} />
-      <NarrativeTimeline />
+      <NavSectionRegistrar sections={navSections} />
       <CoverLetterHero data={appData.hero} companyName={appData.companyName} />
       
       {appData.sequence.map((caseId) => {

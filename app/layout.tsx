@@ -3,6 +3,7 @@ import { Radio_Canada_Big, JetBrains_Mono, Space_Mono, Playfair_Display } from "
 import Script from "next/script";
 import "./globals.css";
 import { NavBar } from "@/components/nav/NavBar";
+import { NavigationProvider } from "@/components/nav/NavigationProvider";
 import { DevModeProvider } from "@/components/dev/DevModeProvider";
 import { siteConfig } from "@/data/data";
 
@@ -94,10 +95,12 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <DevModeProvider>
-          <NavBar />
-          <main className="mx-auto max-w-5xl px-2 md:px-6 pt-24">
-            {children}
-          </main>
+          <NavigationProvider>
+            <NavBar />
+            <main className="mx-auto max-w-5xl px-2 md:px-6 pt-24">
+              {children}
+            </main>
+          </NavigationProvider>
         </DevModeProvider>
         {/* Netlify Identity — required for Decap CMS login redirect on every page */}
         <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" strategy="afterInteractive" />

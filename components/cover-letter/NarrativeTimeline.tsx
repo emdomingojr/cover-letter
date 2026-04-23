@@ -18,7 +18,7 @@ export function NarrativeTimeline() {
   });
 
   return (
-    <div className="pointer-events-none fixed top-[60px] md:top-[72px] left-0 right-0 z-[60] w-full">
+    <div className="pointer-events-none w-full">
       {/* Progress Execution Line */}
       <motion.div 
         style={{ scaleX }} 

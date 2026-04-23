@@ -10,6 +10,7 @@ export interface HoverToken {
 
 export interface HeroData {
   companyLogo: string;
+  companyLogoHeight?: string; // e.g. "1.75rem" or "3.75rem"
   badgeLabel: string;
   headingParts: Part[];
   tokens: HoverToken[];
@@ -53,6 +54,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
     sequence: ["pseo", "heroforce", "pricing"],
     hero: {
       companyLogo: "https://lever-client-logos.s3.us-west-2.amazonaws.com/c11956a5-1cb9-45f6-b2ef-a36290dffe66-1722470303592.png",
+      companyLogoHeight: "1.75rem",
       badgeLabel: "Application / Senior Product Designer",
       headingParts: [
         { type: "text", content: "I design acquisition surfaces that " },
@@ -175,6 +177,7 @@ export const APPLICATIONS: Record<string, ApplicationData> = {
     sequence: ["heroforce", "pricing", "forms", "pseo"],
     hero: {
       companyLogo: "https://cdn.prod.website-files.com/663992d0436f4e870a059cc3/69e855e9cd54b7ea107469d1_karbon_logo.png",
+      companyLogoHeight: "3.75rem",
       badgeLabel: "Application / Product Designer",
       headingParts: [
         { type: "text", content: "I design end-to-end product experiences, " },

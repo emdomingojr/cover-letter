@@ -15,7 +15,7 @@ export function ClosingCTA({ data }: { data: ClosingData }) {
   if (!data) return null;
 
   return (
-    <section className="mx-auto max-w-5xl px-0 py-8">
+    <section className="mx-auto max-w-7xl px-2 md:px-12 py-8">
       <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-12 lg:gap-20">
         {/* ── Left: The Pitch ────────────────────────────────── */}
         <div className="flex flex-col gap-6 md:col-span-7">

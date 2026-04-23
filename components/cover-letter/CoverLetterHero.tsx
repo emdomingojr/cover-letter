@@ -211,26 +211,34 @@ export function CoverLetterHero({ data, companyName }: { data: HeroData; company
 
   // ── Render ───────────────────────────────────────────────────────────────────
   return (
-    <section className="mx-auto max-w-5xl px-0 pb-8 pt-4 md:pt-8">
+    <section className="mx-auto max-w-7xl px-2 md:px-12 pb-8 pt-4 md:pt-8">
 
       {/* ── Context Badge ─────────────────────────────────────────────────── */}
-      <div className="flex flex-row items-center gap-6 mb-8 md:mb-12">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        {data.companyLogo && !logoFailed ? (
-          <img
-            src={data.companyLogo}
-            alt="Company Logo"
-            className="h-[3.75rem] w-auto transition-all duration-300"
-            onError={() => setLogoFailed(true)}
-          />
-        ) : (
-          <div className="h-[3.75rem] flex items-center">
-            <span className="font-serif-display text-4xl text-heading">
-              {companyName}
-            </span>
-          </div>
-        )}
-        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted whitespace-nowrap mt-1">
+      <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6 mb-8 md:mb-12">
+        {/* logo area */}
+        <div>
+          {data.companyLogo && !logoFailed ? (
+            <img
+              src={data.companyLogo}
+              alt="Company Logo"
+              style={{ height: data.companyLogoHeight || "3.75rem" }}
+              className="w-auto transition-all duration-300"
+              onError={() => setLogoFailed(true)}
+            />
+          ) : (
+            <div 
+              style={{ height: data.companyLogoHeight || "3.75rem" }} 
+              className="flex items-center"
+            >
+              <span className="font-serif-display text-4xl text-heading">
+                {companyName}
+              </span>
+            </div>
+          )}
+        </div>
+        
+        {/* badge area */}
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted whitespace-nowrap md:mt-1">
           {data.badgeLabel}
         </span>
       </div>
