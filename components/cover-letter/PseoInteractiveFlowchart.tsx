@@ -6,24 +6,6 @@ import { CaseStudyData } from "@/data/applications";
 import Image from "next/image";
 
 // Resolving missing heroicons gracefully by declaring immutable inline SVGs
-const MagnifyingGlassIcon = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-  </svg>
-);
-
-const XMarkIcon = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-  </svg>
-);
-
-const PlusIcon = ({ className }: { className?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className={className}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-  </svg>
-);
-
 type SearchState = "default" | "unselected" | "empty";
 
 const NODE2_ASSETS: Record<SearchState, string> = {
@@ -107,37 +89,19 @@ export function PseoInteractiveFlowchart({ data }: { data: CaseStudyData }) {
     return () => observer.disconnect();
   }, [isMounted, calculateLines]);
 
-  // Modal Render Sequence Blocking
-  useEffect(() => {
-    if (activeLightboxNode !== null) {
-      document.body.style.overflow = "hidden";
-      const handleEsc = (e: KeyboardEvent) => {
-        if (e.key === "Escape") setActiveLightboxNode(null);
-      };
-      window.addEventListener("keydown", handleEsc);
-      return () => {
-        document.body.style.overflow = "unset";
-        window.removeEventListener("keydown", handleEsc);
-      };
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [activeLightboxNode]);
+  const ActionLink = () => (
+    <div className="flex items-center gap-1.5 text-accent text-[10px] sm:text-xs font-normal tracking-wide transition-all duration-200 group-hover:-translate-x-0.5 group-hover:opacity-80">
+      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-2.5 h-2.5">
+        <path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+      See design detail
+    </div>
+  );
 
-  const NodeHoverAffordance = () => (
-    <>
-      {/* Central Label Overlay */}
-      <div className="absolute inset-0 bg-surface-2/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center z-20">
-        <span className="font-mono text-[10px] uppercase font-bold tracking-[0.2em] text-accent translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-          Expand Node
-        </span>
-      </div>
-      
-      {/* Persistent Plus Button Affordance */}
-      <div className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-white/95 backdrop-blur-md border border-border shadow-[0_2px_10px_rgba(0,0,0,0.05)] flex items-center justify-center z-30 group-hover:scale-110 group-hover:bg-accent group-hover:border-accent transition-all duration-300">
-        <PlusIcon className="w-4 h-4 text-muted group-hover:text-white transition-colors" />
-      </div>
-    </>
+  const XMarkIcon = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+    </svg>
   );
 
   return (
@@ -190,26 +154,33 @@ export function PseoInteractiveFlowchart({ data }: { data: CaseStudyData }) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-16 relative z-10 w-full">
             {/* Column 1: Local Hub Node */}
             <div className="flex flex-col items-start justify-center">
-              <div ref={node1Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px]">
-                <div className="font-mono text-xs uppercase text-muted mb-3">Node 1: Local Hub</div>
-                <button
-                  className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer"
-                  onClick={() => setActiveLightboxNode(1)}
-                >
+              <div 
+                ref={node1Ref} 
+                onClick={() => setActiveLightboxNode(1)}
+                className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px] group cursor-pointer hover:shadow-md transition-shadow"
+              >
+                <div className="flex flex-col items-start gap-1 w-full mb-4">
+                  <div className="font-mono text-xs uppercase text-muted">Node 1: Local Hub</div>
+                  <ActionLink />
+                </div>
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full">
                   <Image src="/cover-letter/images/pseo-1home.webp" alt="PSEO Hub Matrix" fill className="object-cover object-top" unoptimized />
-                  <NodeHoverAffordance />
-                </button>
+                </div>
               </div>
             </div>
 
             {/* Column 2: Search Intent Engine (Static Base Canvas) */}
             <div className="flex flex-col items-center justify-center relative z-10">
-              <div ref={node2Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[320px] flex flex-col gap-4">
-                <div className="font-mono text-xs uppercase text-muted">Node 2: Search Intent</div>
-                <button
-                  className="group relative aspect-square rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer hover:shadow-lg transition-shadow"
-                  onClick={() => setActiveLightboxNode(2)}
-                >
+              <div 
+                ref={node2Ref} 
+                onClick={() => setActiveLightboxNode(2)}
+                className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[320px] group cursor-pointer hover:shadow-md transition-shadow"
+              >
+                <div className="flex flex-col items-start gap-1 w-full mb-4">
+                  <div className="font-mono text-xs uppercase text-muted">Node 2: Search Intent</div>
+                  <ActionLink />
+                </div>
+                <div className="relative aspect-square rounded-lg overflow-hidden bg-surface-2 border border-border w-full">
                   <Image
                     src="/cover-letter/images/pseo-2search-results.webp"
                     alt="Search Engine State Payload"
@@ -217,33 +188,38 @@ export function PseoInteractiveFlowchart({ data }: { data: CaseStudyData }) {
                     className="object-cover object-top"
                     unoptimized
                   />
-                  <NodeHoverAffordance />
-                </button>
+                </div>
               </div>
             </div>
 
             {/* Column 3: Splitter Track (Profile & Target) */}
             <div className="flex flex-col items-end justify-between gap-6 lg:gap-32 py-8">
-              <div ref={node3Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px]">
-                <div className="font-mono text-xs uppercase text-muted mb-3">Node 3: Employer Profile</div>
-                <button
-                  className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full cursor-pointer"
-                  onClick={() => setActiveLightboxNode(3)}
-                >
+              <div 
+                ref={node3Ref} 
+                onClick={() => setActiveLightboxNode(3)}
+                className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px] group cursor-pointer hover:shadow-md transition-shadow"
+              >
+                <div className="flex flex-col items-start gap-1 w-full mb-4">
+                  <div className="font-mono text-xs uppercase text-muted">Node 3: Employer Profile</div>
+                  <ActionLink />
+                </div>
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full">
                   <Image src="/cover-letter/images/pseo-3company-profile.webp" alt="Employer Geometry" fill className="object-cover object-top" unoptimized />
-                  <NodeHoverAffordance />
-                </button>
+                </div>
               </div>
 
-              <div ref={node4Ref} className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px]">
-                <div className="font-mono text-xs uppercase text-muted mb-3">Node 4: Position App</div>
-                <button
-                  className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border-l-2 border-accent w-full cursor-pointer"
-                  onClick={() => setActiveLightboxNode(4)}
-                >
+              <div 
+                ref={node4Ref} 
+                onClick={() => setActiveLightboxNode(4)}
+                className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px] group cursor-pointer hover:shadow-md transition-shadow"
+              >
+                <div className="flex flex-col items-start gap-1 w-full mb-4">
+                  <div className="font-mono text-xs uppercase text-muted">Node 4: Position App</div>
+                  <ActionLink />
+                </div>
+                <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border-l-2 border-accent w-full">
                   <Image src="/cover-letter/images/pseo-4job-listing.webp" alt="Target Position Matrix" fill className="object-cover object-top" unoptimized />
-                  <NodeHoverAffordance />
-                </button>
+                </div>
               </div>
           </div>
         </div>
