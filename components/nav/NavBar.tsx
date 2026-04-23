@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
  * A dual-state header that transforms from a hero-integrated logo 
  * into a persistent utility bar with segmented control navigation.
  */
-export function NavBar({ companyName }: { companyName: string }) {
+export function NavBar() {
   const [isNavVisible, setIsNavVisible] = useState(false);
   const { sections, activeId, setIsScrolled, isScrolled } = useNavigation();
   const pillRefs = useRef(new Map<string, HTMLElement | null>());
