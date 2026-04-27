@@ -89,14 +89,7 @@ export function PseoInteractiveFlowchart({ data }: { data: CaseStudyData }) {
     return () => observer.disconnect();
   }, [isMounted, calculateLines]);
 
-  const ActionLink = () => (
-    <div className="flex items-center gap-1.5 text-accent text-[10px] sm:text-xs font-normal tracking-wide transition-all duration-200 group-hover:-translate-x-0.5 group-hover:opacity-80">
-      <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-2.5 h-2.5">
-        <path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-      See design detail
-    </div>
-  );
+
 
   const XMarkIcon = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className}>
@@ -140,87 +133,121 @@ export function PseoInteractiveFlowchart({ data }: { data: CaseStudyData }) {
       </div>
 
       {/* ── Tier 2: Dynamic Layout Envelope (Viewport Breakout) ─ */}
-      <div ref={containerRef} className="relative w-[100vw] left-1/2 -translate-x-1/2 px-2 md:px-12 lg:px-24 mt-16 mb-16">
+      <div ref={containerRef} className="relative w-[100vw] left-1/2 -translate-x-1/2 mt-16 mb-16">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
           {/* Dynamic SVG Connectors */}
           {isMounted && lineCoords && (
-            <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden lg:block">
-              <path d={lineCoords.node1ToNode2} fill="none" stroke="#CBD5E1" strokeWidth="2" />
-              <path d={lineCoords.node2ToNode3} fill="none" stroke="#CBD5E1" strokeWidth="2" />
-              <path d={lineCoords.node2ToNode4} fill="none" stroke="#CBD5E1" strokeWidth="2" />
+            <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden lg:block text-slate-300">
+              <defs>
+                <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6">
+                  <circle cx="5" cy="5" r="4" fill="currentColor" />
+                </marker>
+                <marker id="chevron" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                  <path d="M 2 2 L 8 5 L 2 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </marker>
+              </defs>
+              <path d={lineCoords.node1ToNode2} fill="none" stroke="currentColor" strokeWidth="2" markerStart="url(#dot)" markerEnd="url(#chevron)" />
+              <path d={lineCoords.node2ToNode3} fill="none" stroke="currentColor" strokeWidth="2" markerStart="url(#dot)" markerEnd="url(#chevron)" />
+              <path d={lineCoords.node2ToNode4} fill="none" stroke="currentColor" strokeWidth="2" markerStart="url(#dot)" markerEnd="url(#chevron)" />
             </svg>
           )}
 
           {/* 3-Column Component Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-16 relative z-10 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 w-full relative z-10 md:items-start gap-12 md:gap-0">
             {/* Column 1: Local Hub Node */}
-            <div className="flex flex-col items-start justify-center">
+            <div className="flex flex-col items-start justify-start md:justify-self-start">
               <div 
                 ref={node1Ref} 
                 onClick={() => setActiveLightboxNode(1)}
-                className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px] group cursor-pointer hover:shadow-md transition-shadow"
+                className="bg-white border border-border/50 rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[420px] group cursor-pointer hover:shadow-md transition-shadow"
               >
-                <div className="flex flex-col items-start gap-1 w-full mb-4">
+                <div className="mb-4">
                   <div className="font-mono text-xs uppercase text-muted">Node 1: Local Hub</div>
-                  <ActionLink />
                 </div>
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full">
-                  <Image src="/cover-letter/images/pseo-1home.webp" alt="PSEO Hub Matrix" fill className="object-cover object-top" unoptimized />
+                <div className="relative w-full max-h-[32rem] overflow-hidden rounded-lg bg-surface-2 border border-border">
+                  <Image src="/cover-letter/images/pseo-1home.webp" alt="PSEO Hub Matrix" width={1440} height={1080} className="w-full h-auto block object-top" unoptimized />
+                  <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                </div>
+                <div className="mt-4 pt-4 border-t border-border flex items-center justify-between w-full text-accent font-medium text-[10px] sm:text-xs transition-opacity duration-200 group-hover:opacity-80">
+                  <span>See design detail</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1">
+                    <path d="M5 12h14m-7-7 7 7-7 7" />
+                  </svg>
                 </div>
               </div>
             </div>
 
             {/* Column 2: Search Intent Engine (Static Base Canvas) */}
-            <div className="flex flex-col items-center justify-center relative z-10">
+            <div className="flex flex-col items-center justify-start relative z-10 md:justify-self-center">
               <div 
                 ref={node2Ref} 
                 onClick={() => setActiveLightboxNode(2)}
-                className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[320px] group cursor-pointer hover:shadow-md transition-shadow"
+                className="bg-white border border-border/50 rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[420px] group cursor-pointer hover:shadow-md transition-shadow"
               >
-                <div className="flex flex-col items-start gap-1 w-full mb-4">
+                <div className="mb-4">
                   <div className="font-mono text-xs uppercase text-muted">Node 2: Search Intent</div>
-                  <ActionLink />
                 </div>
-                <div className="relative aspect-square rounded-lg overflow-hidden bg-surface-2 border border-border w-full">
+                <div className="relative w-full max-h-[32rem] overflow-hidden rounded-lg bg-surface-2 border border-border">
                   <Image
                     src="/cover-letter/images/pseo-2search-results.webp"
                     alt="Search Engine State Payload"
-                    fill
-                    className="object-cover object-top"
+                    width={1440} height={1080}
+                    className="w-full h-auto block object-top"
                     unoptimized
                   />
+                  <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                </div>
+                <div className="mt-4 pt-4 border-t border-border flex items-center justify-between w-full text-accent font-medium text-[10px] sm:text-xs transition-opacity duration-200 group-hover:opacity-80">
+                  <span>See design detail</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1">
+                    <path d="M5 12h14m-7-7 7 7-7 7" />
+                  </svg>
                 </div>
               </div>
             </div>
 
             {/* Column 3: Splitter Track (Profile & Target) */}
-            <div className="flex flex-col items-end justify-between gap-6 lg:gap-32 py-8">
+            <div className="flex flex-col items-end justify-start gap-6 md:gap-32 md:justify-self-end">
               <div 
                 ref={node3Ref} 
                 onClick={() => setActiveLightboxNode(3)}
-                className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px] group cursor-pointer hover:shadow-md transition-shadow"
+                className="bg-white border border-border/50 rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[420px] group cursor-pointer hover:shadow-md transition-shadow"
               >
-                <div className="flex flex-col items-start gap-1 w-full mb-4">
+                <div className="mb-4">
                   <div className="font-mono text-xs uppercase text-muted">Node 3: Employer Profile</div>
-                  <ActionLink />
                 </div>
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border border-border w-full">
-                  <Image src="/cover-letter/images/pseo-3company-profile.webp" alt="Employer Geometry" fill className="object-cover object-top" unoptimized />
+                <div className="relative w-full max-h-[32rem] overflow-hidden rounded-lg bg-surface-2 border border-border">
+                  <Image src="/cover-letter/images/pseo-3company-profile.webp" alt="Employer Geometry" width={1440} height={1080} className="w-full h-auto block object-top" unoptimized />
+                  <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                </div>
+                <div className="mt-4 pt-4 border-t border-border flex items-center justify-between w-full text-accent font-medium text-[10px] sm:text-xs transition-opacity duration-200 group-hover:opacity-80">
+                  <span>See design detail</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1">
+                    <path d="M5 12h14m-7-7 7 7-7 7" />
+                  </svg>
                 </div>
               </div>
 
               <div 
                 ref={node4Ref} 
                 onClick={() => setActiveLightboxNode(4)}
-                className="bg-surface border border-border rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[280px] group cursor-pointer hover:shadow-md transition-shadow"
+                className="bg-white border border-border/50 rounded-2xl shadow-sm p-4 relative z-10 w-full max-w-[420px] group cursor-pointer hover:shadow-md transition-shadow"
               >
-                <div className="flex flex-col items-start gap-1 w-full mb-4">
+                <div className="mb-4">
                   <div className="font-mono text-xs uppercase text-muted">Node 4: Position App</div>
-                  <ActionLink />
                 </div>
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-surface-2 border-l-2 border-accent w-full">
-                  <Image src="/cover-letter/images/pseo-4job-listing.webp" alt="Target Position Matrix" fill className="object-cover object-top" unoptimized />
+                <div className="relative w-full max-h-[32rem] overflow-hidden rounded-lg bg-surface-2 border-l-2 border-accent">
+                  <Image src="/cover-letter/images/pseo-4job-listing.webp" alt="Target Position Matrix" width={1440} height={1080} className="w-full h-auto block object-top" unoptimized />
+                  <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                </div>
+                <div className="mt-4 pt-4 border-t border-border flex items-center justify-between w-full text-accent font-medium text-[10px] sm:text-xs transition-opacity duration-200 group-hover:opacity-80">
+                  <span>See design detail</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1">
+                    <path d="M5 12h14m-7-7 7 7-7 7" />
+                  </svg>
                 </div>
               </div>
+            </div>
           </div>
         </div>
       </div>

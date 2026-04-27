@@ -10,8 +10,8 @@ const NODES = [
   { id: "position", label: "Position Page" },
 ] as const;
 
-const NODE_W = 280;
-const NODE_H = 238;
+const NODE_W = 420;
+const NODE_H = 357;
 
 const IMAGE_MAP: Record<string, string> = {
   hub: "/cover-letter/images/pseo-1home.webp",
@@ -37,20 +37,23 @@ function NodeCard({ node, onHoverStart, onHoverEnd, onClick }: { node: typeof NO
       </div>
 
       {/* Image Area */}
-      <div className="flex-1 w-full relative bg-surface-2 overflow-hidden">
+      <div className="flex-1 w-full relative bg-surface-2 overflow-hidden flex flex-col justify-start max-h-[32rem]">
         {imgError ? (
           <div className="absolute inset-4 border-4 border-dashed border-border flex items-center justify-center font-mono text-xs text-muted text-center p-4">
             [ NATIVE CSS WIREFRAME ]<br />MISSING ASSET
           </div>
         ) : (
-          <Image
-            src={IMAGE_MAP[node.id] || "/cover-letter/images/pseo-1home.webp"}
-            alt={node.label}
-            fill
-            className="object-cover pointer-events-none"
-            onError={() => setImgError(true)}
-            draggable={false}
-          />
+          <>
+            <Image
+              src={IMAGE_MAP[node.id] || "/cover-letter/images/pseo-1home.webp"}
+              alt={node.label}
+              width={1440} height={1080}
+              className="w-full h-auto object-top pointer-events-none block"
+              onError={() => setImgError(true)}
+              draggable={false}
+            />
+            <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-surface to-transparent pointer-events-none" />
+          </>
         )}
       </div>
     </button>
@@ -74,7 +77,7 @@ function DraggableDesktopNode({
   return (
     <motion.div
       style={{ x, y, position: "absolute", top: 0, left: 0 }}
-      className="h-[238px] w-[280px] bg-surface border border-border hover:border-accent rounded-xl shadow-sm z-10 flex flex-col grayscale hover:grayscale-0 transition-[filter,border-color] duration-150 overflow-hidden cursor-grab active:cursor-grabbing"
+      className="w-[420px] bg-surface border border-border hover:border-accent rounded-xl shadow-sm z-10 flex flex-col grayscale hover:grayscale-0 transition-[filter,border-color] duration-150 overflow-hidden cursor-grab active:cursor-grabbing"
       drag
       dragControls={controls}
       dragListener={false}
@@ -160,18 +163,18 @@ export function PseoNodeCanvas() {
 
   const path1 = useTransform(() => {
     const sx = x1.get() + NODE_W;
-    const sy = y1.get() + 119;
+    const sy = y1.get() + (NODE_H / 2);
     const ex = x2.get();
-    const ey = y2.get() + 119;
+    const ey = y2.get() + (NODE_H / 2);
     const cx = (sx + ex) / 2;
     return `M ${sx} ${sy} C ${cx} ${sy}, ${cx} ${ey}, ${ex} ${ey}`;
   });
 
   const path2 = useTransform(() => {
     const sx = x2.get() + NODE_W;
-    const sy = y2.get() + 119;
+    const sy = y2.get() + (NODE_H / 2);
     const ex = x3.get();
-    const ey = y3.get() + 119;
+    const ey = y3.get() + (NODE_H / 2);
     const cx = (sx + ex) / 2;
     return `M ${sx} ${sy} C ${cx} ${sy}, ${cx} ${ey}, ${ex} ${ey}`;
   });
@@ -245,25 +248,30 @@ export function PseoNodeCanvas() {
             }}
           >
             {/* SVG Connectors */}
-            <svg className="absolute inset-0 z-0 min-w-full min-h-full pointer-events-none" aria-hidden>
+            <svg className="absolute inset-0 z-0 min-w-full min-h-full pointer-events-none text-border" aria-hidden>
               <defs>
-                <marker id="workflow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                  <path d="M 0 0 L 10 5 L 0 10 z" fill="rgb(var(--color-border-hover))" />
+                <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6">
+                  <circle cx="5" cy="5" r="4" fill="currentColor" />
+                </marker>
+                <marker id="chevron" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                  <path d="M 2 2 L 8 5 L 2 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </marker>
               </defs>
               <motion.path
                 d={path1}
-                stroke="rgb(var(--color-border-hover) / 0.6)"
-                strokeWidth="1"
+                stroke="currentColor"
+                strokeWidth="2"
                 fill="none"
-                markerEnd="url(#workflow-arrow)"
+                markerStart="url(#dot)"
+                markerEnd="url(#chevron)"
               />
               <motion.path
                 d={path2}
-                stroke="rgb(var(--color-border-hover) / 0.6)"
-                strokeWidth="1"
+                stroke="currentColor"
+                strokeWidth="2"
                 fill="none"
-                markerEnd="url(#workflow-arrow)"
+                markerStart="url(#dot)"
+                markerEnd="url(#chevron)"
               />
             </svg>
 
@@ -292,7 +300,7 @@ export function PseoNodeCanvas() {
             {NODES.map((node) => (
               <div
                 key={node.id}
-                className="rounded-xl min-w-[280px] h-[238px] snap-center bg-surface border border-border flex flex-col overflow-hidden"
+                className="rounded-xl w-[90vw] max-w-[420px] shrink-0 snap-center bg-surface border border-border flex flex-col overflow-hidden"
               >
                 <NodeCard
                   node={node}
